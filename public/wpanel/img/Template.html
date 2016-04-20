@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Template</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="http://localhost:8000/wpanel/js/plugins.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="http://localhost:8000/wpanel/js/app.js"></script>
+
+    <link rel="stylesheet" href="http://localhost:8000/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://localhost:8000/wpanel/css/main.css">
+</head>
+<body class="with-side-menu dark-theme dark-theme-green">
+
+<header class="site-header">
+    <div class="container-fluid">
+        <a href="#" class="site-logo-text">LOGO</a>
+        <button class="hamburger hamburger--htla">
+            <span>toggle menu</span>
+        </button>
+        <div class="site-header-content">
+            <div class="site-header-content-in">
+                <div class="site-header-shown">
+                    <div class="dropdown user-menu">
+                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="http://localhost:8000/wpanel/img/avatar-2-64.png" alt="">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
+                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-user"></span>Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-log-out"></span>Logout</a>
+                        </div>
+                    </div>
+
+                    <button type="button" class="burger-right">
+                        <i class="font-icon-menu-addl"></i>
+                    </button>
+                </div><!--.site-header-shown-->
+
+                <div class="mobile-menu-right-overlay"></div>
+
+            </div><!--site-header-content-in-->
+        </div><!--.site-header-content-->
+    </div><!--.container-fluid-->
+</header><!--.site-header-->
+
+<div class="mobile-menu-left-overlay"></div>
+<nav class="side-menu">
+    <ul class="side-menu-list">
+        <li class="blue">
+            <a href="#">
+                <i class="font-icon font-icon-users"></i>
+                <span class="lbl">Community</span>
+            </a>
+        </li>
+        <li class="purple with-sub">
+	            <span>
+	                <i class="font-icon font-icon-comments active"></i>
+	                <span class="lbl">Messages</span>
+	            </span>
+            <ul>
+                <li><a href="#"><span class="lbl">Inbox</span><span class="label label-custom label-pill label-danger">4</span></a></li>
+                <li><a href="#"><span class="lbl">Sent mail</span></a></li>
+                <li><a href="#"><span class="lbl">Bin</span></a></li>
+            </ul>
+        </li>
+    </ul>
+</nav><!--.side-menu-->
+
+<div class="page-content">
+    <div class="container-fluid">
+            Content
+    </div>
+</div><!--.page-content-->
+
+<!--Progress bar-->
+
+</body>
+
+</html>
