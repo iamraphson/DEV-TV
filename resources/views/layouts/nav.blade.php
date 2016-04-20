@@ -24,12 +24,18 @@
     </div>
     <div class="top-button">
         <ul class="menu">
-            <li>
-                <a href="{{ url('register') }}">Register</a>
-            </li>
-            <li class="dropdown-login">
-                <a href="login.html">login</a>
-            </li>
+            @if(Auth::check())
+                <li class="dropdown-login">
+                    <a href="{{ route('logout') }}">Logout</a>
+                </li>
+            @else
+                <li>
+                    <a href="{{ url('register') }}">Register</a>
+                </li>
+                <li class="dropdown-login">
+                    <a href="{{ route('auth.login') }}">Login</a>
+                </li>
+            @endif
         </ul>
     </div>
 </div>
@@ -45,12 +51,15 @@
                     <div class="top-button">
                         <ul class="menu float-right">
                             @if(Auth::check())
+                                <li class="dropdown-login">
+                                    <a href="{{ route('logout') }}">Logout</a>
+                                </li>
                             @else
                                 <li>
                                     <a href="{{ url('register') }}">Register</a>
                                 </li>
                                 <li class="dropdown-login">
-                                    <a href="login.html">Login</a>
+                                    <a href="{{ route('auth.login') }}">Login</a>
                                 </li>
                             @endif
                         </ul>

@@ -47,7 +47,7 @@
                         <div class="large-4 medium-6 columns end">
                             <div class="register-form">
                                 <h5 class="text-center">Create your Account</h5>
-                                <form method="POST" action="{{ url('/register') }}" novalidate="novalidate">
+                                <form method="POST" action="{{ url('/register') }}" data-abide="g47ytt-abide" novalidate>
                                     {{ csrf_field() }}
                                     <div class="input-group">
                                         <span class="input-group-label"><i class="fa fa-user-plus"></i></span>
@@ -106,7 +106,10 @@
                                     </div>
 
                                     <button class="button expanded" type="submit" name="submit">register Now</button>
-                                    <p class="loginclick"> <a href="#">Login here</a><a href="#">Already have acoount?</a></p>
+                                    <p class="loginclick">
+                                        <a href="{{ route('auth.login') }}">Login here</a>
+                                        <a href="{{ route('auth.login') }}">Already have acoount?</a>
+                                    </p>
                                 </form>
                             </div>
                         </div>

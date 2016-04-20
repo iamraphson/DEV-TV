@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request;
 use Validator;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -37,7 +38,7 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct(){
-        //$this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
     /**
@@ -82,9 +83,18 @@ class AuthController extends Controller
 
         ]);
     }
+
+    public function postLogin(Request $request){
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (!Auth::attempt(['username' => $request->input('username'), 'password' => $request->input('password')],
+            $request->has('remember'))) {
+            return redirect()->back()->with('error', 'Invalid Login Details');
+        }
+        return redirect($this->redirectTo);
+    }
+
 }
-/*
-
-
-
- */
