@@ -41,4 +41,8 @@ class User extends Authenticatable
         if (is_null($this->avatar))
             return "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->email))) . "?d=mm&s=60";
     }
+
+    public function getRole(){
+        return $this->role;
+    }
 }

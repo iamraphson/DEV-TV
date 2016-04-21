@@ -31,7 +31,7 @@
                             <div class="social-login" data-equalizer-watch>
                                 <h5 class="text-center">Login via Social Profile</h5>
                                 <div class="social-login-btn facebook">
-                                    <a href="#"><i class="fa fa-facebook"></i>login via facebook</a>
+                                    <a href="{{ route('auth.facebook') }}"><i class="fa fa-facebook"></i>login via facebook</a>
                                 </div>
                             </div>
                         </div>

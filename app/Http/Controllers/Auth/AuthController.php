@@ -6,12 +6,12 @@ use App\User;
 use Symfony\Component\HttpFoundation\Request;
 use Validator;
 use Auth;
+use Socialite;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class AuthController extends Controller
-{
+class AuthController extends Controller{
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -97,4 +97,36 @@ class AuthController extends Controller
         return redirect($this->redirectTo);
     }
 
+    public function redirectToProvider(){
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function  handleProviderCallback(){
+        try {
+            $user = Socialite::driver('facebook')->user();
+        } catch (Exception $e) {
+            return redirect()->route('auth.facebook');
+        }
+
+        $authUser = $this->findOrCreateUser($user);
+
+        Auth::login($authUser, true);
+
+        return redirect($this->redirectTo);
+    }
+
+    public function findOrCreateUser($user){
+        $authUser = User::where('provider_id', $user->id)->first();
+
+        if ($authUser){
+            return $authUser;
+        }
+        return User::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'role' => 'user',
+            'avatar_url' => $user->avatar,
+            'provider_id' => $user->id
+        ]);
+    }
 }

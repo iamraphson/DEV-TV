@@ -42,6 +42,15 @@ Route::group(['middleware' => 'web'], function () {
         'middleware' => ['guest']
     ]);
 
+    Route::get('auth/facebook', [
+        'uses' => 'Auth\AuthController@redirectToProvider',
+        'as' => 'auth.facebook',
+    ]);
+
+    Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
+
+    Route::get('password/reset', 'Auth\PasswordController@getReset');
+
 });
 
 Route::get('/', function () {

@@ -25,6 +25,11 @@
     <div class="top-button">
         <ul class="menu">
             @if(Auth::check())
+                @if(Auth::user()->getRole() == 'admin')
+                <li>
+                    <a href="#">Administrator Portal</a>
+                </li>
+                @endif
                 <li class="dropdown-login">
                     <a href="{{ route('logout') }}">Logout</a>
                 </li>
@@ -51,6 +56,11 @@
                     <div class="top-button">
                         <ul class="menu float-right">
                             @if(Auth::check())
+                                @if(Auth::user()->getRole() == 'admin')
+                                <li>
+                                    <a href="#">Administrator Portal</a>
+                                </li>
+                                @endif
                                 <li class="dropdown-login">
                                     <a href="{{ route('logout') }}">Logout</a>
                                 </li>
