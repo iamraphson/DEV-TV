@@ -29,4 +29,8 @@ class PasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    protected function redirectPath(){
+        return "/";
+    }
 }

@@ -49,7 +49,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
 
-    Route::get('password/reset', 'Auth\PasswordController@getReset');
+    Route::post('password/reset', 'Auth\PasswordController@reset');
+    Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+    Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 
 });
 
