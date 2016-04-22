@@ -53,6 +53,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 
+    Route::get('/r', [
+        'middleware' => ['auth', 'roles'],
+        'uses' => 'HomeController@index',
+        'roles' => ['admin']
+    ]);
+
 });
 
 Route::get('/', function () {
