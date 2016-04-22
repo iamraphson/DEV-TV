@@ -27,7 +27,7 @@
             @if(Auth::check())
                 @if(Auth::user()->getRole() == 'admin')
                 <li>
-                    <a href="#">Administrator Portal</a>
+                    <a href="{{ route('admin.home') }}">Administrator Portal</a>
                 </li>
                 @endif
                 <li class="dropdown-login">
@@ -58,7 +58,7 @@
                             @if(Auth::check())
                                 @if(Auth::user()->getRole() == 'admin')
                                 <li>
-                                    <a href="#">Administrator Portal</a>
+                                    <a href="{{ route('admin.home') }}">Administrator Portal</a>
                                 </li>
                                 @endif
                                 <li class="dropdown-login">

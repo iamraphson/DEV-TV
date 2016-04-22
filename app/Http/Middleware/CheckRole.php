@@ -34,9 +34,9 @@ class CheckRole{
         return redirect('/');
     }
     /**
-     * Obtiene los roles requeridos por la ruta.
+     *Gets the roles required by the route.
      *
-     * @param string/array $route arreglo de cadenas o cadena con el nombre del rol necesario
+     * @param string/array $route array of strings or string with the name of the required role
      *
      * @return bool
      */

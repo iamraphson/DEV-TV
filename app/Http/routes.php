@@ -15,6 +15,10 @@
 
 Route::group(['middleware' => 'web'], function () {
 
+    Route::get('/', [
+        'uses' => 'HomeController@index',
+    ]);
+
     Route::get('/register', [
         'uses' => 'Auth\AuthController@getRegister',
         'as' => 'auth.register',
@@ -53,15 +57,23 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 
-    Route::get('/r', [
-        'middleware' => ['auth', 'roles'],
-        'uses' => 'HomeController@index',
-        'roles' => ['admin']
-    ]);
 
+    //Admin routes
+    Route::group(['prefix' => 'admin', 'roles' => ['admin'], 'middleware' => ['auth', 'roles']], function () {
+
+        Route::get('/', [
+            'uses' => 'AdminController@index',
+            'as' => 'admin.home'
+        ]);
+
+        Route::get('/videos/create', [
+            'uses' => 'AdminController@index',
+            'as' => 'admin.home'
+        ]);
+
+
+
+    });
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
