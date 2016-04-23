@@ -23,8 +23,11 @@
             </span>
             <ul>
                 <li><a href="#"><span class="lbl">Add New Video</span></a></li>
+                <li><a href="{{ route('category.home') }}"><span class="lbl">Video Categories</span></a></li>
             </ul>
         </li>
+
+
         {{--
             <li class="blue">
                 <a href="#">

@@ -67,10 +67,14 @@ Route::group(['middleware' => 'web'], function () {
         ]);
 
         Route::get('/videos/create', [
-            'uses' => 'AdminController@index',
-            'as' => 'admin.home'
+            'uses' => 'AdminController@index'
+            //'as' => 'admin.home'
         ]);
 
+        Route::get('/videos/categories', [
+            'uses' => 'CategoryController@index',
+            'as' => 'category.home'
+        ]);
 
 
     });
