@@ -13,6 +13,13 @@ class Category extends Model{
     protected $table = 'Categories_tbl';
 
     /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'cat_id';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

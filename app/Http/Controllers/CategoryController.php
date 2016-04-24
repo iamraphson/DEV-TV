@@ -50,15 +50,57 @@ class CategoryController extends Controller{
             $to_db = $this->computeChangeApp($categories, $order);
 
             if (count($to_db) > 0){
-                 DB::raw('?',[$this->queryBuilder($to_db)]);
+                 DB::update($this->queryBuilder($to_db));
             }
         }
+    }
+
+    /**
+     * Show the json for editing the specified category.
+     *
+     * @param  int  $id
+     * @return JSON
+     */
+    public function edit($category_id){
+        $category = Category::find($category_id);
+        return json_encode(array('category_name' => $category->category_name, 'category_id' => $category->cat_id));
+    }
+
+    /**
+     * Update the specified category in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request){
+        $this->validate($request, [
+            'category_name_edit' => 'required|max:255'
+        ], [], array('category_name_edit' => 'Category Name'));
+
+        $category = Category::findOrFail($request->input('category_id'));
+        $category->category_name = $request->input('category_name_edit');
+        $category->edited_by = Auth::user()->id;
+        $category->save();
+
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the specified category from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($category_id){
+        $category = Category::findOrFail($category_id);
+        $category->delete();
+
+        return redirect()->back();
     }
 
     /*
      * Function to create id =>[ order , parent] unnested array
      */
-
     private function run_array_parent_from_db($array,$parent){
         $post_db = array();
         foreach($array as $head => $body){
@@ -74,10 +116,10 @@ class CategoryController extends Controller{
         return $post_db;
     }
 
+
     /*
      * Function to create id =>[ order , parent] nested array
      */
-
     private function run_array_parent_from_app($categories){
         $from_db = array();
 
@@ -87,6 +129,7 @@ class CategoryController extends Controller{
 
         return $from_db;
     }
+
 
     /*
      * Comparing the arrays and adding changed values to $to_db
@@ -108,8 +151,9 @@ class CategoryController extends Controller{
         return $to_db;
     }
 
+
     /*
-     * Build Query
+     * Build Query to update category order
      */
     private function queryBuilder($toDB){
         $query = "UPDATE Categories_tbl";
@@ -126,5 +170,4 @@ class CategoryController extends Controller{
 
         return $query. $query_parent . $query_order . $query_ids;
     }
-
 }

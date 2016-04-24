@@ -84,6 +84,18 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'CategoryController@order'
         ]);
 
+        Route::get('/videos/categories/edit/{category_id}', [
+            'uses' => 'CategoryController@edit'
+        ]);
+
+        Route::put('/videos/categories/update', [
+            'uses' => 'CategoryController@update'
+        ]);
+
+        Route::get('/videos/categories/delete/{category_id}', [
+            'uses' => 'CategoryController@destroy'
+        ]);
+
 
     });
 });
