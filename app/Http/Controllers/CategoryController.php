@@ -39,23 +39,6 @@ class CategoryController extends Controller{
     }
 
     /**
-     * @param Request $request
-     */
-    public function order(Request $request){
-        $order = $request->input('order');
-        if(isset($order)){
-
-            $categories = Category::where('parent_id', '=', '0')->get(array('cat_id', 'parent_id', 'display_order'));
-
-            $to_db = $this->computeChangeApp($categories, $order);
-
-            if (count($to_db) > 0){
-                 DB::update($this->queryBuilder($to_db));
-            }
-        }
-    }
-
-    /**
      * Show the json for editing the specified category.
      *
      * @param  int  $id
@@ -98,6 +81,24 @@ class CategoryController extends Controller{
         return redirect()->back();
     }
 
+    /**
+     *  AJAX Reordering function
+     * @param Request $request
+     */
+    public function order(Request $request){
+        $order = $request->input('order');
+        if(isset($order)){
+
+            $categories = Category::where('parent_id', '=', '0')->get(array('cat_id', 'parent_id', 'display_order'));
+
+            $to_db = $this->computeChangeApp($categories, $order);
+
+            if (count($to_db) > 0){
+                DB::update($this->queryBuilder($to_db));
+            }
+        }
+    }
+    
     /*
      * Function to create id =>[ order , parent] unnested array
      */
