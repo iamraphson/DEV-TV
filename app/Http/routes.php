@@ -76,6 +76,14 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'category.home'
         ]);
 
+        Route::post('/videos/categories/store', [
+            'uses' => 'CategoryController@store'
+        ]);
+
+        Route::get('/videos/categories/order', [
+            'uses' => 'CategoryController@order'
+        ]);
+
 
     });
 });
