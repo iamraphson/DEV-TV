@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cf6c9498d7886dc2c06d29ad0bba9f50",
-    "content-hash": "205d3bac84374f9c6c594422171fdb10",
+    "hash": "3b8c4c622329a39b45911cc20c4d63c4",
+    "content-hash": "6def9c137d3d4d2b89ca7a5bee9001a3",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -60,6 +60,47 @@
                 "preload"
             ],
             "time": "2015-11-09 22:51:51"
+        },
+        {
+            "name": "codingo-me/dropzoner",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codingo-me/dropzoner.git",
+                "reference": "c6660d70d66b82dc672b814aeb33479d0e358730"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codingo-me/dropzoner/zipball/c6660d70d66b82dc672b814aeb33479d0e358730",
+                "reference": "c6660d70d66b82dc672b814aeb33479d0e358730",
+                "shasum": ""
+            },
+            "require": {
+                "intervention/image": "^2.3",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Codingo\\Dropzoner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Radunovic",
+                    "email": "ivan@codingo.me"
+                }
+            ],
+            "description": "Simpe Laravel package for image uploads using DropzoneJS library",
+            "keywords": [
+                "dropzone",
+                "laravel"
+            ],
+            "time": "2015-12-26 18:59:11"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -425,6 +466,68 @@
             "time": "2016-04-13 19:56:01"
         },
         {
+            "name": "intervention/image",
+            "version": "2.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Intervention/image.git",
+                "reference": "e368d262887dbb2fdfaf710880571ede51e9c0e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/e368d262887dbb2fdfaf710880571ede51e9c0e6",
+                "reference": "e368d262887dbb2fdfaf710880571ede51e9c0e6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "guzzlehttp/psr7": "~1.1",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.2",
+                "phpunit/phpunit": "3.*"
+            },
+            "suggest": {
+                "ext-gd": "to use GD library based image processing.",
+                "ext-imagick": "to use Imagick based image processing.",
+                "intervention/imagecache": "Caching extension for the Intervention Image library"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Intervention\\Image\\": "src/Intervention/Image"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oliver Vogel",
+                    "email": "oliver@olivervogel.net",
+                    "homepage": "http://olivervogel.net/"
+                }
+            ],
+            "description": "Image handling and manipulation library with support for Laravel integration",
+            "homepage": "http://image.intervention.io/",
+            "keywords": [
+                "gd",
+                "image",
+                "imagick",
+                "laravel",
+                "thumbnail",
+                "watermark"
+            ],
+            "time": "2016-02-26 18:18:19"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "0.1",
             "source": {
@@ -568,6 +671,49 @@
                 "tokenizer"
             ],
             "time": "2015-12-05 17:17:57"
+        },
+        {
+            "name": "ktquez/laravel-tinymce",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ktquez/laravel-tinymce.git",
+                "reference": "ec6e4b176f463f7557625a6eda9c09ae1b3c4802"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ktquez/laravel-tinymce/zipball/ec6e4b176f463f7557625a6eda9c09ae1b3c4802",
+                "reference": "ec6e4b176f463f7557625a6eda9c09ae1b3c4802",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ktquez\\Tinymce\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alan Albuquerque: ktquez",
+                    "email": "ktquez@gmail.com"
+                }
+            ],
+            "description": "TinyMCE editor for Laravel and Lumen Framework",
+            "homepage": "https://github.com/ktquez/laravel-tinymce",
+            "keywords": [
+                "CKEditor",
+                "editor",
+                "laravel",
+                "lumen",
+                "textarea",
+                "tinymce",
+                "wysiwyg"
+            ],
+            "time": "2016-03-31 11:31:48"
         },
         {
             "name": "laravel/framework",

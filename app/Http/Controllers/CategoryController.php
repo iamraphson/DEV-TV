@@ -41,7 +41,7 @@ class CategoryController extends Controller{
     /**
      * Show the json for editing the specified category.
      *
-     * @param  int  $id
+     * @param  int  $category_id
      * @return JSON
      */
     public function edit($category_id){
@@ -71,10 +71,14 @@ class CategoryController extends Controller{
     /**
      * Remove the specified category from storage.
      *
-     * @param  int  $id
+     * @param  int  $category_id
      * @return \Illuminate\Http\Response
      */
     public function destroy($category_id){
+        Category::where('parent_id', $category_id)->get()->each(function($item) {
+            $item->parent_id = 0;
+            $item->save();
+        });
         $category = Category::findOrFail($category_id);
         $category->delete();
 

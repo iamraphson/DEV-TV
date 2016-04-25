@@ -66,11 +66,6 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'admin.home'
         ]);
 
-        Route::get('/videos/create', [
-            'uses' => 'AdminController@index'
-            //'as' => 'admin.home'
-        ]);
-
         Route::get('/videos/categories', [
             'uses' => 'CategoryController@index',
             'as' => 'category.home'
@@ -94,6 +89,11 @@ Route::group(['middleware' => 'web'], function () {
 
         Route::get('/videos/categories/delete/{category_id}', [
             'uses' => 'CategoryController@destroy'
+        ]);
+
+        Route::get('/videos/create', [
+            'uses' => 'VideoController@create',
+            'as' => 'video.create'
         ]);
 
 

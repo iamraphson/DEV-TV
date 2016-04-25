@@ -156,6 +156,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Ktquez\Tinymce\TinymceServiceProvider::class,
+        Codingo\Dropzoner\DropzonerServiceProvider::class,
     ],
 
     /*
