@@ -15,7 +15,7 @@
     <script src="{{ asset('wpanel/js/plugins.js') }}"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="{{ asset('wpanel/js/app.js') }}"></script>
-
+    @yield('head')
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('wpanel/css/main.css') }}">
 </head>
@@ -66,7 +66,6 @@
 {{--<div class="circle-progress-bar pieProgress" role="progressbar" data-goal="100" data-barcolor="#ac6bec" data-barsize="10" aria-valuemin="0" aria-valuemax="100">
 <span class="pie_progress__number">0%</span>
 </div>--}}
-
+@yield('footer')
 </body>
-
 </html>

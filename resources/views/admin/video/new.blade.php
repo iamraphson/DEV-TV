@@ -1,8 +1,6 @@
 @extends('wpanel.master')
 
 @section('content')
-    <link rel="stylesheet" href="{{ asset('wpanel/js/tagsinput/jquery.tagsinput.css') }}" />
-    <link rel="stylesheet" href="{{ asset('wpanel/js/dropzone/dropzone.css') }}" />
     <header class="section-header">
         <div class="tbl">
             <div class="tbl-row">
@@ -18,8 +16,8 @@
     <section class="card">
         <div class="card-block">
             <h5 class="with-border">New Video Data</h5>
-            <form enctype="multipart/form-data" action=""
-                  method="post" class="form-horizontal dropzone dz-clickable">
+            <form enctype="multipart/form-data"
+                  method="post" class="form-horizontal" id="realDropzone">
                 <div class=" row">
                     <div class="col-xs-12 m-b-md">
                         <fieldset class="form-group">
@@ -132,11 +130,11 @@
                                         </div>
                                     </div>
                                     <hr/>
-                                    <div class="new_video_file" style="display: none">
+                                    <div class="new_video_file">
                                         <div class="dropzone" id="dropzoneFileUpload">
                                         </div>
                                     </div>
-                                    <div class="new_video_embed">
+                                    <div class="new_video_embed" style="display: none">
                                         <label for="embed_code">Embed Code:</label>
                                         <textarea class="form-control" name="embed_code" id="embed_code"></textarea>
                                     </div>
@@ -154,6 +152,14 @@
 
 
 
+@stop
+
+@section('head')
+    <link rel="stylesheet" href="{{ asset('wpanel/js/tagsinput/jquery.tagsinput.css') }}" />
+    <link rel="stylesheet" href="{{ asset('wpanel/js/dropzone/dropzone.css') }}" />
+@stop
+
+@section('footer')
     <script type="text/javascript" src="{{ asset('wpanel/js/tagsinput/jquery.tagsinput.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('wpanel/js/input-mask/jquery.mask.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('wpanel/js/dropzone/dropzone.js') }}"></script>
@@ -162,21 +168,28 @@
         $('#video-duration').mask('00:00:00', {placeholder: "__:__:__"});
 
         var baseUrl = "{{ url('/') }}";
-        var token = "{{ Session::getToken() }}";
         Dropzone.autoDiscover = false;
         var myDropzone = new Dropzone("div#dropzoneFileUpload", {
-            url: baseUrl + "/dropzone/uploadFiles",
-            params: {
-                _token: token
+            url: baseUrl + "/admin/videos/upload",
+            headers: {
+                'X-CSRF-Token': '{{ Session::getToken() }}'
+            },
+            maxFilesize : 1024,  // MB
+            maxFiles : 1,
+            paramName : "file",
+            addRemoveLinks: true,
+            dictRemoveFile: "Remove",
+            sending : function(file, xhr, formData) {
+            },
+            success : function(file, response) {
+                console.log(response); // Will display the Request object (see controller)
+            },
+            error : function(file, error) {
+                console.error(error);
             }
         });
-        Dropzone.options.myAwesomeDropzone = {
-            paramName: "file", // The name that will be used to transfer the file
-            maxFilesize: 2, // MB
-            addRemoveLinks: true,
-            accept: function(file, done) {
+        Dropzone.options.realDropzone = {
 
-            },
         };
 
         $(function() {
@@ -190,6 +203,5 @@
                 }
             });
         });
-
     </script>
 @stop

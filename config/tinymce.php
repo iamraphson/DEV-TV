@@ -2,7 +2,7 @@
 
 return [
 
-	'cdn' => url('vendor/js/tinymce/tinymce.min.js'),
+	'cdn' => '/vendor/js/tinymce/tinymce.min.js',
 
 	'default' => [
 		"selector" => ".tinymce",

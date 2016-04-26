@@ -96,6 +96,10 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'video.create'
         ]);
 
+        Route::post('videos/upload', [
+            'uses' => 'VideoController@uploadFiles'
+        ]);
+
 
     });
 });

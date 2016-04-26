@@ -76,7 +76,9 @@
             </div>
         </div>
     </div>
+@stop
 
+@section('footer')
     <script type="text/javascript" src="{{ asset('wpanel/js/notie.js') }}"></script>
     <script type="text/javascript">
         $('#submit-new-cat').click(function(){
@@ -95,9 +97,9 @@
                 $.get('{{ url('/admin/videos/categories/order') }}', {
                     order : JSON.stringify($('.dd').nestable('serialize')),
                     _token : $('#_token').val()
-                    }, function(data){
-                        console.log(data);
-                    });
+                }, function(data){
+                    console.log(data);
+                });
             });
 
             $('.actions .edit').click(function(e){
