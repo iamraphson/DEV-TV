@@ -1,6 +1,7 @@
 @extends('wpanel.master')
 
 @section('content')
+    <? echo phpinfo(); ?>
     <header class="section-header">
         <div class="tbl">
             <div class="tbl-row">
@@ -120,24 +121,25 @@
                             </header>
                             <div class="card-block">
                                 <p class="card-text">
-                                    <div class="form-group row">
-                                        <label for="exampleSelect" class="col-sm-2 form-control-label">Video Format</label>
-                                        <div class="col-sm-3">
-                                            <select id="type" name="type" class="form-control">
-                                                <option value="embed">Embed Code</option>
-                                                <option value="file">Video File</option>
-                                            </select>
-                                        </div>
+                                <div class="form-group row">
+                                    <label for="exampleSelect" class="col-sm-2 form-control-label">Video Format</label>
+                                    <div class="col-sm-3">
+                                        <select id="type" name="type" class="form-control">
+                                            <option value="embed">Embed Code</option>
+                                            <option value="file">Video File</option>
+                                        </select>
                                     </div>
-                                    <hr/>
-                                    <div class="new_video_file">
-                                        <div class="dropzone" id="dropzoneFileUpload">
-                                        </div>
+                                </div>
+                                <hr/>
+                                <div class="new_video_file">
+                                    <div id="dZUpload" class="dropzone">
+                                        <div class="dz-default dz-message">Drop files here to upload</div>
                                     </div>
-                                    <div class="new_video_embed" style="display: none">
-                                        <label for="embed_code">Embed Code:</label>
-                                        <textarea class="form-control" name="embed_code" id="embed_code"></textarea>
-                                    </div>
+                                </div>
+                                <div class="new_video_embed" style="display: none">
+                                    <label for="embed_code">Embed Code:</label>
+                                    <textarea class="form-control" name="embed_code" id="embed_code"></textarea>
+                                </div>
                                 </p>
                             </div>
                         </section>
@@ -149,9 +151,6 @@
             </form>
         </div>
     </section>
-
-
-
 @stop
 
 @section('head')
@@ -167,30 +166,7 @@
         $('#tags').tagsInput();
         $('#video-duration').mask('00:00:00', {placeholder: "__:__:__"});
 
-        var baseUrl = "{{ url('/') }}";
         Dropzone.autoDiscover = false;
-        var myDropzone = new Dropzone("div#dropzoneFileUpload", {
-            url: baseUrl + "/admin/videos/upload",
-            headers: {
-                'X-CSRF-Token': '{{ Session::getToken() }}'
-            },
-            maxFilesize : 1024,  // MB
-            maxFiles : 1,
-            paramName : "file",
-            addRemoveLinks: true,
-            dictRemoveFile: "Remove",
-            sending : function(file, xhr, formData) {
-            },
-            success : function(file, response) {
-                console.log(response); // Will display the Request object (see controller)
-            },
-            error : function(file, error) {
-                console.error(error);
-            }
-        });
-        Dropzone.options.realDropzone = {
-
-        };
 
         $(function() {
             $('#type').change(function(){
@@ -200,6 +176,25 @@
                 } else {
                     $('.new_video_file').hide();
                     $('.new_video_embed').show();
+                }
+            });
+
+            var baseUrl = "{{ url('/') }}";
+            Dropzone.autoDiscover = false;
+            $("#dZUpload").dropzone({
+                url: baseUrl + "/admin/videos/upload",
+                headers: {
+                    'X-CSRF-Token': '{{ Session::getToken() }}'
+                },
+                maxFilesize : 1024,  // MB
+                maxFiles : 1,
+                paramName : "file",
+                addRemoveLinks: true,
+                success: function (file, response) {
+                    console.log(response);
+                },
+                error: function (file, response) {
+                    console.log(response);
                 }
             });
         });

@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Category;
 use Validator;
-use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Input as Input;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,22 +18,25 @@ class VideoController extends Controller{
     }
 
     public function uploadFiles(Request $request){
-        $validator = Validator::make($request->all(), [
+        //$photo = Input::all();
+        /*$validator = Validator::make($request->all(), [
             'file' => 'mimes:video/mp4,video/ogg,video/webm,video/x-msvideo,video/x-flv|between:1,11000'
         ]);
 
         if ($validator->fails()) {
-            return Response::json([
+            return response()->json([
                 'error' => 'Invalid Video File',
                 'message' => $validator->messages()->first(),
                 'code' => 400
             ], 400);
 
-        }
+        }*/
 
-        if($request->ajax()) { // Becuase you are uploading with ajax / dropzone
-            $file = Input::file('file');
-            return response()->json(['request' => print_r($_FILES)]);
+        return response()->json(['request' => $request->file('file')->getClientOriginalName()]);
+
+        //if($request->ajax()) { // Becuase you are uploading with ajax / dropzone
+            //$file = Input::file('file');
+
             /*$destinationPath = public_path() . '/uploads/';
             $filename = $file->getClientOriginalName();
             $upload_success = Input::file('file')->move($destinationPath, $filename);
@@ -44,7 +46,7 @@ class VideoController extends Controller{
                 return Response::json('error', 400);
 
             }*/
-        }
+        //}
 
         //return response()->json(['request' => $request->all()]);
         /*$file = Input::file('file');
