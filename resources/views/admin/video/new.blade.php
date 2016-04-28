@@ -17,40 +17,26 @@
     <section class="card">
         <div class="card-block">
             <h5 class="with-border">New Video Data</h5>
-            <form enctype="multipart/form-data"
+            <form enctype="multipart/form-data" action="{{ route('video.store') }}"
                   method="post" class="form-horizontal" id="realDropzone">
+                {{ csrf_field() }}
                 <div class=" row">
                     <div class="col-xs-12 m-b-md">
                         <fieldset class="form-group">
-                            <label class="form-label">Video title</label>
-                            <input type="text" class="form-control maxlength-simple"
-                                   id="exampleInput" placeholder="First Name" />
+                            <label class="form-label" for="video_title">Video title</label>
+                            <input type="text" class="form-control {{ $errors->has('video_title') ? 'form-control-danger' : '' }}"
+                                   id="video_title" name="video_title" placeholder="Video Title" />
+                            @if ($errors->has('video_title'))
+                                <small class="text-muted" style="color: #fa424a;">
+                                    {{ $errors->first('video_title') }}
+                                </small>
+                            @endif
                         </fieldset>
                     </div>
                     <div class="col-xs-12 m-b-md">
                         <fieldset class="form-group">
                             <label class="form-label">Video Image Cover (1280x720 px or 16:9 ratio)</label>
                             <input type="file" multiple="true" class="form-control" name="image" id="image" />
-                        </fieldset>
-                    </div>
-                    <div class="col-xs-12 m-b-md">
-                        <fieldset class="form-group">
-                            {{--<div class="jspContainer" style="width: 457px; height: 312px;">
-                                <div class="jspPane" style="padding: 0px; top: 0px; width: 445px;">
-                                    <div class="box-typical-upload-in">
-                                        <div class="drop-zone">
-                                            <!--
-                                            при перетаскиваении добавляем класс .dragover
-                                            <div class="drop-zone dragover">
-                                            -->
-                                            <i class="font-icon font-icon-cloud-upload-2"></i>
-                                            <div class="drop-zone-caption">Drag file to upload</div>
-                                        </div><!--.drop-zone-->
-
-
-                                    </div>
-                                </div>
-                            </div>--}}
                         </fieldset>
                     </div>
                     <div class="col-xs-12 m-b-md">
@@ -63,7 +49,8 @@
                     <div class="col-xs-12 m-b-md">
                         <fieldset class="form-group">
                             <label class="form-label">Short description of the video</label>
-                            <textarea rows="4" class="form-control" placeholder="Textarea"></textarea>
+                            <textarea rows="4" class="form-control" name="video_desc" id="video_desc"
+                                      placeholder="Textarea"></textarea>
                         </fieldset>
                     </div>
                     <div class="col-xs-12 m-b-md">
@@ -131,12 +118,12 @@
                                     </div>
                                 </div>
                                 <hr/>
-                                <div class="new_video_file">
+                                <div class="new_video_file" style="display: none">
                                     <div id="dZUpload" class="dropzone">
                                         <div class="dz-default dz-message">Drop files here to upload</div>
                                     </div>
                                 </div>
-                                <div class="new_video_embed" style="display: none">
+                                <div class="new_video_embed" >
                                     <label for="embed_code">Embed Code:</label>
                                     <textarea class="form-control" name="embed_code" id="embed_code"></textarea>
                                 </div>
@@ -145,7 +132,7 @@
                         </section>
                     </div>
                     <div class="col-xs-12 m-b-md">
-                        <button type="button" class="btn btn-rounded btn-inline btn-success pull-right">Submit</button>
+                        <button type="submit" class="btn btn-rounded btn-inline btn-success pull-right">Submit</button>
                     </div>
                 </div>
             </form>
@@ -191,9 +178,6 @@
                 paramName : "file",
                 addRemoveLinks: true,
                 success: function (file, response) {
-                    console.log(response);
-                },
-                error: function (file, response) {
                     console.log(response);
                 }
             });

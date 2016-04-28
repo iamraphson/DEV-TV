@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use AWS;
 
 class VideoController extends Controller{
 
@@ -17,10 +18,23 @@ class VideoController extends Controller{
         return view('admin.video.new')->withTitle('DevTv - Add New Video')->withCategories($items);
     }
 
+    public function store(Request $request){
+        $niceNames = array(
+            'video_title' => 'Video Title',
+            'video_desc' => 'Video Description',
+        );
+
+
+        $this->validate($request, [
+            'video_title'     => 'required|min:3',
+            'video_desc'     => 'required|max:255',
+        ], [], $niceNames);
+
+
+    }
     public function uploadFiles(Request $request){
-        //$photo = Input::all();
-        /*$validator = Validator::make($request->all(), [
-            'file' => 'mimes:video/mp4,video/ogg,video/webm,video/x-msvideo,video/x-flv|between:1,11000'
+        $validator = Validator::make($request->all(), [
+            'file' => 'mimetypes:video/avi,video/mp4,video/ogg,video/webm,video/x-msvideo,video/x-flv|max:1048900'
         ]);
 
         if ($validator->fails()) {
@@ -30,35 +44,39 @@ class VideoController extends Controller{
                 'code' => 400
             ], 400);
 
-        }*/
+        }
 
-        return response()->json(['request' => $request->file('file')->getClientOriginalName()]);
 
-        //if($request->ajax()) { // Becuase you are uploading with ajax / dropzone
-            //$file = Input::file('file');
+        /*Cloudder::uploadVideo($file, null, null, null);
 
-            /*$destinationPath = public_path() . '/uploads/';
-            $filename = $file->getClientOriginalName();
-            $upload_success = Input::file('file')->move($destinationPath, $filename);
-            if ($upload_success) {
-                return Response::json('success', 200);
-            } else {
-                return Response::json('error', 400);
+        $fileUrl = Cloudder::show(Cloudder::getPublicId(), null);
+        $fileName = time() . round(microtime(true) * 1000) . '/' . $request->file('file')->getClientOriginalName();
 
-            }*/
-        //}
+        $upload_success = Storage::put($fileName, File::get($file));*/
 
-        //return response()->json(['request' => $request->all()]);
-        /*$file = Input::file('file');
-        $fileName =Input::file('file')->getClientOriginalName();
+        $file = $request->file('file')->getRealPath();
+        $fileName = time() . '/' . $request->file('file')->getClientOriginalName();
 
-        $upload_success = Storage::put(time() . round(microtime(true) * 1000) . '/' . $fileName,  File::get($file));
+        $s3 = AWS::createClient('s3');
+        $fileUrl = $s3->putObject(array(
+            'Bucket'     => 'devtvbucket',
+            'Key'        => $fileName,
+            'SourceFile' => $file,
+        ));
 
-        if ($upload_success) {
-            return Response::json('success', 200);
+        if ($fileUrl) {
+            return response()->json([
+                'success' => true,
+                'message' => $fileUrl,
+                'code' => 200
+            ], 200);
         } else {
-            return Response::json('error', 400);
-        }*/
+            return response()->json([
+                'success' => false,
+                'message' => 'Internal Error',
+                'code' => 400
+            ], 400);
+        }
 
     }
 }

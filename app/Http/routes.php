@@ -100,6 +100,11 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'VideoController@uploadFiles'
         ]);
 
+        Route::post('videos/store', [
+            'uses' => 'VideoController@store',
+            'as' => 'video.store'
+        ]);
+
 
     });
 });
