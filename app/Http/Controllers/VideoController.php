@@ -19,15 +19,26 @@ class VideoController extends Controller{
     }
 
     public function store(Request $request){
+
+        //echo $request->input('featured');
         $niceNames = array(
             'video_title' => 'Video Title',
             'video_desc' => 'Video Description',
+            'video_details' => 'Video Details',
+            'video_category' => 'Video Category',
+            'video_tags' => 'Video Tags',
+            'video_duration' => 'Video Duration',
+            'video_image' => 'Video Image',
         );
 
-
         $this->validate($request, [
-            'video_title'     => 'required|min:3',
-            'video_desc'     => 'required|max:255',
+            'video_title' => 'required|min:3',
+            'video_desc' => 'required|max:255',
+            'video_details' => 'required|min:7',
+            'video_category' => 'required',
+            'video_tags' => 'required',
+            'video_image' => 'required|mimes:jpg,jpeg,bmp,png|between:1,7000',
+            'video_duration' => ['required', 'regex:/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/'],
         ], [], $niceNames);
 
 
@@ -54,17 +65,12 @@ class VideoController extends Controller{
 
         $upload_success = Storage::put($fileName, File::get($file));*/
 
-        $file = $request->file('file')->getRealPath();
+        $file = $request->file('file');
         $fileName = time() . '/' . $request->file('file')->getClientOriginalName();
 
-        $s3 = AWS::createClient('s3');
-        $fileUrl = $s3->putObject(array(
-            'Bucket'     => 'devtvbucket',
-            'Key'        => $fileName,
-            'SourceFile' => $file,
-        ));
-
-        if ($fileUrl) {
+        $status = Storage::disk('s3')->put($fileName, file_get_contents($file));
+        $fileUrl = "https://s3-" . env('S3_REGION') . ".amazonaws.com/" . env('S3_BUCKET') . "/" . $fileName;
+        if ($status) {
             return response()->json([
                 'success' => true,
                 'message' => $fileUrl,

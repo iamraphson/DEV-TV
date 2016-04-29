@@ -157,7 +157,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Ktquez\Tinymce\TinymceServiceProvider::class,
-        Aws\Laravel\AwsServiceProvider::class,
 
     ],
 
@@ -205,7 +204,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'AWS' => Aws\Laravel\AwsFacade::class,
     ],
 
 ];

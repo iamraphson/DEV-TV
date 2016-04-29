@@ -9,7 +9,7 @@
         "laravel/framework": "5.2.*",
         "laravel/socialite": "^2.0",
         "ktquez/laravel-tinymce": "^1.0",
-        "aws/aws-sdk-php-laravel": "^3.1"
+        "league/flysystem-aws-s3-v3": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

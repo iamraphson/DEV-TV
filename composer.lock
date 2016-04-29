@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6bf6d095241c298f0799bcc624816a59",
-    "content-hash": "c5325e70840e1fe09f822922c8019104",
+    "hash": "a4b093220fd8406374e6c4ddb14df1bf",
+    "content-hash": "8f6002283e59e223a83f7856ef0f9883",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -86,62 +86,6 @@
                 "sdk"
             ],
             "time": "2016-04-28 20:07:34"
-        },
-        {
-            "name": "aws/aws-sdk-php-laravel",
-            "version": "3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/aws/aws-sdk-php-laravel.git",
-                "reference": "3b946892d493b91b4920ec4facc4a0ad7195fb86"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php-laravel/zipball/3b946892d493b91b4920ec4facc4a0ad7195fb86",
-                "reference": "3b946892d493b91b4920ec4facc4a0ad7195fb86",
-                "shasum": ""
-            },
-            "require": {
-                "aws/aws-sdk-php": "~3.0",
-                "illuminate/support": "~5.1",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0|~5.0"
-            },
-            "suggest": {
-                "laravel/framework": "To test the Laravel bindings",
-                "laravel/lumen-framework": "To test the Lumen bindings"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Aws\\Laravel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Amazon Web Services",
-                    "homepage": "http://aws.amazon.com"
-                }
-            ],
-            "description": "A simple Laravel 5 service provider for including the AWS SDK for PHP.",
-            "homepage": "http://aws.amazon.com/sdkforphp2",
-            "keywords": [
-                "amazon",
-                "aws",
-                "dynamodb",
-                "ec2",
-                "laravel",
-                "laravel 5",
-                "s3",
-                "sdk"
-            ],
-            "time": "2016-01-18 06:57:07"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1013,6 +957,53 @@
                 "storage"
             ],
             "time": "2016-04-28 06:53:12"
+        },
+        {
+            "name": "league/flysystem-aws-s3-v3",
+            "version": "1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
+                "reference": "996491670d5ea9da8c0181b2324c0a7a7ae961fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/996491670d5ea9da8c0181b2324c0a7a7ae961fe",
+                "reference": "996491670d5ea9da8c0181b2324c0a7a7ae961fe",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-sdk-php": "^3.0.0",
+                "league/flysystem": "~1.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "~1.0.1",
+                "phpspec/phpspec": "^2.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Flysystem\\AwsS3v3\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Frank de Jonge",
+                    "email": "info@frenky.net"
+                }
+            ],
+            "description": "Flysystem adapter for the AWS S3 SDK v3.x",
+            "time": "2016-04-19 20:27:15"
         },
         {
             "name": "league/oauth1-client",
