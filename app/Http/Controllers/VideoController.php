@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Videos;
 use Illuminate\Http\Request;
 use \App\Category;
+use Illuminate\Support\Facades\URL;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use AWS;
+use Auth;
 
 class VideoController extends Controller{
 
@@ -20,7 +22,6 @@ class VideoController extends Controller{
 
     public function store(Request $request){
 
-        //echo $request->input('featured');
         $niceNames = array(
             'video_title' => 'Video Title',
             'video_desc' => 'Video Description',
@@ -38,11 +39,54 @@ class VideoController extends Controller{
             'video_category' => 'required',
             'video_tags' => 'required',
             'video_image' => 'required|mimes:jpg,jpeg,bmp,png|between:1,7000',
+            'embed_code' => 'required_if:video_location,',
             'video_duration' => ['required', 'regex:/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/'],
         ], [], $niceNames);
 
 
+
+        $videoImage = Input::file('video_image');
+        $videoCoverUrl = $this->uploadVideoCover($videoImage);
+        $duration = $this->computeDuration($request->input('video_duration'));
+
+        $video = new Videos;
+        $video->video_title = $request->input('video_title');
+        $video->video_cover_location = $videoCoverUrl;
+        $video->video_details = $request->input('video_details');
+        $video->video_desc = $request->input('video_desc');
+        $video->video_category = $request->input('video_category');
+        $video->video_tags = $request->input('video_tags');
+        $video->video_duration = $duration;
+        $video->video_access = $request->input('video_access');
+        $video->video_type = $request->input('video_type');
+        $video->video_source = $this->getVideoSource($request->input('video_location'), $request->input('embed_code'));
+        $video->featured = $request->input('featured');
+        $video->active = $request->input('active');
+        $video->created_by = Auth::user()->id;
+        $video->save();
+
+        return redirect()->back()->with('info', 'Your Video has been added successfully');
+
     }
+
+    private function getVideoSource($file, $embed){
+        return $file == "" ? $embed : $file;
+    }
+    private function computeDuration($duration){
+        $duration_arr = explode(':', $duration);
+        $duration_arr[0] = array_has($duration_arr, 0) ? $duration_arr[0] : '00';
+        $duration_arr[1] = array_has($duration_arr, 1) ? $duration_arr[1] : '00';
+        $duration_arr[2] = array_has($duration_arr, 2) ? $duration_arr[2] : '00';
+        return implode(':', $duration_arr);
+    }
+
+    private function uploadVideoCover($videoImage){
+        $destinationPath = public_path(). "/uploads/" . time() . "/";
+        $filename = $videoImage->getClientOriginalName();
+        $videoImage->move($destinationPath, $filename);
+        return URL::asset("/uploads/" . time() . "/" . $filename);
+    }
+
     public function uploadFiles(Request $request){
         $validator = Validator::make($request->all(), [
             'file' => 'mimetypes:video/avi,video/mp4,video/ogg,video/webm,video/x-msvideo,video/x-flv|max:1048900'
@@ -57,13 +101,6 @@ class VideoController extends Controller{
 
         }
 
-
-        /*Cloudder::uploadVideo($file, null, null, null);
-
-        $fileUrl = Cloudder::show(Cloudder::getPublicId(), null);
-        $fileName = time() . round(microtime(true) * 1000) . '/' . $request->file('file')->getClientOriginalName();
-
-        $upload_success = Storage::put($fileName, File::get($file));*/
 
         $file = $request->file('file');
         $fileName = time() . '/' . $request->file('file')->getClientOriginalName();

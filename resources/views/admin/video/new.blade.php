@@ -70,6 +70,15 @@
                     </div>
                 @endif
 
+                @if($errors->has('embed_code'))
+                    <div class="alert alert-danger alert-fill alert-close alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        Video Source isn't provided
+                    </div>
+                @endif
+
                 {{ csrf_field() }}
                 <div class=" row">
                     <div class="col-xs-12 m-b-md">
@@ -95,7 +104,7 @@
                     <div class="col-xs-12 m-b-md">
                         <fieldset class="form-group">
                             <label class="form-label" for="video_desc">Short description of the video</label>
-                            <textarea rows="4" class="form-control" name="video_desc" id="video_desc"
+                            <textarea rows="3" class="form-control" name="video_desc" id="video_desc"
                                       placeholder="Textarea">{{ old('video_desc') }}</textarea>
                         </fieldset>
                     </div>
@@ -119,7 +128,7 @@
                     <div class="col-xs-12 m-b-md">
                         <fieldset class="form-group">
                             <label class="form-label" for="video_tags">Video tags</label>
-                            <input type="text" class="form-control maxlength-simple" id="video_tags" value="{{ old('video_desc') }}"
+                            <input type="text" class="form-control maxlength-simple" id="video_tags" value="{{ old('video_tags') }}"
                                    name="video_tags" placeholder="Tags" />
                         </fieldset>
                     </div>
@@ -166,8 +175,10 @@
                             </div>
                             <div class="checkbox-toggle">
                                 <input type="checkbox" id="active" name="active" value="1"
-                                @if(old('active') != "")
-                                {{ 'checked' }}
+                                @if(!old('active'))
+                                    {{ 'checked' }}
+                                @elseif(old('active') != "")
+                                    {{ 'checked' }}
                                 @endif
                                 />
                                 <label for="active">Is this video Active</label>
@@ -182,9 +193,9 @@
                             <div class="card-block">
                                 <p class="card-text">
                                 <div class="form-group row">
-                                    <label for="exampleSelect" class="col-sm-2 form-control-label">Video Format</label>
+                                    <label for="exampleSelect" for="video_type" class="col-sm-2 form-control-label">Video Format</label>
                                     <div class="col-sm-3">
-                                        <select id="type" name="video_type" class="form-control">
+                                        <select id="video_type" name="video_type" class="form-control">
                                             <option value="embed"
                                             @if(old('video_type') == "embed")
                                                 {{ 'selected="selected"' }}
@@ -232,7 +243,7 @@
     <script type="text/javascript" src="{{ asset('wpanel/js/input-mask/jquery.mask.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('wpanel/js/dropzone/dropzone.js') }}"></script>
     <script type="text/javascript">
-        $('#tags').tagsInput();
+        $('#video_tags').tagsInput();
         $('#video_duration').mask('00:00:00', {placeholder: "__:__:__"});
 
         Dropzone.autoDiscover = false;
@@ -265,6 +276,15 @@
                 }
 
             });
+
+            @if(session()->has('info'))
+                $.notify({
+                    icon: 'font-icon font-icon-check-circle',
+                    message: '{{ session()->get('info') }}'
+                },{
+                    type: 'success'
+                });
+            @endif
         });
     </script>
 @stop

@@ -8,6 +8,8 @@ return [
 		"selector" => ".tinymce",
 		"language" => 'en',
 		"theme" => "modern",
+		"skin" => "tundora",
+		"height" => "180",
 		"plugins" => [
 			"advlist autolink link image code lists charmap print preview hr anchor pagebreak spellchecker code fullscreen",
 			"save table contextmenu directionality emoticons template paste textcolor code"
