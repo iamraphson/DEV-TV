@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Videos extends Model{
+class Video extends Model{
     /**
      * The table associated with the model.
      *
@@ -19,4 +19,7 @@ class Videos extends Model{
      */
     protected $primaryKey = 'video_id';
 
+    public function user(){
+        return $this->belongsTo('App\User', 'created_by');
+    }
 }

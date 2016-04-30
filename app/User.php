@@ -53,4 +53,12 @@ class User extends Authenticatable
         }
         return $this->attributes['role'] == $role;
     }
+
+    public function videos(){
+        return $this->hasMany('App\Video', 'created_by');
+    }
+
+    public function categories(){
+        return $this->hasMany('App\Category', 'created_by');
+    }
 }

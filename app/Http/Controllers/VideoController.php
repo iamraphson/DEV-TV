@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Videos;
+use App\Video;
 use Illuminate\Http\Request;
 use \App\Category;
 use Illuminate\Support\Facades\URL;
 use Validator;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 
@@ -49,7 +47,7 @@ class VideoController extends Controller{
         $videoCoverUrl = $this->uploadVideoCover($videoImage);
         $duration = $this->computeDuration($request->input('video_duration'));
 
-        $video = new Videos;
+        $video = new Video;
         $video->video_title = $request->input('video_title');
         $video->video_cover_location = $videoCoverUrl;
         $video->video_details = $request->input('video_details');

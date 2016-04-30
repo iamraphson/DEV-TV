@@ -28,5 +28,8 @@ class Category extends Model{
         'category_name', 'category_slug', 'parent_id', 'created_by', 'edited_by', 'display_order'
     ];
 
+    public function user(){
+        return $this->belongsTo('App\User', 'created_by');
+    }
 
 }
