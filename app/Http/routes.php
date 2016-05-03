@@ -66,6 +66,42 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'admin.home'
         ]);
 
+        Route::get('/posts/categories', [
+            'uses' => 'PostCategoryController@index',
+            'as' => 'post.category.home'
+        ]);
+
+        Route::post('/posts/categories/store', [
+            'uses' => 'PostCategoryController@store'
+        ]);
+
+        Route::get('/posts/categories/order', [
+            'uses' => 'PostCategoryController@order'
+        ]);
+
+        Route::get('/posts/categories/edit/{category_id}', [
+            'uses' => 'PostCategoryController@edit'
+        ]);
+
+        Route::put('/posts/categories/update', [
+            'uses' => 'PostCategoryController@update'
+        ]);
+
+        Route::get('/posts/categories/delete/{category_id}', [
+            'uses' => 'PostCategoryController@destroy'
+        ]);
+
+        Route::get('/posts/create', [
+            'uses' => 'PostController@create',
+            'as' => 'post.create'
+        ]);
+
+        Route::post('posts/store', [
+            'uses' => 'PostController@store',
+            'as' => 'post.store'
+        ]);
+
+
         Route::get('/videos/categories', [
             'uses' => 'CategoryController@index',
             'as' => 'category.home'
@@ -91,6 +127,11 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'CategoryController@destroy'
         ]);
 
+        Route::get('/videos', [
+            'uses' => 'VideoController@index',
+            'as' => 'video.index'
+        ]);
+
         Route::get('/videos/create', [
             'uses' => 'VideoController@create',
             'as' => 'video.create'
@@ -105,8 +146,20 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'video.store'
         ]);
 
+        Route::get('/videos/delete/{id}', [
+            'uses' => 'VideoController@destroy',
+            'as' => 'video.delete'
+        ]);
+
+        Route::get('/videos/edit/{id}', [
+            'uses' => 'VideoController@edit',
+            'as' => 'video.edit'
+        ]);
+
+        Route::put('/videos/{id}/update', [
+            'uses' => 'VideoController@update',
+            'as' => 'video.update'
+        ]);
 
     });
 });
-
-

@@ -986,3 +986,12 @@ $(document).ready(function(){
 
 /* ========================================================================== */
 });
+function changeVideoSourceOption(selector){
+	if($(selector).val() == 'file'){
+		$('.new_video_file').show();
+		$('.new_video_embed').hide();
+	} else {
+		$('.new_video_file').hide();
+		$('.new_video_embed').show();
+	}
+}

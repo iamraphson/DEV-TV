@@ -6,7 +6,7 @@
             <div class="tbl-row">
                 <div class="tbl-cell">
                     <h3>
-                        <i class="font-icon font-icon-archive"></i> Video Categories
+                        <i class="font-icon font-icon-archive"></i> Post Categories
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-inline btn-success">
                             <i class="font-icon font-icon-plus"></i> Add New</button>
                     </h3>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="dd" id="nestable7">
-                    {!! getHTML($category) !!}
+                    {!! getPostHTML($category) !!}
                 </div>
                 <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}" />
             </div>
@@ -34,10 +34,10 @@
                     <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
                         <i class="font-icon-close-2"></i>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">New Video Category</h4>
+                    <h4 class="modal-title" id="myModalLabel">New Post Category</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="new-cat-form" action="{{ url('/admin/videos/categories/store') }}" method="post">
+                    <form id="new-pcat-form" action="{{ url('/admin/posts/categories/store') }}" method="post">
                         <label for="category_name">Enter the new category name below</label>
                         <input id="category_name" name="category_name" placeholder="Category Name" class="form-control"><br>
                         {{ csrf_field() }}
@@ -45,13 +45,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-rounded btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-rounded btn-primary" id="submit-new-cat">Save changes</button>
+                    <button type="button" class="btn btn-rounded btn-primary" id="submit-new-pcat">Save changes</button>
                 </div>
             </div>
         </div>
     </div><!--.modal-->
     <!-- Update New Modal -->
-    <div class="modal fade" id="update-category">
+    <div class="modal fade" id="update-pcategory">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -61,7 +61,7 @@
                     <h4 class="modal-title" id="myModalLabel">Update Category</h4>
                 </div>
                 <div class="modal-body" id="update-modal-body" style="display: none;">
-                    <form id="edit-cat-form" action="{{ url('/admin/videos/categories/update') }}" method="post">
+                    <form id="edit-cat-form" action="{{ url('/admin/posts/categories/update') }}" method="post">
                         <label for="category_name">Category Name</label>
                         <input id="category_name_edit" name="category_name_edit" placeholder="Category Name" class="form-control"><br>
                         <input type="hidden" name="category_id" id="category_id" value="">
@@ -81,8 +81,8 @@
 @section('footer')
     <script type="text/javascript" src="{{ asset('wpanel/js/notie.js') }}"></script>
     <script type="text/javascript">
-        $('#submit-new-cat').click(function(){
-            $('#new-cat-form').submit();
+        $('#submit-new-pcat').click(function(){
+            $('#new-pcat-form').submit();
         });
 
         $('#submit-edit-cat').click(function(){
@@ -94,7 +94,7 @@
                 group: 1,
                 maxDepth: 3
             }).on('change', function(e) {
-                $.get('{{ url('/admin/videos/categories/order') }}', {
+                $.get('{{ url('/admin/posts/categories/order') }}', {
                     order : JSON.stringify($('.dd').nestable('serialize')),
                     _token : $('#_token').val()
                 }, function(data){
@@ -103,7 +103,7 @@
             });
 
             $('.actions .edit').click(function(e){
-                $('#update-category').modal('show', {backdrop: 'static'});
+                $('#update-pcategory').modal('show', {backdrop: 'static'});
                 e.preventDefault();
                 href = $(this).attr('href');
                 $.ajax({

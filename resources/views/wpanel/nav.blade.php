@@ -18,12 +18,23 @@
 
         <li class="purple with-sub">
             <span>
-                <i class="font-icon font-icon-editor-video active"></i>
+                <i class="font-icon font-icon-editor-video"></i>
                 <span class="lbl">Videos</span>
             </span>
             <ul>
                 <li><a href="{{ route('video.create') }}"><span class="lbl">Add New Video</span></a></li>
+                <li><a href="{{ route('video.index') }}"><span class="lbl">All Videos</span></a></li>
                 <li><a href="{{ route('category.home') }}"><span class="lbl">Video Categories</span></a></li>
+            </ul>
+        </li>
+        <li class="purple with-sub">
+            <span>
+                <i class="font-icon font-icon-post"></i>
+                <span class="lbl">Posts</span>
+            </span>
+            <ul>
+                <li><a href="{{ route('post.create') }}"><span class="lbl">Add New Post</span></a></li>
+                <li><a href="{{ route('post.category.home') }}"><span class="lbl">Post Categories</span></a></li>
             </ul>
         </li>
 

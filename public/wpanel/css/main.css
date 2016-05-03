@@ -20562,7 +20562,8 @@ html {
     float: left
 }
 .card-typical .card-typical-likes {
-    float: right
+    float: right;
+    margin-left: 15px;
 }
 .card-typical .card-typical-likes .font-icon {
     margin: 0 2px 0 0;
@@ -27071,4 +27072,15 @@ a.fc-more:hover {
 }
 .actions .delete {
     background: #EA6153;
+}
+
+.novideofound{
+    text-align: center;
+    margin-top: 120px;
+}
+.video-img {
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 200px;
+    vertical-align: middle;
 }
