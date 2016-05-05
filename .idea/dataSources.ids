@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - DevTv_DB@localhost" uuid="dfad38d4-1f72-4882-a976-1e97f075f4a2">
+    <database-info product="MySQL" version="5.6.26" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
+      <schema id="1" name="DevTv_DB"/>
+      <table id="2" parent="1" name="Categories_tbl"/>
+      <table id="3" parent="1" name="migrations"/>
+      <table id="4" parent="1" name="password_resets"/>
+      <table id="5" parent="1" name="post_category_tbl"/>
+      <table id="6" parent="1" name="posts_tbl"/>
+      <table id="7" parent="1" name="users_tbl"/>
+      <table id="8" parent="1" name="videos_tbl"/>
+      <column id="9" parent="2" name="cat_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="10" parent="2" name="category_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="11" parent="2" name="category_slug">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="12" parent="2" name="parent_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="13" parent="2" name="display_order">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="14" parent="2" name="created_by">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="15" parent="2" name="edited_by">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="16" parent="2" name="created_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <column id="17" parent="2" name="updated_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <index id="18" parent="2" name="categories_tbl_created_by_foreign">
+        <columns>created_by</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="19" parent="2" name="categories_tbl_edited_by_foreign">
+        <columns>edited_by</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="20" parent="2" name="PRIMARY">
+        <columns>cat_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="21" parent="2" name="categories_tbl_created_by_foreign">
+        <columns>created_by</columns>
+        <ref-key>~.users_tbl.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="22" parent="2" name="categories_tbl_edited_by_foreign">
+        <columns>edited_by</columns>
+        <ref-key>~.users_tbl.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="23" parent="3" name="migration">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="24" parent="3" name="batch">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="25" parent="4" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="26" parent="4" name="token">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="27" parent="4" name="created_at">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <index id="28" parent="4" name="password_resets_email_index">
+        <columns>email</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="29" parent="4" name="password_resets_token_index">
+        <columns>token</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <column id="30" parent="5" name="pc_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="31" parent="5" name="pc_category_name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="32" parent="5" name="pc_category_slug">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="33" parent="5" name="pc_parent_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="34" parent="5" name="pc_display_order">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="35" parent="5" name="pc_created_by">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="36" parent="5" name="pc_edited_by">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="37" parent="5" name="created_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <column id="38" parent="5" name="updated_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <index id="39" parent="5" name="post_category_tbl_pc_created_by_foreign">
+        <columns>pc_created_by</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="40" parent="5" name="post_category_tbl_pc_edited_by_foreign">
+        <columns>pc_edited_by</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="41" parent="5" name="PRIMARY">
+        <columns>pc_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="42" parent="5" name="post_category_tbl_pc_created_by_foreign">
+        <columns>pc_created_by</columns>
+        <ref-key>~.users_tbl.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="43" parent="5" name="post_category_tbl_pc_edited_by_foreign">
+        <columns>pc_edited_by</columns>
+        <ref-key>~.users_tbl.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="44" parent="6" name="post_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="45" parent="6" name="post_title">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="46" parent="6" name="post_image_location">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="47" parent="6" name="post_slug">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="48" parent="6" name="post_content">
+        <data-type>text</data-type>
+      </column>
+      <column id="49" parent="6" name="post_category">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="50" parent="6" name="post_access">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="51" parent="6" name="active">
+        <data-type>varchar(2)</data-type>
+      </column>
+      <column id="52" parent="6" name="created_by">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="53" parent="6" name="edited_by">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="54" parent="6" name="created_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <column id="55" parent="6" name="updated_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <index id="56" parent="6" name="posts_tbl_created_by_foreign">
+        <columns>created_by</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="57" parent="6" name="posts_tbl_edited_by_foreign">
+        <columns>edited_by</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="58" parent="6" name="PRIMARY">
+        <columns>post_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="59" parent="6" name="posts_tbl_created_by_foreign">
+        <columns>created_by</columns>
+        <ref-key>~.users_tbl.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="60" parent="6" name="posts_tbl_edited_by_foreign">
+        <columns>edited_by</columns>
+        <ref-key>~.users_tbl.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="61" parent="7" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="62" parent="7" name="name">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="63" parent="7" name="username">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="64" parent="7" name="email">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="65" parent="7" name="password">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="66" parent="7" name="provider_id">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="67" parent="7" name="avatar_url">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="68" parent="7" name="role">
+        <mandatory>1</mandatory>
+        <data-type>enum(&apos;user&apos;, &apos;admin&apos;)</data-type>
+        <default-expression>&apos;user&apos;</default-expression>
+      </column>
+      <column id="69" parent="7" name="remember_token">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="70" parent="7" name="created_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <column id="71" parent="7" name="updated_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <index id="72" parent="7" name="users_tbl_email_unique">
+        <columns>email</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="73" parent="7" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <key id="74" parent="7" name="users_tbl_email_unique">
+        <columns>email</columns>
+        <underlying-index>users_tbl_email_unique</underlying-index>
+      </key>
+      <column id="75" parent="8" name="video_id">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="76" parent="8" name="video_title">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="77" parent="8" name="video_cover_location">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="78" parent="8" name="video_details">
+        <data-type>text</data-type>
+      </column>
+      <column id="79" parent="8" name="video_desc">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="80" parent="8" name="video_category">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <column id="81" parent="8" name="video_tags">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="82" parent="8" name="video_duration">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="83" parent="8" name="video_access">
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="84" parent="8" name="video_type">
+        <data-type>varchar(10)</data-type>
+      </column>
+      <column id="85" parent="8" name="video_source">
+        <data-type>text</data-type>
+      </column>
+      <column id="86" parent="8" name="featured">
+        <data-type>varchar(2)</data-type>
+      </column>
+      <column id="87" parent="8" name="active">
+        <data-type>varchar(2)</data-type>
+      </column>
+      <column id="88" parent="8" name="created_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <column id="89" parent="8" name="updated_at">
+        <data-type>timestamp</data-type>
+      </column>
+      <column id="90" parent="8" name="created_by">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <index id="91" parent="8" name="videos_tbl_created_by_foreign">
+        <columns>created_by</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="92" parent="8" name="PRIMARY">
+        <columns>video_id</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="93" parent="8" name="videos_tbl_created_by_foreign">
+        <columns>created_by</columns>
+        <ref-key>~.users_tbl.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+</component>

@@ -101,6 +101,16 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'post.store'
         ]);
 
+        Route::get('/posts', [
+            'uses' => 'PostController@index',
+            'as' => 'post.index'
+        ]);
+
+        Route::get('/posts/delete/{id}', [
+            'uses' => 'PostController@destroy',
+            'as' => 'post.delete'
+        ]);
+
 
         Route::get('/videos/categories', [
             'uses' => 'CategoryController@index',

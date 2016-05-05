@@ -160,7 +160,7 @@ class VideoController extends Controller{
     }
 
     private function getVideoSource($file, $embed){
-        return $file == "" ? $embed : $file;
+        return trim($file) === "" ? $embed : $file;
     }
     private function computeDuration($duration){
         $duration_arr = explode(':', $duration);

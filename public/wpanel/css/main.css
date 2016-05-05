@@ -27084,3 +27084,16 @@ a.fc-more:hover {
     width: 200px;
     vertical-align: middle;
 }
+a.post-link {
+    position: relative;
+    display: block;
+    border-bottom: 0px !important;
+}
+a.post-link span {
+    position: absolute;
+    left: 0px;
+    padding: 10px;
+    background: #2B303A;
+    bottom: 0px;
+    color: #fff;
+}

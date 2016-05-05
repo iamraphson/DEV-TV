@@ -34,6 +34,7 @@
             </span>
             <ul>
                 <li><a href="{{ route('post.create') }}"><span class="lbl">Add New Post</span></a></li>
+                <li><a href="{{ route('post.index') }}"><span class="lbl">All Posts</span></a></li>
                 <li><a href="{{ route('post.category.home') }}"><span class="lbl">Post Categories</span></a></li>
             </ul>
         </li>
