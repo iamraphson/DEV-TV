@@ -46,7 +46,7 @@ class PostController extends Controller{
         $post = new Post;
         $post->post_title = $request->input('post_title');
         $post->post_image_location = $featuredImageLocation;
-        $post->post_slug = ($request->has('post_slug')) ? $request->input('post_slug') :
+        $post->post_slug = ($request->has('post_slug')) ? str_slug($request->input('post_slug')) :
             str_slug($request->input('post_title'));
         $post->post_content = $request->input('post_content');
         $post->post_category = $request->input('post_category');
@@ -65,6 +65,49 @@ class PostController extends Controller{
         $post->delete();
 
         return redirect()->back()->with('info', 'Video deleted successfully');
+    }
+
+    public function edit($id){
+        $post = Post::find($id);
+        $items 	= PostCategory::get(array('pc_category_name', 'pc_id'));
+
+        return view('admin.post.edit')->withTitle('DevTv - Edit ' . $post->post_title)->with('post', $post)->withCategories($items);
+    }
+
+    public function update(Request $request,$id){
+        $niceNames = array(
+            'post_title' => 'Post Title',
+            'post_content' => 'Post Content',
+            'post_category' => 'Post Category'
+        );
+
+        $this->validate($request, [
+            'post_title' => 'required|min:3',
+            'post_content' => 'required',
+            'post_category' => 'required',
+        ], [], $niceNames);
+
+        $post = Post::findOrFail($id);
+
+        $postImageUrl = $post->post_image_location;
+        if($request->hasFile('post_image')) {
+            $this->deleteCoverImage($postImageUrl);
+            $postImage = Input::file('post_image');
+            $postImageUrl = $this->uploadFeaturedImage($postImage);
+        }
+
+        $post->post_title = $request->input('post_title');
+        $post->post_image_location = $postImageUrl;
+        $post->post_slug = ($request->has('post_slug')) ? str_slug($request->input('post_slug')) :
+            str_slug($request->input('post_title'));
+        $post->post_content = $request->input('post_content');
+        $post->post_category = $request->input('post_category');
+        $post->post_access = $request->input('post_access');
+        $post->active = $request->input('post_active');
+        $post->edited_by = Auth::user()->id;
+        $post->save();
+
+        return redirect()->route('post.index')->with('info', 'Post Updated successfully');
     }
 
     private function deleteCoverImage($coverLocation){

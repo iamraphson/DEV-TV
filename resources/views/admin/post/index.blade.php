@@ -37,16 +37,19 @@
                     <?php $i=0?>
                     @foreach($posts as $post)
                         <tr data-index="{{ $i }}">
-                            <td style="">
+                            <td>
                                 <a href="" target="_blank" class="post-link">
                                     <img src="{{ URL::asset($post->post_image_location) }}" style="height:100px;">
                                     <span>{{ str_limit($post->post_title, 15) }}</span>
                                 </a>
                             </td>
-                            <td style="">{{ $post->post_slug }}</td>
-                            <td style="">{{ ($post->active) ? "Yes" : "No" }}</td>
-                            <td style="">
-                                <a href="{{ route('post.delete', $post->post_id) }}"  class="btn btn-inline btn-sm btn-danger"
+                            <td>{{ $post->post_slug }}</td>
+                            <td>{{ ($post->active) ? "Yes" : "No" }}</td>
+                            <td>
+                                <a href="{{ route('post.edit', $post->post_id) }}"  class="btn btn-inline btn-sm btn-secondary-outline">
+                                    <i class="glyphicon glyphicon-pencil"></i> Edit
+                                </a>
+                                <a href="{{ route('post.delete', $post->post_id) }}"  class="btn btn-inline btn-sm btn-danger-outline"
                                    onclick="return confirm('Are you sure,you want to delete this video')">
                                     <i class="glyphicon glyphicon-trash"></i> Delete
                                 </a>

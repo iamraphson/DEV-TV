@@ -111,6 +111,16 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'post.delete'
         ]);
 
+        Route::get('/posts/{id}/edit', [
+            'uses' => 'PostController@edit',
+            'as' => 'post.edit'
+        ]);
+
+        Route::put('/posts/{id}/update', [
+            'uses' => 'PostController@update',
+            'as' => 'post.update'
+        ]);
+
 
         Route::get('/videos/categories', [
             'uses' => 'CategoryController@index',

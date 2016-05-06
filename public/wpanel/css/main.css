@@ -14368,14 +14368,14 @@ a.label-light-grey:hover {
 .bootstrap-table .table a,
 .fixed-table-body .table a,
 .table a {
-    border-bottom: solid 1px rgba(0, 130, 198, .5);
+    /*border-bottom: solid 1px rgba(0, 130, 198, .5);*/
     position: relative;
     top: -1px
 }
 .bootstrap-table .table a:hover,
 .fixed-table-body .table a:hover,
 .table a:hover {
-    border-bottom-color: transparent
+    /*border-bottom-color: transparent*/
 }
 .table td {
     padding-bottom: 8px

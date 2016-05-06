@@ -32,8 +32,6 @@
                         @endforeach
                     </div>
                 @endif
-
-                {{ csrf_field() }}
                 <div class=" row">
                     <div class="col-xs-9 m-b-md">
                         <fieldset class="form-group">
