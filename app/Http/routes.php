@@ -58,6 +58,13 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 
 
+    //Regular routes
+    Route::group(['roles' => ['admin', 'user'], 'middleware' => ['auth', 'roles']], function () {
+        Route::get('/user/{username}', [
+            'uses' => 'HomeController@index',
+        ]);
+    });
+
     //Admin routes
     Route::group(['prefix' => 'admin', 'roles' => ['admin'], 'middleware' => ['auth', 'roles']], function () {
 
