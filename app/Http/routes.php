@@ -60,8 +60,19 @@ Route::group(['middleware' => 'web'], function () {
 
     //Regular routes
     Route::group(['roles' => ['admin', 'user'], 'middleware' => ['auth', 'roles']], function () {
-        Route::get('/user/{username}', [
-            'uses' => 'HomeController@index',
+        Route::get('/user/profile', [
+            'uses' => 'AccountController@index',
+            'as' => 'account.user'
+        ]);
+
+        Route::get('/user/profile/edit', [
+            'uses' => 'AccountController@edit',
+            'as' => 'account.edit'
+        ]);
+
+        Route::put('/user/profile/update', [
+            'uses' => 'AccountController@update',
+            'as' => 'account.update'
         ]);
     });
 

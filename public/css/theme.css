@@ -2666,12 +2666,9 @@ top: 25px; }
 }
 
 .topProfile {
-position: relative;
-height: 350px;
-background: url("../images/profile-bg.png") no-repeat;
-background-size: cover;
 width: 100%;
-margin-bottom: 90px; }
+margin-bottom: 40px;
+}
 .topProfile .main-text {
 padding-top: 90px; }
 .topProfile .main-text h3 {
@@ -2687,11 +2684,10 @@ padding-top: 90px; }
   color: #fff;
   text-transform: uppercase; }
 .topProfile .profile-stats {
-position: absolute;
-bottom: -55px;
-left: 0;
-width: 100%;
-z-index: 1; }
+  margin-top: 30px;
+  width: 100%;
+  z-index: 1;
+}
 .topProfile .profile-stats .secBg {
   padding: 18px 0; }
 .topProfile .profile-stats .profile-subscribe {
@@ -2754,8 +2750,6 @@ z-index: 1; }
   padding: 10px;
   background: #fff;
   border: 1px solid #ececec;
-  position: absolute;
-  bottom: 20px;
   -webkit-box-shadow: 0px 0px 10px 0px #ececec;
   -moz-box-shadow: 0px 0px 10px 0px #ececec;
   box-shadow: 0px 0px 10px 0px #ececec; }
@@ -2793,13 +2787,13 @@ z-index: 1; }
       height: 30px;
       line-height: 30px;
       font-weight: 600;
-      font-size: 8px; }.
+      font-size: 8px; }
     .topProfile .profile-stats .profile-author-img .btn-upload span:hover{
         background: #e96969;
     }
 
 .topProfile .profile-stats .profile-author-name {
-  margin-left: 160px; }
+  margin-left: 20px; }
   .topProfile .profile-stats .profile-author-name h4 {
     margin: 0 0 9px 0;
     line-height: 18px; }
@@ -3730,5 +3724,13 @@ display:none;
 clear:both;
 }
 .tab-content.active {
-display:block;
+display : block;
+}
+.profile-author-img span {
+    font-size: 26px;
+    color: #333333;
+    text-align: center;
+    margin-top: 36px;
+    text-transform: uppercase;
+    display: block;
 }
