@@ -48,11 +48,16 @@
 </section><!-- End profile top section -->
 <div class="row">
     @if(count($errors) > 0)
-        {{--<div data-abide-error class="alert callout">
+        <div data-abide-error class="alert callout success">
             @foreach ($errors->all() as $error)
                 <p><i class="fa fa-exclamation-triangle"></i> {{ $error }} </p>
             @endforeach
-        </div>--}}
+        </div>
+    @endif
+    @if(session()->has('info'))
+        <div class="callout success">
+            <p><i class="fa fa-info"></i> {{session()->get('info')}}. </p>
+        </div>
     @endif
     <!-- left sidebar -->
     <div class="large-4 columns" style="padding-left: 0px;">
@@ -120,8 +125,8 @@
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns">
-                                                <label>Avatar:
-                                                    <input type="file" />
+                                                <label for="avatar">Avatar:
+                                                    <input type="file" name="avatar" id="avatar" />
                                                 </label>
                                             </div>
                                         </div>
@@ -134,13 +139,15 @@
                                                 <h6 class="borderBottom">Update Password (leave empty to keep your original password):</h6>
                                             </div>
                                             <div class="medium-6 columns">
-                                                <label>New Password:
-                                                    <input type="password" placeholder="enter your new password..">
+                                                <label for="new_password">New Password:
+                                                    <input type="password" placeholder="enter your new password.."
+                                                           name="new_password" id="new_password">
                                                 </label>
                                             </div>
                                             <div class="medium-6 columns">
-                                                <label>Retype Password:
-                                                    <input type="password" placeholder="enter your new password..">
+                                                <label for="new_password_confirmation">Retype Password:
+                                                    <input type="password" placeholder="enter your new password.."
+                                                       name="new_password_confirmation" id="new_password_confirmation" >
                                                 </label>
                                             </div>
                                         </div>

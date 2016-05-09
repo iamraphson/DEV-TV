@@ -14368,14 +14368,14 @@ a.label-light-grey:hover {
 .bootstrap-table .table a,
 .fixed-table-body .table a,
 .table a {
-    /*border-bottom: solid 1px rgba(0, 130, 198, .5);*/
+    border-bottom: solid 1px rgba(0, 130, 198, .5);
     position: relative;
     top: -1px
 }
 .bootstrap-table .table a:hover,
 .fixed-table-body .table a:hover,
 .table a:hover {
-    /*border-bottom-color: transparent*/
+    border-bottom-color: transparent
 }
 .table td {
     padding-bottom: 8px
@@ -27083,17 +27083,4 @@ a.fc-more:hover {
     margin-bottom: 10px;
     width: 200px;
     vertical-align: middle;
-}
-a.post-link {
-    position: relative;
-    display: block;
-    border-bottom: 0px !important;
-}
-a.post-link span {
-    position: absolute;
-    left: 0px;
-    padding: 10px;
-    background: #2B303A;
-    bottom: 0px;
-    color: #fff;
 }
