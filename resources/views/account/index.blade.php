@@ -47,35 +47,7 @@
             </div>
         </section><!-- End profile top section -->
         <div class="row">
-            <!-- left sidebar -->
-            <div class="large-4 columns" style="padding-left: 0px;">
-                <aside class="secBg sidebar">
-                    <div class="row">
-                        <!-- profile overview -->
-                        <div class="large-12 columns">
-                            <div class="widgetBox">
-                                <div class="widgetTitle">
-                                    <h5>Profile Overview</h5>
-                                </div>
-                                <div class="widgetContent">
-                                    <ul class="profile-overview">
-                                        <li class="clearfix">
-                                            <a href="{{ route('account.edit') }}"><i class="fa fa-user"></i>Profile Setting</a>
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href=""><i class="fa fa-video-camera"></i>Videos
-                                                <span class="float-right">36</span></a>
-                                        </li>
-                                        <li class="clearfix">
-                                            <a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i>Logout</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div><!-- End profile overview -->
-                    </div>
-                </aside>
-            </div><!-- end sidebar -->
+            @include('account.sidenav')
             <!-- right side content area -->
             <div class="large-8 columns profile-inner">
                 <!-- single post description -->

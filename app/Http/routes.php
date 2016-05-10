@@ -74,6 +74,16 @@ Route::group(['middleware' => 'web'], function () {
             'uses' => 'AccountController@update',
             'as' => 'account.update'
         ]);
+
+        Route::get('/user/subscribe', [
+            'uses' => 'SubscribeController@index',
+            'as' => 'subscribe.user'
+        ]);
+
+        Route::post('/user/process/card', [
+            'uses' => 'SubscribeController@paySubscription',
+            'as' => 'subscribe.pay'
+        ]);
     });
 
     //Admin routes

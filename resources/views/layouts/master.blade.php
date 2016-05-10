@@ -78,5 +78,6 @@
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/inewsticker.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.kyco.easyshare.js') }}" type="text/javascript"></script>
+    @yield('footer')
 </body>
 </html>

@@ -15,9 +15,10 @@
         <div class="large-12 columns">
             <nav aria-label="You are here:" role="navigation">
                 <ul class="breadcrumbs">
-                    <li><i class="fa fa-home"></i><a href="home-v1.html">Home</a></li>
+                    <li><i class="fa fa-home"></i><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ route('account.user') }}">Profile</a></li>
                     <li>
-                        <span class="show-for-sr">Current: </span> Profile
+                        <span class="show-for-sr">Current: </span> Profile Setting
                     </li>
                 </ul>
             </nav>
@@ -59,35 +60,7 @@
             <p><i class="fa fa-info"></i> {{session()->get('info')}}. </p>
         </div>
     @endif
-    <!-- left sidebar -->
-    <div class="large-4 columns" style="padding-left: 0px;">
-        <aside class="secBg sidebar">
-            <div class="row">
-                <!-- profile overview -->
-                <div class="large-12 columns">
-                    <div class="widgetBox">
-                        <div class="widgetTitle">
-                            <h5>Profile Overview</h5>
-                        </div>
-                        <div class="widgetContent">
-                            <ul class="profile-overview">
-                                <li class="clearfix">
-                                    <a href="#"><i class="fa fa-user"></i>Profile Setting</a>
-                                </li>
-                                <li class="clearfix">
-                                    <a href="profile-video.html"><i class="fa fa-video-camera"></i>Videos
-                                        <span class="float-right">36</span></a>
-                                </li>
-                                <li class="clearfix">
-                                    <a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i>Logout</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div><!-- End profile overview -->
-            </div>
-        </aside>
-    </div><!-- end sidebar -->
+    @include('account.sidenav')
     <!-- right side content area -->
     <div class="large-8 columns profile-inner">
         <!-- profile settings -->
