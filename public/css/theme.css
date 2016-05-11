@@ -3734,3 +3734,6 @@ display : block;
     text-transform: uppercase;
     display: block;
 }
+.has-error input {
+  border: #e96969 2px solid !important;
+}

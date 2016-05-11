@@ -47,9 +47,9 @@
         </div>
     </div>
 </section><!-- End profile top section -->
-<div class="row">
+<div class="row" id="contents">
     @if(count($errors) > 0)
-        <div data-abide-error class="alert callout success">
+        <div data-abide-error class="alert callout">
             @foreach ($errors->all() as $error)
                 <p><i class="fa fa-exclamation-triangle"></i> {{ $error }} </p>
             @endforeach
@@ -59,7 +59,7 @@
         <div class="callout success">
             <p><i class="fa fa-info"></i> {{session()->get('info')}}. </p>
         </div>
-        @endif
+    @endif
         @include('account.sidenav')
                 <!-- right side content area -->
         <div class="large-8 columns profile-inner">
@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="large-12 columns">
                                 <div class="setting-form">
-                                    <form method="post" action="{{ route('subscribe.pay') }}">
+                                    <form method="post" id="paymentform" action="{{ route('subscribe.pay') }}">
                                         <div class="setting-form-inner">
                                             <div class="row">
                                                 <div class="medium-6 columns">
@@ -90,37 +90,39 @@
                                                     </label>
                                                 </div>
                                                 <div class="large-12 columns">
-                                                    <label for="credit_card">Credit Card Number:
+                                                    <label for="credit_card" class="form-group">Credit Card Number:
                                                         <input type="text" name="credit_card" value="{{ old('credit_card') }}"
-                                                               id="credit_card" placeholder="Credit card number">
+                                                               id="credit_card" class="cc-number" autocomplete="off"
+                                                               placeholder="Credit card number">
+                                                        <span class="form-error">
+                                                            Your card is not valid!
+                                                        </span>
                                                     </label>
                                                 </div>
                                                 <div class="medium-6 columns">
-                                                    <label for="ccv">Security Code:
-                                                        <input type="text" id="ccv" name="ccv" placeholder="Security Code" />
+                                                    <label for="ccv" class="form-group">CCV Code:
+                                                        <input type="text" id="ccv" class="cc-cvc" name="ccv"
+                                                               placeholder="CCV" autocomplete="off" />
+                                                         <span class="form-error">
+                                                            Your CCV Code is not valid!
+                                                        </span>
                                                     </label>
                                                 </div>
                                                 <div class="medium-6 columns">
-                                                    <label for="cardmm">Expiry:
-                                                        <p>
-                                                            <select name="cardmm" id="cardmm" style="width: 45%">
-                                                                @for($i=1; $i<=12; $i++)
-                                                                <option value="{{ $i }}">{{ $i }}</option>
-                                                                @endfor
-                                                            </select>
-                                                            <select name="cardyy" id="cardyy" style="width: 45%">
-                                                                @for($i=0; $i<=10; $i++)
-                                                                    <option value="{{ date('Y') + $i }}">{{ date('Y') + $i }}</option>
-                                                                @endfor
-                                                            </select>
-                                                        </p>
+                                                    <label for="cardexpiry" class="form-group">Expiry:
+                                                        <input type="text" id="cardexpiry" class="cc-exp" name="cardexpiry"
+                                                               placeholder="MM/YY" autocomplete="off"/>
+                                                         <span class="form-error">
+                                                            Your Expiry Date is not valid!
+                                                        </span>
                                                     </label>
                                                 </div>
+
                                             </div>
                                         </div>
                                         {{ csrf_field() }}
                                         <div class="setting-form-inner">
-                                            <button class="button expanded" type="submit" name="setting">Pay Now</button>
+                                            <button class="button expanded" type="button" name="paynow" id="paynow">Pay Now</button>
                                         </div>
                                     </form>
                                 </div>
@@ -134,11 +136,60 @@
 @endsection
 @section('footer')
     <script src="{{ asset('js/jquery.payment.js') }}"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script type="text/javascript">
-        jQuery(function(){
-            jQuery('#credit_card').payment('formatCardNumber');
-            jQuery('input#ccv').payment('formatCardCVC');
+        Stripe.setPublishableKey('{!! env('STRIPE_PK') !!}');
+        var $ = jQuery;
+        $(function(){
+            $.fn.toggleInputError = function(erred) {
+                this.parent('.form-group').toggleClass('has-error', erred);
+                this.parent('.form-group').children('.form-error') .toggleClass('is-visible', erred);
+                return this;
+            };
+
+            $('#credit_card').payment('formatCardNumber');
+            $('input#ccv').payment('formatCardCVC');
+            $('input#cardexpiry').payment('formatCardExpiry');
+
+            $('#paynow').click(function(e) {
+                e.preventDefault();
+                var that = $(this);
+                var cardType = $.payment.cardType($('.cc-number').val());
+                $('.cc-number').toggleInputError(!$.payment.validateCardNumber($('.cc-number').val()));
+                $('.cc-exp').toggleInputError(!$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
+                $('.cc-cvc').toggleInputError(!$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
+
+                $(this).attr('disabled', 'disabled');
+                $("#credit_card, #ccv, #cardexpiry").attr('disabled', 'disabled');
+
+                Stripe.card.createToken({
+                    name: $('#firstname').val() + ' ' + $('#lastname').val(),
+                    number: $('#credit_card').val(),
+                    cvc: $('#ccv').val(),
+                    exp: $('#cardexpiry').val()
+                }, function(status, response) {
+                    if(status == 200 && (response.id)) {
+                        $(that).closest('form').append('<input type="hidden" name="card_token" value="' + response.id + '"/>').submit();
+                        return false;
+                    } else {
+                        if(status != 200) {
+                            $('#contents').
+                            prepend('<div data-abide-error class="alert callout"><p><i class="fa fa-exclamation-triangle"></i>' +
+                                    response.error.message + '</p></div>');
+                        } else {
+                            $('#contents').
+                            prepend('<div data-abide-error class="alert callout"><p><i class="fa fa-exclamation-triangle"></i>' +
+                                    'Empty Stripe Token' + '</p> </div>');
+                        }
+                        $("#card_number, #card_cvv, #card_expiry").removeAttr('disabled');
+                        $(that).removeAttr('disabled');
+                    }
+                });
+                return false;
+            });
         });
+
+
     </script>
 @endsection
 

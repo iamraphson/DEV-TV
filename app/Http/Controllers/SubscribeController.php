@@ -34,14 +34,16 @@ class SubscribeController extends Controller{
         $month = $request->input('cardmm');
         $year = $request->input('cardyy');
 
-        $card = CreditCard::validCreditCard($cardNumber);
+        /*$card = CreditCard::validCreditCard($cardNumber);
         if(!$card['valid']){
             return redirect()->back()->withInput()->withErrors(['card_number'=>'The card number is not a valid credit card number.']);
-        }
+        }*/
 
-        $validDate = CreditCard::validDate($year, $month);
+        /*$validDate = CreditCard::validDate($year, $month);
         if(!$validDate)
-            return redirect()->back()->withInput()->withErrors(['card_expiry' => 'Invalid Expiry Date']);
+            return redirect()->back()->withInput()->withErrors(['card_expiry' => 'Invalid Expiry Date']);*/
 
+        $token = $request->input('card_token');
+        echo $token;
     }
 }
