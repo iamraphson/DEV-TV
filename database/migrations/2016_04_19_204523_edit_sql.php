@@ -10,9 +10,10 @@ class EditSql extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        //
+    public function up(){
+        Schema::table('users_tbl', function ($table) {
+            $table->timestamp('expiration_date')->nullable();
+        });
     }
 
     /**

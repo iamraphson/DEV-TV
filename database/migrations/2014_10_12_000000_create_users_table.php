@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->string('provider_id')->nullable();
             $table->string('avatar_url')->nullable();
+            $table->string('stripe_customer_id')->nullable();
+            $table->timestamp('expiration_date')->nullable();
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->rememberToken();
             $table->timestamps();
