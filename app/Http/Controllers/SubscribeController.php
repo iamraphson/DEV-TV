@@ -10,6 +10,7 @@ use Stripe\Stripe;
 use App\Purchase;
 use App\User;
 use Carbon\Carbon;
+use App\Subscription;
 
 class SubscribeController extends Controller{
 
@@ -58,6 +59,7 @@ class SubscribeController extends Controller{
                 return redirect()->back()->withInput()->withErrors($e->getMessage());
             }
             $this->customerID = $customer->id;
+            $this->updateUserStripeID();
         } else {
             $this->customerID = $this->authUser->stripe_customer_id;
         }
@@ -78,26 +80,43 @@ class SubscribeController extends Controller{
         }
 
         // Create purchase record in the database
-        $this->addPurchase($charge->id);
+        $this->addPurchase($this->authUser->id, $this->invoiceDesc, $this->amount, 0, $charge->id, 'stripe');
 
-        //Edit User Record
-        $user = User::find($this->authUser->id);
-        $user->stripe_customer_id = $this->customerID;
-        $user->expiration_date = Carbon::now()->addDays(30);
-        $user->save();
+        // Create subscription record in the database
+        $this->addSubscription($this->authUser->id, Carbon::now()->toDateString(), Carbon::now()->toDateString(),
+            Carbon::now()->addDays(30)->toDateString(), 'System');
+
+
+
 
         return redirect()->route('subscribe.user')->with('info', 'Your Subscription was successfully');
 
     }
 
-    private function addPurchase($tranzId){
+    private function addPurchase($user_id, $desc, $amount, $discount,$tranzId, $paymentMethod){
         Purchase::create([
-            'user_id' => $this->authUser->id,
-            'payment_desc' => $this->invoiceDesc,
-            'amount' => $this->amount,
-            'discount' => 0,
-            'total_amt' => $this->amount,
+            'user_id' => $user_id,
+            'payment_desc' => $desc,
+            'amount' => $amount,
+            'discount' => $discount,
+            'total_amt' => ($amount - $discount),
             'transaction_id' => $tranzId,
+            'payment_method' => $paymentMethod
+        ]);
+    }
+
+    private function updateUserStripeID(){
+        $user = User::find($this->authUser->id);
+        $user->stripe_customer_id = $this->customerID;
+        $user->save();
+    }
+    private function addSubscription($user_id, $purchasedate, $startdate, $endate, $doneby){
+        Subscription::create([
+            'user_id' => $user_id,
+            'purchase_time' => $purchasedate,
+            'started_time' => $startdate,
+            'end_time' => $endate,
+            'doneby' => $doneby,
         ]);
     }
 }

@@ -23,5 +23,5 @@ class Purchase extends Model{
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'payment_desc', 'amount', 'transaction_id', 'discount', 'total_amt'];
+    protected $fillable = ['user_id', 'payment_desc', 'amount', 'transaction_id', 'discount', 'total_amt', 'payment_method'];
 }
