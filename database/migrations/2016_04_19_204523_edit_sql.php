@@ -11,8 +11,8 @@ class EditSql extends Migration
      * @return void
      */
     public function up(){
-        Schema::table('users_tbl', function ($table) {
-            $table->timestamp('expiration_date')->nullable();
+        Schema::table('purchases_tbl', function ($table) {
+            $table->string('payment_method')->nullable();
         });
     }
 

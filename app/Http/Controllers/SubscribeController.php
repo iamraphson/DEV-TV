@@ -78,12 +78,8 @@ class SubscribeController extends Controller{
         }
 
         // Create purchase record in the database
-        Purchase::create([
-            'user_id' => $this->authUser->id,
-            'payment_desc' => $this->invoiceDesc,
-            'amount' => $this->amount,
-            'stripe_transaction_id' => $charge->id,
-        ]);
+        $this->addPurchase($charge->id);
+
         //Edit User Record
         $user = User::find($this->authUser->id);
         $user->stripe_customer_id = $this->customerID;
@@ -92,5 +88,16 @@ class SubscribeController extends Controller{
 
         return redirect()->route('subscribe.user')->with('info', 'Your Subscription was successfully');
 
+    }
+
+    private function addPurchase($tranzId){
+        Purchase::create([
+            'user_id' => $this->authUser->id,
+            'payment_desc' => $this->invoiceDesc,
+            'amount' => $this->amount,
+            'discount' => 0,
+            'total_amt' => $this->amount,
+            'transaction_id' => $tranzId,
+        ]);
     }
 }

@@ -18,7 +18,10 @@ class CreatePurchasesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users_tbl')->onDelete('cascade');
             $table->string('payment_desc');
             $table->double('amount', 10, 2);
-            $table->string('stripe_transaction_id');
+            $table->string('payment_method')->nullable();
+            $table->decimal('discount', 8, 2)->nullable();
+            $table->decimal('total_amt', 8, 2)->nullable();
+            $table->string('transaction_id');
             $table->timestamps();
         });
     }
