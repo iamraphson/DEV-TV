@@ -209,5 +209,10 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'video.update'
         ]);
 
+        Route::get('/users', [
+            'uses' => 'AccountController@getAdminIndex',
+            'as' => 'user.index'
+        ]);
+
     });
 });

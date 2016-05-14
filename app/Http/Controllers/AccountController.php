@@ -67,6 +67,12 @@ class AccountController extends Controller{
 
     }
 
+    public function getAdminIndex(){
+        $user = User::get();
+        print_r($user);
+        return view('admin.user.index')->withTitle('DevTv - List Users')->with('user', $user);
+    }
+
     private function deleteAvatar($coverLocation){
         if($coverLocation != "") {
             $coverLoc = explode(DIRECTORY_SEPARATOR, $coverLocation);
@@ -85,4 +91,5 @@ class AccountController extends Controller{
         $featuredImage->move($destinationPath, $filename);
         return $uploadPath . $filename;
     }
+
 }

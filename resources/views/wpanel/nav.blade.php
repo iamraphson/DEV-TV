@@ -38,6 +38,15 @@
                 <li><a href="{{ route('post.category.home') }}"><span class="lbl">Post Categories</span></a></li>
             </ul>
         </li>
+        <li class="purple with-sub">
+            <span>
+                <i class="font-icon font-icon-post"></i>
+                <span class="lbl">Users</span>
+            </span>
+            <ul>
+                <li><a href="{{ route('user.index') }}"><span class="lbl">All Users</span></a></li>
+            </ul>
+        </li>
 
 
         {{--

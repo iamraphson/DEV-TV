@@ -7,7 +7,6 @@ use Auth;
 use App\Http\Requests;
 use CreditCard;
 use Stripe\Stripe;
-use App\Purchase;
 use App\User;
 use Carbon\Carbon;
 use App\Subscription;
@@ -79,30 +78,17 @@ class SubscribeController extends Controller{
             return redirect()->back()->withInput()->withErrors($e->getMessage());
         }
 
-        // Create purchase record in the database
-        $this->addPurchase($this->authUser->id, $this->invoiceDesc, $this->amount, 0, $charge->id, 'stripe');
-
         // Create subscription record in the database
-        $this->addSubscription($this->authUser->id, Carbon::now()->toDateString(), Carbon::now()->toDateString(),
-            Carbon::now()->addDays(30)->toDateString(), 'System');
-
-
-
+        $this->addStripePurchase($this->amount, 0, $charge->id, Carbon::now(), Carbon::now()->toDateString(),
+            Carbon::now()->addDays(30)->toDateString());
 
         return redirect()->route('subscribe.user')->with('info', 'Your Subscription was successfully');
 
     }
 
-    private function addPurchase($user_id, $desc, $amount, $discount,$tranzId, $paymentMethod){
-        Purchase::create([
-            'user_id' => $user_id,
-            'payment_desc' => $desc,
-            'amount' => $amount,
-            'discount' => $discount,
-            'total_amt' => ($amount - $discount),
-            'transaction_id' => $tranzId,
-            'payment_method' => $paymentMethod
-        ]);
+    private function addStripePurchase($amount, $discount, $tranzId, $purchasedate, $startdate, $endate){
+        $this->addSubscription($this->authUser->id, $this->invoiceDesc, 'stripe', $amount, $discount, $tranzId,
+            $purchasedate, $startdate, $endate, 'system');
     }
 
     private function updateUserStripeID(){
@@ -110,9 +96,17 @@ class SubscribeController extends Controller{
         $user->stripe_customer_id = $this->customerID;
         $user->save();
     }
-    private function addSubscription($user_id, $purchasedate, $startdate, $endate, $doneby){
+
+    private function addSubscription($user_id, $paymentDesc, $paymentMethod, $amount, $discount, $tranzID, $purchasedate,
+                                     $startdate, $endate, $doneby){
         Subscription::create([
             'user_id' => $user_id,
+            'payment_desc' => $paymentDesc,
+            'payment_method' => $paymentMethod,
+            'amount' => $amount,
+            'discount' => $discount,
+            'total_amt' => ($amount - $discount),
+            'transaction_id' => $tranzID,
             'purchase_time' => $purchasedate,
             'started_time' => $startdate,
             'end_time' => $endate,

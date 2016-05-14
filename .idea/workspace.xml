@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="906ccd9d-4176-4d81-8e9a-17d14f088c81" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wpanel/css/bootstrap-table/bootstrap-table.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wpanel/js/bootstrap-table/bootstrap-table.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/wpanel/js/bootstrap-table/jquery-ui.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/Purchase.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/database/migrations/2016_05_11_231712_create_purchases_table.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SubscribeController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SubscribeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Purchase.php" afterPath="$PROJECT_DIR$/app/Purchase.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/PostCategory.php" afterPath="$PROJECT_DIR$/app/PostCategory.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Subscription.php" afterPath="$PROJECT_DIR$/app/Subscription.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/migrations/2016_05_13_194000_create_subscription_table.php" afterPath="$PROJECT_DIR$/database/migrations/2016_05_13_194000_create_subscription_table.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/wpanel/nav.blade.php" afterPath="$PROJECT_DIR$/resources/views/wpanel/nav.blade.php" />
     </list>
     <ignored path="DevTv.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,21 +45,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
+      <file leaf-file-name="nav.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/wpanel/nav.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="59" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="59" />
+            <state vertical-scroll-proportion="-12.166667">
+              <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SubscribeController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SubscribeController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubscribeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6959459">
-              <caret line="116" column="41" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="81" column="77" selection-start-line="81" selection-start-column="77" selection-end-line="81" selection-end-column="77" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
               </folding>
@@ -55,32 +67,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Subscription.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Subscription.php">
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.25">
-              <caret line="26" column="90" selection-start-line="26" selection-start-column="84" selection-end-line="26" selection-end-column="90" />
+            <state vertical-scroll-proportion="-17.166666">
+              <caret line="212" column="54" selection-start-line="212" selection-start-column="54" selection-end-line="212" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <file leaf-file-name="AccountController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.75">
-              <caret line="79" column="35" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="35" />
-              <folding />
+            <state vertical-scroll-proportion="0.6452703">
+              <caret line="87" column="107" selection-start-line="87" selection-start-column="107" selection-end-line="87" selection-end-column="107" />
+              <folding>
+                <element signature="e#40#53#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/subscribe/index.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/user/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.137255">
-              <caret line="175" column="43" selection-start-line="175" selection-start-column="43" selection-end-line="175" selection-end-column="43" />
-              <folding />
+            <state vertical-scroll-proportion="-33.125">
+              <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+              <folding>
+                <element signature="e#6#86#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,8 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/views/wpanel/master.blade.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_04_23_073830_create_categories_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_04_29_212008_create_videos_table.php" />
         <option value="$PROJECT_DIR$/app/Videos.php" />
         <option value="$PROJECT_DIR$/config/tinymce.php" />
@@ -104,17 +118,14 @@
         <option value="$PROJECT_DIR$/public/wpanel/js/app.js" />
         <option value="$PROJECT_DIR$/database/migrations/2016_05_03_120049_create_post_category_table.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/category/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/PostCategory.php" />
         <option value="$PROJECT_DIR$/app/Http/helpers.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/post/category/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PostCategoryController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/video/new.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_05_04_060442_create_posts_table.php" />
-        <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Post.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/post/new.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/VideoController.php" />
-        <option value="$PROJECT_DIR$/resources/views/wpanel/nav.blade.php" />
         <option value="$PROJECT_DIR$/public/wpanel/js/bootstrap-table/bootstrap-table-reorder-columns-init.js" />
         <option value="$PROJECT_DIR$/resources/views/admin/video/index.blade.php" />
         <option value="$PROJECT_DIR$/public/wpanel/css/main.css" />
@@ -125,12 +136,10 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/resources/views/layouts/nav.blade.php" />
         <option value="$PROJECT_DIR$/public/css/app.css" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Foundation/Auth/ResetsPasswords.php" />
         <option value="$PROJECT_DIR$/resources/views/account/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/account/sidenav.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/account/edit.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/public/css/theme.css" />
@@ -139,10 +148,17 @@
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/tests/ExampleTest.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_04_19_204523_edit_sql.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_05_11_231712_create_purchases_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2016_05_13_194000_create_subscription_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/resources/views/wpanel/nav.blade.php" />
         <option value="$PROJECT_DIR$/app/Purchase.php" />
+        <option value="$PROJECT_DIR$/app/PostCategory.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/user/index.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AccountController.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_05_11_231712_create_purchases_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_05_13_194000_create_subscription_table.php" />
+        <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Subscription.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SubscribeController.php" />
       </list>
@@ -216,7 +232,153 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wpanel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="post" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DevTv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="database" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -288,15 +450,15 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/wpanel/js/bootstrap-table" />
+      <recent name="$PROJECT_DIR$/public/wpanel/css/bootstrap-table" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/wpanel/img" />
       <recent name="$PROJECT_DIR$/public/wpanel/css" />
-      <recent name="$PROJECT_DIR$/public/wpanel/js" />
-      <recent name="$PROJECT_DIR$/public/uploads" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/js" />
     </key>
   </component>
   <component name="RunManager">
@@ -380,7 +542,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="23" width="1280" height="736" extended-state="6" />
+    <frame x="1" y="23" width="1280" height="736" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1720517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -426,83 +588,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///Volumes/MAC BACK-UP/Code/betube/beetube.me/html-template/profile-favorite.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.010101">
-          <caret line="334" column="34" selection-start-line="334" selection-start-column="34" selection-end-line="334" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37878788">
-          <caret line="54" column="42" selection-start-line="52" selection-start-column="35" selection-end-line="54" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/video/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.88383836">
-          <caret line="35" column="48" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/video/new.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8333333">
-          <caret line="33" column="22" selection-start-line="20" selection-start-column="16" selection-end-line="33" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Volumes/MAC BACK-UP/Code/betube/beetube.me/html-template/profile-settings.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65656567">
-          <caret line="569" column="57" selection-start-line="428" selection-start-column="16" selection-end-line="569" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/post/new.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5707071">
-          <caret line="128" column="12" selection-start-line="128" selection-start-column="12" selection-end-line="128" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.125">
-          <caret line="81" column="52" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.25">
-          <caret line="113" column="88" selection-start-line="113" selection-start-column="61" selection-end-line="113" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/video/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24410774">
-          <caret line="53" column="56" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PostController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54545456">
-          <caret line="115" column="50" selection-start-line="115" selection-start-column="8" selection-end-line="115" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.48989898">
@@ -514,13 +599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.989899">
           <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VideoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9141414">
-          <caret line="187" column="37" selection-start-line="187" selection-start-column="37" selection-end-line="187" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -653,14 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6060606">
-          <caret line="24" column="7" selection-start-line="20" selection-start-column="4" selection-end-line="24" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3838384">
@@ -669,26 +739,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44444445">
-          <caret line="65" column="95" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5825243">
           <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="59" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="59" />
           <folding />
         </state>
       </provider>
@@ -709,34 +763,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_05_11_231712_create_purchases_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3293919">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.75">
-          <caret line="79" column="35" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_04_19_204523_edit_sql.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6841216">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_05_13_194000_create_subscription_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49324325">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -749,50 +779,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6081081">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Purchase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5067568">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="25" selection-end-column="125" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7736486">
-          <caret line="70" column="39" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.9543915">
           <caret line="126" column="14" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/subscribe/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.137255">
-          <caret line="175" column="43" selection-start-line="175" selection-start-column="43" selection-end-line="175" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Subscription.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.25">
-          <caret line="26" column="90" selection-start-line="26" selection-start-column="84" selection-end-line="26" selection-end-column="90" />
           <folding />
         </state>
       </provider>
@@ -805,12 +795,188 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubscribeController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/subscribe/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28318584">
+          <caret line="175" column="43" selection-start-line="175" selection-start-column="43" selection-end-line="175" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.048701297">
+          <caret line="2" column="59" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/wpanel/css/bootstrap-table/bootstrap-table.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/wpanel/js/bootstrap-table/jquery-ui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/wpanel/js/bootstrap-table/bootstrap-table.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1457769134000" expanded="true" signature="16842:16854" placeholder="..." />
+            <marker date="1457769134000" expanded="true" signature="58446:59263" placeholder="..." />
+            <marker date="1457769134000" expanded="true" signature="58937:59144" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VideoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2533784">
+          <caret line="18" column="74" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8108108">
+          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Video.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43074325">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/PostCategory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.785473">
+          <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.03885135">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/post/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4560811">
+          <caret line="71" column="34" selection-start-line="0" selection-start-column="0" selection-end-line="98" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3293919">
+          <caret line="15" column="80" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_04_29_212008_create_videos_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4814189">
+          <caret line="18" column="55" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2533784">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/wpanel/nav.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.166667">
+          <caret line="46" column="49" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6959459">
-          <caret line="116" column="41" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="41" />
+          <caret line="71" column="5" selection-start-line="71" selection-start-column="5" selection-end-line="71" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_05_13_194000_create_subscription_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2652027">
+          <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-33.125">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Subscription.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6841216">
+          <caret line="27" column="63" selection-start-line="26" selection-start-column="4" selection-end-line="27" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SubscribeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="81" column="77" selection-start-line="81" selection-start-column="77" selection-end-line="81" selection-end-column="77" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.166666">
+          <caret line="212" column="54" selection-start-line="212" selection-start-column="54" selection-end-line="212" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6452703">
+          <caret line="87" column="107" selection-start-line="87" selection-start-column="107" selection-end-line="87" selection-end-column="107" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

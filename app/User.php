@@ -63,11 +63,15 @@ class User extends Authenticatable
     }
 
     public function postCategories(){
-        return $this->hasMany('App\PostCategory', 'created_by');
+        return $this->hasMany('App\PostCategory', 'pc_created_by');
     }
 
 
     public function posts(){
         return $this->hasMany('App\Post', 'created_by');
+    }
+
+    public function subscriptions(){
+        return $this->hasMany('App\Subscription', 'user_id');
     }
 }

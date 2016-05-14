@@ -15,10 +15,16 @@ class CreateSubscriptionTable extends Migration
             $table->increments('subscription_id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users_tbl')->onDelete('cascade');
+            $table->string('payment_desc')->nullable();
+            $table->string('payment_method')->default('stripe')->nullable();
+            $table->decimal('amount', 8, 2)->unsigned();
+            $table->decimal('discount', 8, 2)->unsigned();
+            $table->decimal('total_amt', 8, 2)->unsigned();
+            $table->string('transaction_id')->nullable();
             $table->timestamp('purchase_time')->nullable();
             $table->timestamp('started_time')->nullable();
             $table->timestamp('end_time')->nullable();
-            $table->string('doneby')->default('stripe');
+            $table->string('doneby')->default('system');
             $table->timestamps();
         });
     }
