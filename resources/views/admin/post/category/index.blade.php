@@ -5,11 +5,11 @@
         <div class="tbl">
             <div class="tbl-row">
                 <div class="tbl-cell">
-                    <h3>
+                    <h3 style="display: inline-block">
                         <i class="font-icon font-icon-archive"></i> Post Categories
-                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-inline btn-success">
-                            <i class="font-icon font-icon-plus"></i> Add New</button>
                     </h3>
+                    <a data-toggle="modal" data-target="#myModal" class="label-success label">
+                        <i class="font-icon font-icon-plus"></i> Add New</a>
                 </div>
             </div>
         </div>

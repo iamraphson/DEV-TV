@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar_url')->nullable();
             $table->string('stripe_customer_id')->nullable();
             $table->enum('role', ['user', 'admin'])->default('user');
+            $table->smallInteger('active')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

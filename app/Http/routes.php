@@ -214,5 +214,35 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'user.index'
         ]);
 
+        Route::get('/user/edit/{id}', [
+            'uses' => 'AccountController@getAdminEdit',
+            'as' => 'user.edit'
+        ]);
+
+        Route::put('/user/{id}/update', [
+            'uses' => 'AccountController@getAdminUpdate',
+            'as' => 'user.update'
+        ]);
+
+        Route::get('/user/suspend/{id}', [
+            'uses' => 'AccountController@suspendAccount',
+            'as' => 'user.suspend'
+        ]);
+
+        Route::get('/user/activate/{id}', [
+            'uses' => 'AccountController@activateAccount',
+            'as' => 'user.activate'
+        ]);
+
+        Route::get('/user/create', [
+            'uses' => 'AccountController@getAdminCreate',
+            'as' => 'user.create'
+        ]);
+
+        Route::post('/user/store', [
+            'uses' => 'AccountController@getAdminStore',
+            'as' => 'user.store'
+        ]);
+
     });
 });

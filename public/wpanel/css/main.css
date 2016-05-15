@@ -14368,7 +14368,7 @@ a.label-light-grey:hover {
 .bootstrap-table .table a,
 .fixed-table-body .table a,
 .table a {
-    border-bottom: solid 1px rgba(0, 130, 198, .5);
+    /*border-bottom: solid 1px rgba(0, 130, 198, .5);*/
     position: relative;
     top: -1px
 }
@@ -27083,4 +27083,24 @@ a.fc-more:hover {
     margin-bottom: 10px;
     width: 200px;
     vertical-align: middle;
+    border: solid 1px #ccc;
+}
+.profile__image {
+    width: 90px;
+    height: 90px;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 24px;
+    -moz-border-radius: 45px;
+    -webkit-border-radius: 45px;
+    border-radius: 45px;
+    background-color: #D8D8D8;
+}
+.profile__image span {
+    font-size: 36px;
+    color: #FFF;
+    text-align: center;
+    margin-top: 18px;
+    text-transform: uppercase;
+    display: block;
 }

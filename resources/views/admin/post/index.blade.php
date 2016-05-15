@@ -9,7 +9,7 @@
                         <i class="font-icon font-icon-archive"></i> Posts
                     </h3>
 
-                    <a href="{{ route('post.create') }}" class="btn btn-rounded btn-success">
+                    <a href="{{ route('post.create') }}" class="label-success label">
                         <i class="fa fa-plus-circle"></i> Add New</a>
                 </div>
             </div>

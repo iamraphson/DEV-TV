@@ -40,7 +40,7 @@
         </li>
         <li class="purple with-sub">
             <span>
-                <i class="font-icon font-icon-post"></i>
+                <i class="font-icon font-icon-user"></i>
                 <span class="lbl">Users</span>
             </span>
             <ul>

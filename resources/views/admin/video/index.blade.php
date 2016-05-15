@@ -8,7 +8,7 @@
                     <h3 style="display: inline-block">
                         <i class="font-icon font-icon-editor-video"></i> Videos
                     </h3>
-                    <a href="{{ route('video.create') }}" class="btn btn-rounded btn-success">
+                    <a href="{{ route('video.create') }}" class="label-success label">
                         <i class="fa fa-plus-circle"></i> Add New</a>
                 </div>
             </div>

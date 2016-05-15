@@ -121,6 +121,7 @@ class AuthController extends Controller{
         if ($authUser){
             return $authUser;
         }
+
         return User::create([
             'name' => $user->name,
             'email' => $user->email,
