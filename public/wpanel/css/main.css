@@ -7580,14 +7580,17 @@ table {
     box-sizing: border-box!important
 }
 .typeahead-container .typeahead-field input {
-    background: #fff
+    background: #fff;
+    font-size: 1rem;
 }
 .typeahead-container.hint .typeahead-field input {
-    background: 0 0
+    background: 0 0;
+    font-size: 1rem;
 }
 .typeahead-container.hint .typeahead-field input:last-child,
 .typeahead-hint {
-    background: #fff
+    background: #fff;
+    font-size: 1rem;
 }
 .typeahead-container button {
     display: inline-block;

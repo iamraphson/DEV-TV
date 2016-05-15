@@ -345,7 +345,8 @@ $(document).ready(function(){
 		widgetPositioning: {
 			horizontal: 'right'
 		},
-		debug: false
+		debug: false,
+		format: 'YYYY-MM-DD'
 	});
 
 	$('.datetimepicker-2').datetimepicker({

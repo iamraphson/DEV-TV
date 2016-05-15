@@ -24,7 +24,7 @@ class Subscription extends Model{
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'payment_desc', 'payment_method', 'amount', 'discount', 'total_amt', 'transaction_id',
+    protected $fillable = ['user_id', 'comment', 'payment_desc', 'payment_method', 'amount', 'discount', 'total_amt', 'transaction_id',
         'purchase_time', 'started_time', 'end_time', 'doneby'];
 
     public function user(){

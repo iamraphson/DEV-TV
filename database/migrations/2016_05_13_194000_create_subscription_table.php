@@ -16,6 +16,7 @@ class CreateSubscriptionTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users_tbl')->onDelete('cascade');
             $table->string('payment_desc')->nullable();
+            $table->string('comment')->nullable();
             $table->string('payment_method')->default('stripe')->nullable();
             $table->decimal('amount', 8, 2)->unsigned();
             $table->decimal('discount', 8, 2)->unsigned();

@@ -244,5 +244,15 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'user.store'
         ]);
 
+        Route::get('/user/subscription', [
+            'uses' => 'SubscribeController@getAdminSubscriptionForm',
+            'as' => 'user.subscription'
+        ]);
+
+        Route::post('/user/subscription/store', [
+            'uses' => 'SubscribeController@addManuelSubscription',
+            'as' => 'user.subscription.store'
+        ]);
+
     });
 });

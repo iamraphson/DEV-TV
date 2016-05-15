@@ -118,18 +118,3 @@
         });
     </script>
 @stop
-{{--
-@section('footer')
-    <script type="text/javascript">
-        $(function() {
-            @if(session()->has('info'))
-                $.notify({
-                icon: 'font-icon font-icon-check-circle',
-                message: '{{ session()->get('info') }}'
-            },{
-                type: 'success'
-            });
-            @endif
-        })
-    </script>
-@stop--}}

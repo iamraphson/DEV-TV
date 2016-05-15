@@ -47,6 +47,15 @@
                 <li><a href="{{ route('user.index') }}"><span class="lbl">All Users</span></a></li>
             </ul>
         </li>
+        <li class="purple with-sub">
+            <span>
+                <i class="font-icon font-icon-case-2"></i>
+                <span class="lbl">Subscription</span>
+            </span>
+            <ul>
+                <li><a href="{{ route('user.subscription') }}"><span class="lbl">Add Subscription</span></a></li>
+            </ul>
+        </li>
 
 
         {{--

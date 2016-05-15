@@ -11,8 +11,8 @@ class EditSql extends Migration
      * @return void
      */
     public function up(){
-        Schema::table('users_tbl', function ($table) {
-            $table->smallInteger('active')->default('0');
+        Schema::table('subscription_tbl', function ($table) {
+            $table->string('comment')->nullable();
         });
     }
 

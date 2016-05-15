@@ -86,8 +86,46 @@ class SubscribeController extends Controller{
 
     }
 
+    public function getAdminSubscriptionForm(){
+        $user = User::get(['email']);
+        return view('admin.subscription.new')->withTitle('DevTv - User\'s Subscription')->withUsers($user);
+    }
+
+    public function addManuelSubscription(Request $request){
+        $niceNames = array(
+            'emails' => 'Email',
+            'amount' => 'Amount',
+            'payment_desc' => 'Payment Description',
+            'discount' => 'Discount',
+            'startdate' => 'Start Date',
+            'enddate' => 'End date',
+        );
+
+        $this->validate($request, [
+            'emails' => 'required|email',
+            'payment_desc' => 'required',
+            'amount' => 'required|numeric',
+            'discount' => 'required|numeric',
+            'startdate' => 'required|date|after:yesterday|date_format:Y-m-d',
+            'enddate' => 'required|date|after:today|date_format:Y-m-d',
+        ], [], $niceNames);
+
+
+        $particularUser = User::where('email', $request->input('emails'))->first();
+        if($particularUser->role == "admin"){
+            return redirect()->back()->withInput()->withErrors("You can't subscribe for an Administrator");
+        }
+
+        $this->addSubscription($particularUser->id, $request->input('payment_desc'), $request->input('comment')
+            ,'manuel', $request->input('amount'), $request->input('discount'), self::MakeDBId(), date('Y-m-d'),
+            $request->input('startdate'), $request->input('enddate'), $this->authUser->name);
+
+        return redirect()->back()->with('info', 'The Subscription was successfully');
+    }
+
+
     private function addStripePurchase($amount, $discount, $tranzId, $purchasedate, $startdate, $endate){
-        $this->addSubscription($this->authUser->id, $this->invoiceDesc, 'stripe', $amount, $discount, $tranzId,
+        $this->addSubscription($this->authUser->id, $this->invoiceDesc, '','stripe', $amount, $discount, $tranzId,
             $purchasedate, $startdate, $endate, 'system');
     }
 
@@ -97,10 +135,32 @@ class SubscribeController extends Controller{
         $user->save();
     }
 
-    private function addSubscription($user_id, $paymentDesc, $paymentMethod, $amount, $discount, $tranzID, $purchasedate,
+    private static function MakeDBId($yourTimestamp = null)
+    {
+        static $inc = 0;
+        $id = '';
+
+        if ($yourTimestamp === null) {
+            $yourTimestamp = time();
+        }
+        $ts = pack('N', $yourTimestamp);
+        $m = substr(md5(gethostname()), 0, 3);
+        $pid = pack('n', posix_getpid());
+        $trail = substr(pack('N', $inc++), 1, 3);
+        $bin = sprintf("%s%s%s%s", $ts, $m, $pid, $trail);
+
+        for ($i = 0; $i < 12; $i++) {
+            $id .= sprintf("%02X", ord($bin[$i]));
+        }
+
+        return $id;
+    }
+
+    private function addSubscription($user_id, $paymentDesc, $comment, $paymentMethod, $amount, $discount, $tranzID, $purchasedate,
                                      $startdate, $endate, $doneby){
         Subscription::create([
             'user_id' => $user_id,
+            'comment' => $comment,
             'payment_desc' => $paymentDesc,
             'payment_method' => $paymentMethod,
             'amount' => $amount,
@@ -113,4 +173,6 @@ class SubscribeController extends Controller{
             'doneby' => $doneby,
         ]);
     }
+
+
 }
