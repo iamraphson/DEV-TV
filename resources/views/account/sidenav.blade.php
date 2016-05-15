@@ -24,9 +24,11 @@
                             <li class="clearfix">
                                 <a href="{{ route('account.edit') }}"><i class="fa fa-gears"></i>Profile Setting</a>
                             </li>
-                            <li class="clearfix">
-                                <a href="{{ route('subscribe.user') }}"><i class="fa fa-money"></i>Subscribe</a>
-                            </li>
+                            @if(Auth::user()->role != "admin")
+                                <li class="clearfix">
+                                    <a href="{{ route('subscribe.user') }}"><i class="fa fa-money"></i>Subscribe</a>
+                                </li>
+                            @endif
                             <li class="clearfix">
                                 <a href=""><i class="fa fa-video-camera"></i>Videos
                                     <span class="float-right">36</span></a>

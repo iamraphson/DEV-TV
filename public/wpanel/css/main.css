@@ -27104,3 +27104,24 @@ a.fc-more:hover {
     text-transform: uppercase;
     display: block;
 }
+
+.profile__image1 {
+    float: left;
+    display: block;
+    height: 32px;
+    width: 32px;
+    margin: -1px 3px -1px 0;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: all .2s ease-in-out;
+
+}
+.profile__image1 span {
+    font-size: 18px;
+    color: #FFF;
+    text-align: center;
+    margin-top: 1px;
+    text-transform: uppercase;
+    display: block;
+}

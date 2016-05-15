@@ -31,15 +31,22 @@
             <div class="site-header-content-in">
                 <div class="site-header-shown">
                     <div class="dropdown user-menu">
-                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{ asset('wpanel/img/avatar-2-64.png') }}" alt="">
+                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            @if(Auth::user()->avatar_url)
+                                <img src="{{ Auth::user()->avatar_url }}" alt="{{ Auth::user()->name }}">
+                            @else
+                                <div class="profile__image1" style="background: url('') #D8D8D8 center/cover;">
+                                    <span>{{ substr(Auth::user()->name, 0, 1) }}</span>
+                                </div>
+                            @endif
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
                             <a class="dropdown-item" target="_blank" href="{{ url('/') }}">
                                 <span class="font-icon glyphicon glyphicon-globe"></span>Vist Website
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" target="_blank" href="{{ route('account.user') }}">
                                 <span class="font-icon glyphicon glyphicon-user"></span>Profile
                             </a>
                             <div class="dropdown-divider"></div>

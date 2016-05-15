@@ -74,6 +74,7 @@
                         <div class="row">
                             <div class="large-12 columns">
                                 <div class="setting-form">
+                                    @if(Auth::user()->role != "admin")
                                     <form method="post" id="paymentform" action="{{ route('subscribe.pay') }}">
                                         <div class="setting-form-inner">
                                             <div class="row">
@@ -125,6 +126,9 @@
                                             <button class="button expanded" type="button" name="paynow" id="paynow">Pay Now</button>
                                         </div>
                                     </form>
+                                    @else
+                                        <h3 style="text-align: center;margin: 130px 0px">No Subscription Is Allowed</h3>
+                                    @endif
                                 </div>
                             </div>
                         </div>
