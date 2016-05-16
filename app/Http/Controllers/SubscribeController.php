@@ -123,6 +123,16 @@ class SubscribeController extends Controller{
         return redirect()->back()->with('info', 'The Subscription was successfully');
     }
 
+    public function getSubscriptionHistory(){
+        $history = Subscription::get();
+        return view('admin.subscription.index')->withTitle('DevTv -  Subscription History')->withHistorys($history);
+    }
+
+    public function showSubscription($tranzid){
+        $subscription = Subscription::where('transaction_id', $tranzid)->first();
+        return view('admin.subscription.show')->withTitle('DevTv -  Subscription Detail\'s')->with('detail', $subscription);
+    }
+
 
     private function addStripePurchase($amount, $discount, $tranzId, $purchasedate, $startdate, $endate){
         $this->addSubscription($this->authUser->id, $this->invoiceDesc, '','stripe', $amount, $discount, $tranzId,

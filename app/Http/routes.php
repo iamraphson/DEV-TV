@@ -254,5 +254,15 @@ Route::group(['middleware' => 'web'], function () {
             'as' => 'user.subscription.store'
         ]);
 
+        Route::get('/user/subscription/index', [
+            'uses' => 'SubscribeController@getSubscriptionHistory',
+            'as' => 'user.subscription.index'
+        ]);
+
+        Route::get('/user/subscription/{tranzid}', [
+            'uses' => 'SubscribeController@showSubscription',
+            'as' => 'user.subscription.show'
+        ]);
+
     });
 });

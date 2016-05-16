@@ -54,6 +54,7 @@
             </span>
             <ul>
                 <li><a href="{{ route('user.subscription') }}"><span class="lbl">Add Subscription</span></a></li>
+                <li><a href="{{ route('user.subscription.index') }}"><span class="lbl">Subscription History</span></a></li>
             </ul>
         </li>
 
