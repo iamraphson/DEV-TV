@@ -128,7 +128,7 @@ class SubscribeController extends Controller{
         $user = new User();
         $user = $user->get(['email']);
 
-        $history = $this->buildHistoryQuery($request);
+        $history = $this->buildHistoryQuery($request)->get();
         return view('admin.subscription.index')->withTitle('DevTv -  Subscription History')->withHistorys($history)
             ->with('users', $user);
     }
@@ -137,21 +137,21 @@ class SubscribeController extends Controller{
         $sub = new Subscription();
 
         if($request->has('startdate')){
-            $sub->where('purchase_time', '<=', $request->input('startdate'));
+            $sub = $sub->where('purchase_time', '>=', $request->input('startdate'));
         }
 
 
         if($request->has('enddate')){
-            $sub->where('purchase_time', '>=', $request->input('enddate'));
+            $sub = $sub->where('purchase_time', '<=', $request->input('enddate'));
         }
 
 
         if($request->has('emails')){
             $particularUser = User::where('email', $request->input('emails'))->first();
-            $sub->where('user_id', '=', $particularUser->id);
+            $sub = $sub->where('user_id', '=', $particularUser->id);
         }
 
-        return $sub->orderBy('purchase_time', 'desc')->get();
+        return $sub->orderBy('purchase_time', 'desc');
     }
 
     public function showSubscription($tranzid){
