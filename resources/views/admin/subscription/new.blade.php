@@ -67,7 +67,7 @@
                         <div class="form-group">
                             <label class="form-label">End Date</label>
                             <div class='input-group date datetimepicker-1'>
-                                <input type='text' id="startdate" name="enddate" class="form-control" />
+                                <input type='text' id="enddate" name="enddate" class="form-control" />
 								<span class="input-group-addon">
 									<i class="font-icon font-icon-calend"></i>
 								</span>

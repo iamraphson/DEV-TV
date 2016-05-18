@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use CreditCard;
+use Illuminate\Support\Facades\DB;
 use Stripe\Stripe;
 use App\User;
 use Carbon\Carbon;
@@ -123,9 +124,34 @@ class SubscribeController extends Controller{
         return redirect()->back()->with('info', 'The Subscription was successfully');
     }
 
-    public function getSubscriptionHistory(){
-        $history = Subscription::get();
-        return view('admin.subscription.index')->withTitle('DevTv -  Subscription History')->withHistorys($history);
+    public function getSubscriptionHistory(Request $request){
+        $user = new User();
+        $user = $user->get(['email']);
+
+        $history = $this->buildHistoryQuery($request);
+        return view('admin.subscription.index')->withTitle('DevTv -  Subscription History')->withHistorys($history)
+            ->with('users', $user);
+    }
+
+    private function buildHistoryQuery(Request $request){
+        $sub = new Subscription();
+
+        if($request->has('startdate')){
+            $sub->where('purchase_time', '<=', $request->input('startdate'));
+        }
+
+
+        if($request->has('enddate')){
+            $sub->where('purchase_time', '>=', $request->input('enddate'));
+        }
+
+
+        if($request->has('emails')){
+            $particularUser = User::where('email', $request->input('emails'))->first();
+            $sub->where('user_id', '=', $particularUser->id);
+        }
+
+        return $sub->orderBy('purchase_time', 'desc')->get();
     }
 
     public function showSubscription($tranzid){

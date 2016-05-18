@@ -10,7 +10,7 @@ class Subscription extends Model{
      *
      * @var string
      */
-    protected $table = 'subscription_tbl';
+    public  $table = 'subscription_tbl';
 
     /**
      * The primary key for the model.
