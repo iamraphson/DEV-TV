@@ -44,6 +44,7 @@
                 <span class="lbl">Users</span>
             </span>
             <ul>
+                <li><a href="{{ route('user.create') }}"><span class="lbl">Add New User</span></a></li>
                 <li><a href="{{ route('user.index') }}"><span class="lbl">All Users</span></a></li>
             </ul>
         </li>
