@@ -98,7 +98,7 @@
                                                                     <span>506</span>
                                                                 </div>
                                                                 <div class="thumb-stats pull-right">
-                                                                    <span>{{ $video->video_duration }}</span>
+                                                                    <span>{{ getVideoDuration($video->video_duration) }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -232,7 +232,7 @@
                                                                     <span>506</span>
                                                                 </div>
                                                                 <div class="thumb-stats pull-right">
-                                                                    <span>{{ $video->video_duration }}</span>
+                                                                    <span>{{ getVideoDuration($video->video_duration) }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>

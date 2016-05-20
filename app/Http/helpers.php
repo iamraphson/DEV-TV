@@ -47,5 +47,19 @@ function getPostHTML($items){
     return buildPostMenu($items);
 }
 
+function getVideoDuration($duration){
+    $duration_arr = explode(':', $duration);
+    if(intval($duration_arr[0]) == 0)
+        unset($duration_arr[0]);
+
+    if(intval($duration_arr[1]) == 0)
+        unset($duration_arr[1]);
+
+    if(intval($duration_arr[2]) == 0)
+        unset($duration_arr[2]);
+    
+    return implode(':', $duration_arr);
+}
+
 
 ?>
