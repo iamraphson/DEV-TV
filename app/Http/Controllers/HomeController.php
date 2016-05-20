@@ -15,19 +15,33 @@ class HomeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $featuredVideo = Video::whereFeatured(1)->orderBy('created_at', 'desc')->limit(4)->get();
+        $featuredVideo = $this->getFeaturedVideos();
         $categories = $this->getCategories();
-        //print_r($categories);
-        return view('welcome')->with('featured', $featuredVideo)->withCategory($categories);;
+        $count = $this->getTotalVideos();
+        $video = $this->getVideos(4);
+
+        return view('welcome')->with('featured', $featuredVideo)->withCategory($categories)->withCount($count)
+            ->withVideos($video);
+    }
+
+    private function getTotalVideos(){
+        return Video::count();
+    }
+
+    private function getVideos(int $limit){
+        return Video::orderBy('created_at', 'desc')->limit($limit)->get();
+    }
+
+    private function getFeaturedVideos(){
+        return Video::whereFeatured(1)->orderBy('created_at', 'desc')->limit(4)->get();
     }
 
     private function getCategories(){
         $categories = [];
         $items 	= Category::get();
         foreach($items as $item){
-            array_add($categories, $item->cat_id, $item->category_name);
+            $categories[$item->cat_id] =  $item->category_name;
         }
-        print_r($categories);
         return $categories;
     }
 }

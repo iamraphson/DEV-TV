@@ -857,7 +857,7 @@ button {
     padding-left: 0.9375rem;
     padding-right: 0.9375rem; } }
 .column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
-  float: right; }
+  float: left; }
 .column.end:last-child:last-child, .end.columns:last-child:last-child {
   float: left; }
 
