@@ -20,15 +20,26 @@ class HomeController extends Controller{
         $count = $this->getTotalVideos();
         $video = $this->getVideos(6);
         $videoside = $this->getVideos(4);
+        $tags = $this->getTags();
 
         return view('welcome')->with('featured', $featuredVideo)->withCategory($categories)->withCount($count)
-            ->withVideos($video)->with('videos_side', $videoside);
+            ->withVideos($video)->with('videos_side', $videoside)->with('tags', $tags);
     }
 
     private function getTotalVideos(){
         return Video::count();
     }
 
+    private function getTags(){
+        $tags = [];
+        $items 	= Video::get(['video_tags']);
+        foreach($items as $item){
+            array_push($tags, $item->video_tags);
+        }
+        $tagsString = implode(',', $tags);
+        $tags = explode(',', $tagsString);
+        return array_unique($tags);
+    }
 
     private function getVideos(int $limit){
         return Video::orderBy('created_at', 'desc')->limit($limit)->get();

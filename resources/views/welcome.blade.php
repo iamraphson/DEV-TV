@@ -258,63 +258,14 @@
                                 <div class="widgetContent">
                                     <div class="video-box thumb-border">
                                         <div class="video-img-thumb">
-                                            <img src="images/video-thumbnail/7.jpg" alt="most viewed videos">
+                                            <img src="http://localhost:8000/uploads/1463609726/minions.jpg" alt="most viewed videos">
                                             <a href="#" class="hover-posts">
                                                 <span><i class="fa fa-play"></i>Watch Video</span>
                                             </a>
                                         </div>
                                         <div class="video-box-content">
-                                            <h6><a href="#">There are many variations of passage. </a></h6>
+                                            <h6><a href="#">To Be Filled L8r </a></h6>
                                             <p>
-                                                <span><i class="fa fa-user"></i><a href="#">admin</a></span>
-                                                <span><i class="fa fa-clock-o"></i>5 January 16</span>
-                                                <span><i class="fa fa-eye"></i>1,862K</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="video-box thumb-border">
-                                        <div class="video-img-thumb">
-                                            <img src="images/widget-most1.png" alt="most viewed videos">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i>Watch Video</span>
-                                            </a>
-                                        </div>
-                                        <div class="video-box-content">
-                                            <h6><a href="#">There are many variations of passage. </a></h6>
-                                            <p>
-                                                <span><i class="fa fa-user"></i><a href="#">admin</a></span>
-                                                <span><i class="fa fa-clock-o"></i>5 January 16</span>
-                                                <span><i class="fa fa-eye"></i>1,862K</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="video-box thumb-border">
-                                        <div class="video-img-thumb">
-                                            <img src="images/widget-most2.png" alt="most viewed videos">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i>Watch Video</span>
-                                            </a>
-                                        </div>
-                                        <div class="video-box-content">
-                                            <h6><a href="#">There are many variations of passage. </a></h6>
-                                            <p>
-                                                <span><i class="fa fa-user"></i><a href="#">admin</a></span>
-                                                <span><i class="fa fa-clock-o"></i>5 January 16</span>
-                                                <span><i class="fa fa-eye"></i>1,862K</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="video-box thumb-border">
-                                        <div class="video-img-thumb">
-                                            <img src="images/widget-most3.png" alt="most viewed videos">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i>Watch Video</span>
-                                            </a>
-                                        </div>
-                                        <div class="video-box-content">
-                                            <h6><a href="#">There are many variations of passage. </a></h6>
-                                            <p>
-                                                <span><i class="fa fa-user"></i><a href="#">admin</a></span>
                                                 <span><i class="fa fa-clock-o"></i>5 January 16</span>
                                                 <span><i class="fa fa-eye"></i>1,862K</span>
                                             </p>
@@ -371,17 +322,9 @@
                                     <h5>Tags</h5>
                                 </div>
                                 <div class="tagcloud">
-                                    <a href="#">3D Videos</a>
-                                    <a href="#">Videos</a>
-                                    <a href="#">HD</a>
-                                    <a href="#">Movies</a>
-                                    <a href="#">Sports</a>
-                                    <a href="#">3D</a>
-                                    <a href="#">Movies</a>
-                                    <a href="#">Animation</a>
-                                    <a href="#">HD</a>
-                                    <a href="#">Music</a>
-                                    <a href="#">Recreation</a>
+                                    @foreach($tags as $tag)
+                                        <a href="{{ $tag }}">{{ $tag }}</a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div><!-- End tags -->
