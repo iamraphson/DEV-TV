@@ -18,15 +18,17 @@ class HomeController extends Controller{
         $featuredVideo = $this->getFeaturedVideos();
         $categories = $this->getCategories();
         $count = $this->getTotalVideos();
-        $video = $this->getVideos(4);
+        $video = $this->getVideos(6);
+        $videoside = $this->getVideos(4);
 
         return view('welcome')->with('featured', $featuredVideo)->withCategory($categories)->withCount($count)
-            ->withVideos($video);
+            ->withVideos($video)->with('videos_side', $videoside);
     }
 
     private function getTotalVideos(){
         return Video::count();
     }
+
 
     private function getVideos(int $limit){
         return Video::orderBy('created_at', 'desc')->limit($limit)->get();

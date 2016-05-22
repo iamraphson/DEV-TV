@@ -128,52 +128,6 @@
                                                 </div>
                                             @endforeach
                                         @endif
-
-                                        {{--<div class="item large-4 medium-6 columns grid-medium">
-                                            <div class="post thumb-border">
-                                                <div class="post-thumb">
-                                                    <img src="images/video-thumbnail/1.jpg" alt="new video">
-                                                    <a href="single-video-v2.html" class="hover-posts">
-                                                        <span><i class="fa fa-play"></i>Watch Video</span>
-                                                    </a>
-                                                    <div class="video-stats clearfix">
-                                                        <div class="thumb-stats pull-left">
-                                                            <h6>HD</h6>
-                                                        </div>
-                                                        <div class="thumb-stats pull-left">
-                                                            <i class="fa fa-heart"></i>
-                                                            <span>506</span>
-                                                        </div>
-                                                        <div class="thumb-stats pull-right">
-                                                            <span>05:56</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-des">
-                                                    <h6><a href="single-video-v2.html">There are many variations of passage.</a></h6>
-                                                    <div class="post-stats clearfix">
-                                                        <p class="pull-left">
-                                                            <i class="fa fa-user"></i>
-                                                            <span><a href="#">admin</a></span>
-                                                        </p>
-                                                        <p class="pull-left">
-                                                            <i class="fa fa-clock-o"></i>
-                                                            <span>5 January 16</span>
-                                                        </p>
-                                                        <p class="pull-left">
-                                                            <i class="fa fa-eye"></i>
-                                                            <span>1,862K</span>
-                                                        </p>
-                                                    </div>
-                                                    <div class="post-summary">
-                                                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                                                    </div>
-                                                    <div class="post-button">
-                                                        <a href="single-video-v2.html" class="secondary-button"><i class="fa fa-play-circle"></i>watch video</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
@@ -370,57 +324,6 @@
                             </div>
                         </div><!-- end most view Widget -->
 
-                        <!-- social Fans Widget -->
-                        <div class="large-12 medium-7 medium-centered columns">
-                            <div class="widgetBox">
-                                <div class="widgetTitle">
-                                    <h5>social fans</h5>
-                                </div>
-                                <div class="widgetContent">
-                                    <div class="social-links">
-                                        <a class="socialButton" href="#">
-                                            <i class="fa fa-facebook"></i>
-                                            <span>698K</span>
-                                            <span>fans</span>
-                                        </a>
-                                        <a class="socialButton" href="#">
-                                            <i class="fa fa-twitter"></i>
-                                            <span>598</span>
-                                            <span>followers</span>
-                                        </a>
-                                        <a class="socialButton" href="#">
-                                            <i class="fa fa-google-plus"></i>
-                                            <span>98k</span>
-                                            <span>followers</span>
-                                        </a>
-                                        <a class="socialButton" href="#">
-                                            <i class="fa fa-youtube"></i>
-                                            <span>168k</span>
-                                            <span>followers</span>
-                                        </a>
-                                        <a class="socialButton" href="#">
-                                            <i class="fa fa-vimeo"></i>
-                                            <span>498</span>
-                                            <span>followers</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- End social Fans Widget -->
-
-                        <!-- ad banner widget -->
-                        <div class="large-12 medium-7 medium-centered columns">
-                            <div class="widgetBox">
-                                <div class="widgetTitle">
-                                    <h5>Recent post videos</h5>
-                                </div>
-                                <div class="widgetContent">
-                                    <div class="advBanner text-center">
-                                        <a href="#"><img src="images/sideradv.png" alt="sidebar adv"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end ad banner widget -->
 
                         <!-- Recent post videos -->
                         <div class="large-12 medium-7 medium-centered columns">
@@ -429,70 +332,34 @@
                                     <h5>Recent post videos</h5>
                                 </div>
                                 <div class="widgetContent">
-                                    <div class="media-object stack-for-small">
-                                        <div class="media-object-section">
-                                            <div class="recent-img">
-                                                <img src= "images/category/category4.png" alt="recent">
-                                                <a href="#" class="hover-posts">
-                                                    <span><i class="fa fa-play"></i></span>
-                                                </a>
-                                            </div>
+                                    @if($videos_side->isEmpty())
+                                        <div data-abide-error="" class="alert callout" style="display: block;">
+                                            <p><i class="fa fa-exclamation-triangle"></i> No Videos Yet</p>
                                         </div>
-                                        <div class="media-object-section">
-                                            <div class="media-content">
-                                                <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                                <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
+                                    @else
+                                        @foreach($videos_side as $video)
+                                            <div class="media-object stack-for-small">
+                                                <div class="media-object-section">
+                                                    <div class="recent-img">
+                                                        <img src= "{{ URL::asset($video->video_cover_location) }}"
+                                                             alt="{{ $video->video_title }}">
+                                                        <a href="#" class="hover-posts">
+                                                            <span><i class="fa fa-play"></i></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="media-object-section">
+                                                    <div class="media-content">
+                                                        <h6><a href="#">{{ str_limit($video->video_desc, 40) }}</a></h6>
+                                                        <p>
+                                                            <i class="fa fa-clock-o"></i>
+                                                            <span>{{ date('j F y', strtotime($video->created_at)) }}</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="media-object stack-for-small">
-                                        <div class="media-object-section">
-                                            <div class="recent-img">
-                                                <img src= "images/category/category2.png" alt="recent">
-                                                <a href="#" class="hover-posts">
-                                                    <span><i class="fa fa-play"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="media-object-section">
-                                            <div class="media-content">
-                                                <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                                <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media-object stack-for-small">
-                                        <div class="media-object-section">
-                                            <div class="recent-img">
-                                                <img src= "images/sidebar-recent1.png" alt="recent">
-                                                <a href="#" class="hover-posts">
-                                                    <span><i class="fa fa-play"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="media-object-section">
-                                            <div class="media-content">
-                                                <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                                <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media-object stack-for-small">
-                                        <div class="media-object-section">
-                                            <div class="recent-img">
-                                                <img src= "images/sidebar-recent2.png" alt="recent">
-                                                <a href="#" class="hover-posts">
-                                                    <span><i class="fa fa-play"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="media-object-section">
-                                            <div class="media-content">
-                                                <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                                <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div><!-- End Recent post videos -->
