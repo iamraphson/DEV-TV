@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller{
 
+    protected $paginationCount = null;
+
+    public function  __construct(){
+        $this->paginationCount = 6;
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -18,12 +24,18 @@ class HomeController extends Controller{
         $featuredVideo = $this->getFeaturedVideos();
         $categories = $this->getCategories();
         $count = $this->getTotalVideos();
-        $video = $this->getVideos(6);
-        $videoside = $this->getVideos(4);
+        $video = $this->getRecentVideosWithLimit(6);
+        $videoside = $this->getRecentVideosWithLimit(4);
         $tags = $this->getTags();
 
         return view('welcome')->with('featured', $featuredVideo)->withCategory($categories)->withCount($count)
             ->withVideos($video)->with('videos_side', $videoside)->with('tags', $tags);
+    }
+
+    public function getAllVideo($queryType){
+        $tags = $this->getTags();
+        $recent = $this->getRecentWithPagination();
+        return view('video.index')->with('tabHeader', 'All Videos')->with('tags', $tags)->with('videos', $recent);
     }
 
     private function getTotalVideos(){
@@ -37,12 +49,18 @@ class HomeController extends Controller{
             array_push($tags, $item->video_tags);
         }
         $tagsString = implode(',', $tags);
-        $tags = explode(',', $tagsString);
-        return array_unique($tags);
+        return array_unique(explode(',', $tagsString));
     }
 
-    private function getVideos(int $limit){
-        return Video::orderBy('created_at', 'desc')->limit($limit)->get();
+    private function getRecentWithPagination(){
+        return $this->getRecent()->paginate($this->paginationCount);
+    }
+
+    private function getRecent(){
+        return Video::orderBy('created_at', 'desc');
+    }
+    private function getRecentVideosWithLimit(int $limit){
+        return $this->getRecent()->limit($limit)->get();
     }
 
     private function getFeaturedVideos(){

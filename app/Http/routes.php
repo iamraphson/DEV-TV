@@ -19,6 +19,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HomeController@index',
     ]);
 
+    Route::get('/videos/{queryType}', [
+        'uses' => 'HomeController@getAllVideo',
+    ]);
+
     Route::get('/register', [
         'uses' => 'Auth\AuthController@getRegister',
         'as' => 'auth.register',
