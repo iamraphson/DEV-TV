@@ -6,3 +6,4 @@ Homestead.yaml
 .env
  .puli 
 /.idea 
+.DS_Store
