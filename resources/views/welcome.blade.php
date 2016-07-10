@@ -132,7 +132,7 @@
                                 </div>
                             </div>
                             <div class="text-center row-btn">
-                                <a class="button radius" href="#">View All Video</a>
+                                <a class="button radius" href="{{ url('/videos/all') }}">View All Video</a>
                             </div>
                         </div>
                     </div>

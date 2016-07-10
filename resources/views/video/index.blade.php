@@ -24,7 +24,6 @@
             <nav aria-label="You are here:" role="navigation">
                 <ul class="breadcrumbs">
                     <li><i class="fa fa-home"></i><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ route('account.user') }}">Profile</a></li>
                     <li>
                         <span class="show-for-sr">Current: </span> Profile Setting
                     </li>
@@ -55,8 +54,6 @@
                     <div class="large-12 columns">
                         <div class="row column head-text clearfix">
                             <div class="grid-system pull-right show-for-large">
-                                <a class="secondary-button grid-default" href="#"><i class="fa fa-th"></i></a>
-                                <a class="secondary-button grid-medium" href="#"><i class="fa fa-th-large"></i></a>
                                 <a class="secondary-button current list" href="#"><i class="fa fa-th-list"></i></a>
                             </div>
                         </div>
@@ -106,7 +103,8 @@
                                                             <p>{{ str_limit($video->video_desc, 200) }}</p>
                                                         </div>
                                                         <div class="post-button">
-                                                            <a href="single-video-v2.html" class="secondary-button"><i class="fa fa-play-circle"></i>watch video</a>
+                                                            <a href="single-video-v2.html" class="secondary-button">
+                                                                <i class="fa fa-play-circle"></i>watch video</a>
                                                         </div>
                                                     </div>
                                                 </div>
