@@ -406,70 +406,34 @@
                                 <h5>Recent post videos</h5>
                             </div>
                             <div class="widgetContent">
-                                <div class="media-object stack-for-small">
-                                    <div class="media-object-section">
-                                        <div class="recent-img">
-                                            <img src= "images/category/category4.png" alt="recent">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i></span>
-                                            </a>
-                                        </div>
+                                @if($videos_side->isEmpty())
+                                    <div data-abide-error="" class="alert callout" style="display: block;">
+                                        <p><i class="fa fa-exclamation-triangle"></i> No Videos Yet</p>
                                     </div>
-                                    <div class="media-object-section">
-                                        <div class="media-content">
-                                            <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                            <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
+                                @else
+                                    @foreach($videos_side as $video)
+                                        <div class="media-object stack-for-small">
+                                            <div class="media-object-section">
+                                                <div class="recent-img">
+                                                    <img src= "{{ URL::asset($video->video_cover_location) }}"
+                                                         alt="{{ $video->video_title }}">
+                                                    <a href="#" class="hover-posts">
+                                                        <span><i class="fa fa-play"></i></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="media-object-section">
+                                                <div class="media-content">
+                                                    <h6><a href="#">{{ str_limit($video->video_desc, 40) }}</a></h6>
+                                                    <p>
+                                                        <i class="fa fa-clock-o"></i>
+                                                        <span>{{ date('j F y', strtotime($video->created_at)) }}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="media-object stack-for-small">
-                                    <div class="media-object-section">
-                                        <div class="recent-img">
-                                            <img src= "images/category/category2.png" alt="recent">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="media-object-section">
-                                        <div class="media-content">
-                                            <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                            <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media-object stack-for-small">
-                                    <div class="media-object-section">
-                                        <div class="recent-img">
-                                            <img src= "images/sidebar-recent1.png" alt="recent">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="media-object-section">
-                                        <div class="media-content">
-                                            <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                            <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="media-object stack-for-small">
-                                    <div class="media-object-section">
-                                        <div class="recent-img">
-                                            <img src= "images/sidebar-recent2.png" alt="recent">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="media-object-section">
-                                        <div class="media-content">
-                                            <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                            <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div><!-- End Recent post videos -->

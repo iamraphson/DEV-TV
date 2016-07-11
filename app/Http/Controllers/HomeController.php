@@ -10,9 +10,11 @@ use Illuminate\Http\Request;
 class HomeController extends Controller{
 
     protected $paginationCount = null;
+    protected $videoSide = null;
 
     public function  __construct(){
         $this->paginationCount = 6;
+        $this->videoSide = $this->getRecentVideosWithLimit(4);
     }
 
     /**
@@ -25,17 +27,22 @@ class HomeController extends Controller{
         $categories = $this->getCategories();
         $count = $this->getTotalVideos();
         $video = $this->getRecentVideosWithLimit(6);
-        $videoside = $this->getRecentVideosWithLimit(4);
         $tags = $this->getTags();
 
         return view('welcome')->with('featured', $featuredVideo)->withCategory($categories)->withCount($count)
-            ->withVideos($video)->with('videos_side', $videoside)->with('tags', $tags);
+            ->withVideos($video)->with('videos_side', $this->videoSide)->with('tags', $tags);
     }
 
     public function getAllVideo($queryType){
         $tags = $this->getTags();
         $recent = $this->getRecentWithPagination();
-        return view('video.index')->with('tabHeader', 'All Videos')->with('tags', $tags)->with('videos', $recent);
+        $videoside = $this->getRecentVideosWithLimit(4);
+        if(strtolower($queryType) == 'all'){
+            return view('video.index')->with('tabHeader', 'All Videos')->with('tags', $tags)->with('videos', $recent)
+                ->with('videos_side', $this->videoSide);
+        } else if(strtolower($queryType) == 'featured') {
+            //to be done l8r
+        }
     }
 
     private function getTotalVideos(){

@@ -192,7 +192,7 @@
           try {
             $el.data('zfPlugin', new plugin($(this), opts));
           } catch (er) {
-            console.error(er);
+            //console.error(er);
           } finally {
             return;
           }
