@@ -1377,7 +1377,8 @@ text-align: center; }
 ========================================================================== */
 footer {
 background: #444444;
-padding: 80px 0; }
+padding: 80px 0;
+}
 footer .widgetBox .widgetTitle {
 margin-bottom: 40px; }
 footer .widgetBox .widgetTitle h5 {

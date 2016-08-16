@@ -23,6 +23,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HomeController@getAllVideo',
     ]);
 
+    Route::get('/video/{id}', [
+        'uses' => 'VideoController@showVideo',
+    ]);
+
     Route::get('/register', [
         'uses' => 'Auth\AuthController@getRegister',
         'as' => 'auth.register',

@@ -213,4 +213,8 @@ class VideoController extends Controller{
         }
 
     }
+
+    public function showVideo(Request $request, $id){
+        return view('video.show');
+    }
 }

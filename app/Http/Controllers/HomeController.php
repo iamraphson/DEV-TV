@@ -36,10 +36,10 @@ class HomeController extends Controller{
     public function getAllVideo($queryType){
         $tags = $this->getTags();
         $recent = $this->getRecentWithPagination();
-        $videoside = $this->getRecentVideosWithLimit(4);
+
         if(strtolower($queryType) == 'all'){
-            return view('video.index')->with('tabHeader', 'All Videos')->with('tags', $tags)->with('videos', $recent)
-                ->with('videos_side', $this->videoSide);
+            return view('video.index')->with('tabHeader', 'All Videos')->with('tags', $tags)
+                ->with('videos', $recent)->with('videos_side', $this->videoSide);
         } else if(strtolower($queryType) == 'featured') {
             //to be done l8r
         }
