@@ -2979,7 +2979,7 @@ select[multiple] {
     width: 100%; } }
 
 .media-object-section {
-  display: table-cell;
+  display: block;
   vertical-align: top; }
 .media-object-section:first-child {
   padding-right: 1rem; }

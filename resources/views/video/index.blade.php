@@ -74,7 +74,7 @@
                                                                 <span>506</span>
                                                             </div>
                                                             <div class="thumb-stats pull-right">
-                                                                <span>lam{{ getVideoDuration($video->video_duration) }}</span>
+                                                                <span>lam {{ getVideoDuration($video->video_duration) }}</span>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -89,7 +89,7 @@
                                                         <div class="post-thumb">
                                                             <img src="{{ URL::asset($video->video_cover_location) }}"
                                                                 alt="{{ $video->video_title }}" />
-                                                            <a href="single-video-v2.html" class="hover-posts">
+                                                            <a href="{{ url('/video/' . $video->video_id) }}" class="hover-posts">
                                                                 <span><i class="fa fa-play"></i>Watch Video</span>
                                                             </a>
                                                             <div class="video-stats clearfix">
@@ -103,7 +103,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="post-des">
-                                                            <h6><a href="single-video-v2.html">
+                                                            <h6><a href="{{ url('/video/' . $video->video_id) }}">
                                                                     {{ str_limit($video->video_title, 45) }}
                                                             </a></h6>
                                                             <div class="post-stats clearfix">

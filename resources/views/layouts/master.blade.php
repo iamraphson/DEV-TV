@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.kyco.easyshare.css') }}">
 </head>
 <body>
     <div class="off-canvas-wrapper">

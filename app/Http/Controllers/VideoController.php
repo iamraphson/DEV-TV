@@ -215,6 +215,7 @@ class VideoController extends Controller{
     }
 
     public function showVideo(Request $request, $id){
-        return view('video.show');
+        $video = Video::find($id);
+        return view('video.show')->with('video', $video);
     }
 }
