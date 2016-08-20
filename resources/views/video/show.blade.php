@@ -26,11 +26,13 @@
     </section>
     <!--end breadcrumbs-->
     <!-- full width Video -->
-    <section class="fullwidth-single-video">
+    <section class="fullwidth-single-video"
+             style="background-image:url({{ $video->video_cover_location }})">
         <div class="row">
             <div class="large-12 columns">
                 <div class="flex-video widescreen">
-                    <iframe width="420" height="315" src="https://www.youtube.com/embed/aiBt44rrslw" allowfullscreen></iframe>
+                    {{--<iframe width="420" height="315" src="https://www.youtube.com/embed/aiBt44rrslw" allowfullscreen></iframe>--}}
+                    {!! getVideoPlayer($video) !!}
                 </div>
             </div>
         </div>
@@ -50,7 +52,8 @@
                                 <div class="post-title">
                                     <h4>{{ $video->video_title }}</h4>
                                     <p>
-                                        <span><i class="fa fa-clock-o"></i>5 January 16</span>
+                                        <span><i class="fa fa-clock-o"></i>{{ date('j F y',
+                                        strtotime($video->created_at)) }}</span>
                                         <span><i class="fa fa-eye"></i>1,862K</span>
                                         <span><i class="fa fa-thumbs-o-up"></i>1,862</span>
                                     </p>
@@ -110,18 +113,12 @@
                         <h5>Description</h5>
                     </div>
                     <div class="description showmore_one">
-                        <p>{{ $video->video_desc }}/p>
-                        <div class="categories">
-                            <button><i class="fa fa-folder"></i>Categories</button>
-                            <a href="#" class="inner-btn">entertainment</a>
-                            <a href="#" class="inner-btn">comedy</a>
-                        </div>
+                        <p> {{ $video->video_desc }} </p>
                         <div class="tags">
                             <button><i class="fa fa-tags"></i>Tags</button>
-                            <a href="#" class="inner-btn">3D Videos</a>
-                            <a href="#" class="inner-btn">Videos</a>
-                            <a href="#" class="inner-btn">HD</a>
-                            <a href="#" class="inner-btn">Movies</a>
+                            @foreach($tags as $tag)
+                                <a href="#" class="inner-btn">{{ $tag }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

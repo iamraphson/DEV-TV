@@ -6,9 +6,6 @@
  * Time: 14:59
  */
 
-/*
- * Build nestable category for admin
- */
 function buildMenu($menu, $parentid = 0){
     $result = null;
     foreach ($menu as $item)
@@ -54,5 +51,14 @@ function getVideoDuration($duration){
 
 
     return implode(':', $duration_arr);
+}
+
+function getVideoPlayer($videoInfo){
+    if($videoInfo->video_type == 'embed'){
+        echo $videoInfo->video_source;
+    } else {
+        echo "<video src=\"$videoInfo->video_source\" poster=\"" . asset($videoInfo->video_cover_location) . "\"
+                width=\"420\" height=\"315\"></video>";
+    }
 }
 ?>

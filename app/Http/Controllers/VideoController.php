@@ -216,6 +216,6 @@ class VideoController extends Controller{
 
     public function showVideo(Request $request, $id){
         $video = Video::find($id);
-        return view('video.show')->with('video', $video);
+        return view('video.show')->with('video', $video)->withTags(explode(',', $video->video_tags));
     }
 }
