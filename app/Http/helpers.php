@@ -58,7 +58,7 @@ function getVideoPlayer($videoInfo){
         echo $videoInfo->video_source;
     } else {
         echo "<video src=\"$videoInfo->video_source\" poster=\"" . asset($videoInfo->video_cover_location) . "\"
-                width=\"420\" height=\"315\"></video>";
+                width=\"1170\" height=\"501\" controls=\"controls\" preload=\"none\"></video>";
     }
 }
 ?>

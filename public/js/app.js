@@ -211,4 +211,8 @@ jQuery(document).ready(function(jQuery){
         e.preventDefault();
     });
 
+    jQuery('video,audio').mediaelementplayer({
+        features: ['playpause','progress','current','duration','tracks','volume','fullscreen'],
+    });
+
 });
