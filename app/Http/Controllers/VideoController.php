@@ -215,7 +215,13 @@ class VideoController extends Controller{
     }
 
     public function showVideo(Request $request, $id){
+        $loggedInUser = Auth::user()->id
         $video = Video::find($id);
+        $video->users()->attach($loggedInUser, ['operation_type']);
+        //print_r($video->users());
+        $video->video_views = intval($video->video_views + 1);
+
+        $video->save();
         return view('video.show')->with('video', $video)->withTags(explode(',', $video->video_tags));
     }
 }

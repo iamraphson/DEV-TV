@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable{
 
     /**
      * The table associated with the model.
@@ -74,4 +73,13 @@ class User extends Authenticatable
     public function subscriptions(){
         return $this->hasMany('App\Subscription', 'user_id');
     }
+
+    /**
+     * The videos that belong to the user.
+     */
+    public function seenVideos(){
+        return $this->belongsToMany('App\Video', 'user_video_tbl', 'user_id', 'video_id')
+            ->withPivot('operation_type');
+    }
 }
+

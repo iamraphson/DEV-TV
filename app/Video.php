@@ -22,4 +22,9 @@ class Video extends Model{
     public function user(){
         return $this->belongsTo('App\User', 'created_by');
     }
+
+    public function users(){
+        return $this->belongsToMany('App\User','user_video_tbl', 'user_id', 'video_id')
+            ->withPivot('operation_type');
+    }
 }
