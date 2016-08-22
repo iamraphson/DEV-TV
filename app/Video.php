@@ -24,7 +24,7 @@ class Video extends Model{
     }
 
     public function users(){
-        return $this->belongsToMany('App\User','user_video_tbl', 'user_id', 'video_id')
+        return $this->belongsToMany('App\User','user_video_tbl', 'video_id', 'user_id')
             ->withPivot('operation_type');
     }
 }

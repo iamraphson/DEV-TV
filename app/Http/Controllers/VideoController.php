@@ -11,6 +11,7 @@ use Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Auth;
+use Config;
 
 class VideoController extends Controller{
 
@@ -215,13 +216,18 @@ class VideoController extends Controller{
     }
 
     public function showVideo(Request $request, $id){
-        $loggedInUser = Auth::user()->id
         $video = Video::find($id);
-        $video->users()->attach($loggedInUser, ['operation_type']);
-        //print_r($video->users());
-        $video->video_views = intval($video->video_views + 1);
-
-        $video->save();
+        if (Auth::check()) {
+            $loggedInUser = Auth::user()->id;
+            $VIEW_VIDEO = Config::get('constants.VIEW_VIDEO');
+            $exists = $video->users()->where('user_id','=', $loggedInUser)
+                ->where('video_id','=', $id)->where('operation_type','=', $VIEW_VIDEO)->count();
+            if($exists < 1){
+                $video->users()->attach($loggedInUser, ['operation_type' => $VIEW_VIDEO]);
+                $video->video_views = intval($video->video_views + 1);
+                $video->save();
+            }
+        }
         return view('video.show')->with('video', $video)->withTags(explode(',', $video->video_tags));
     }
 }
