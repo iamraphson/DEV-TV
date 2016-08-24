@@ -61,7 +61,8 @@
                                     </p>
                                 </div>
                                 <div class="subscribe">
-                                    <a class="favorite " href="javascript:void(0)"
+                                    <a class="favorite @if($video->isFavourite){{ 'active' }}@endif"
+                                       href="javascript:void(0)"
                                        data-authenticated=
                                        "@if(Auth::check()){{Auth::user()->id}}@endif"
                                        data-videoid="{{ $video->video_id }}">
@@ -116,7 +117,7 @@
                         <h5>Description</h5>
                     </div>
                     <div class="description showmore_one">
-                        <p> {{ $video->video_desc }} </p>
+                        <p> {!! $video->video_details !!}  </p>
                         <div class="tags">
                             <button><i class="fa fa-tags"></i>Tags</button>
                             @foreach($tags as $tag)
