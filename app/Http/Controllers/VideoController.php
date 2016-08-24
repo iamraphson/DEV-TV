@@ -231,7 +231,7 @@ class VideoController extends Controller{
                 $video->save();
             }
             $video->isFavourite = $video->users()->where('user_id','=', $loggedInUser)
-                ->where('video_id','=', $id)->where('operation_type','=', $FAVORITE_VIDEO)->count() < 1;
+                ->where('video_id','=', $id)->where('operation_type','=', $FAVORITE_VIDEO)->count() > 0;
         }
         return view('video.show')->with('video', $video)->withTags(explode(',', $video->video_tags));
     }
@@ -252,7 +252,7 @@ class VideoController extends Controller{
                 $video->video_favorites = intval($video->video_favorites - 1);
             }
             $video->save();
-            return response()->json(['message' => 'done']);
+            return response()->json(['message' => 'done', "favorite" => $video->video_favorites]);
         }
     }
 }

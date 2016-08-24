@@ -219,6 +219,7 @@ jQuery(document).ready(function(jQuery){
         if(jQuery(this).data('authenticated')){
             jQuery.get('/video/' + jQuery(this).data('videoid') + '/favorite', function(data){
                 console.log(data);
+                jQuery('#favoritescount').html(data.favorite);
             });
             jQuery(this).toggleClass('active');
         } else {

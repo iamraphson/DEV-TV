@@ -57,7 +57,9 @@
                                         <span><i class="fa fa-eye"></i>
                                             {{ $video->video_views }} views
                                         </span>
-                                        <span><i class="fa fa-heart"></i>1,862</span>
+                                        <span><i class="fa fa-heart"></i>
+                                            <span id="favoritescount">{{ $video->video_favorites }}</span>
+                                        </span>
                                     </p>
                                 </div>
                                 <div class="subscribe">
