@@ -2322,18 +2322,26 @@ margin: 0; }
   .SinglePostStats .media-object .author-des .subscribe {
     float: right;
     display: inline; }
-    .SinglePostStats .media-object .author-des .subscribe button {
+    .SinglePostStats .media-object .author-des .subscribe a {
       padding: 12px 15px;
       background: #f6f6f6;
       font-size: 13px;
       color: #6c6c6c;
       text-transform: uppercase;
       border: 1px solid #ececec;
-      border-radius: 4px; }
-      .SinglePostStats .media-object .author-des .subscribe button:hover {
+      border-radius: 4px;
+    }
+      .SinglePostStats .media-object .author-des .subscribe a:hover {
         background: #e96969;
         border-color: #e96969;
-        color: #fff; }
+        color: #fff;
+      }
+  .SinglePostStats .media-object .author-des .subscribe a.active {
+    background: #e96969;
+    border-color: #e96969;
+    color: #fff;
+  }
+
 .SinglePostStats .media-object .social-share {
   padding: 6px 0; }
   .SinglePostStats .media-object .social-share .post-like-btn {

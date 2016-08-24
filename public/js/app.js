@@ -215,4 +215,15 @@ jQuery(document).ready(function(jQuery){
         features: ['playpause','progress','current','duration','tracks','volume','fullscreen'],
     });
 
+    jQuery('.favorite').click(function(){
+        if(jQuery(this).data('authenticated')){
+            jQuery.get('/video/' + jQuery(this).data('videoid') + '/favorite', function(data){
+                console.log(data);
+            });
+            jQuery(this).toggleClass('active');
+        } else {
+            window.location = "/login";
+        }
+    });
+
 });

@@ -54,15 +54,18 @@
                                     <p>
                                         <span><i class="fa fa-clock-o"></i>{{ date('j F y',
                                         strtotime($video->created_at)) }}</span>
-                                        <span><i class="fa fa-eye"></i>1,862K</span>
-                                        <span><i class="fa fa-thumbs-o-up"></i>1,862</span>
+                                        <span><i class="fa fa-eye"></i>
+                                            {{ $video->video_views }} views
+                                        </span>
+                                        <span><i class="fa fa-heart"></i>1,862</span>
                                     </p>
                                 </div>
                                 <div class="subscribe">
-                                    <form method="post">
-                                        <button type="submit" name="subscribe">
-                                            <i class="fa fa-heart"></i> Favorite</button>
-                                    </form>
+                                    <a class="favorite " href="javascript:void(0)"
+                                       data-authenticated=
+                                       "@if(Auth::check()){{Auth::user()->id}}@endif"
+                                       data-videoid="{{ $video->video_id }}">
+                                        <i class="fa fa-heart"></i> Favorite</a>
                                 </div>
                             </div>
                             <div class="social-share">

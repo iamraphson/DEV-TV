@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Auth;
 use Config;
+use DB;
 
 class VideoController extends Controller{
 
@@ -229,5 +230,27 @@ class VideoController extends Controller{
             }
         }
         return view('video.show')->with('video', $video)->withTags(explode(',', $video->video_tags));
+    }
+
+    public function favoriteVideo($id){
+        $video = Video::find($id);
+        if (Auth::check()) {
+            $loggedInUser = Auth::user()->id;
+            $FAVORITE_VIDEO = Config::get('constants.FAVORITE_VIDEO');
+            $exists = $video->users()->where('user_id','=', $loggedInUser)
+                ->where('video_id','=', $id)->where('operation_type','=', $FAVORITE_VIDEO)->count();
+            if($exists < 1){
+                $video->users()->attach($loggedInUser, ['operation_type' => $FAVORITE_VIDEO]);
+                $video->video_favorites = intval($video->video_favorites + 1);
+            } else {
+                DB::delete("DELETE FROM `user_video_tbl` " .
+                    "WHERE user_id = ? AND circle_id = ? AND operation_type = ? LIMIT 1",
+                    [$loggedInUser, $id, $FAVORITE_VIDEO]);
+                $video->video_favorites = intval($video->video_favorites - 1);
+            }
+
+            $video->save();
+            return response()->json(['message' => 'done', 'res' => $exists]);
+        }
     }
 }
