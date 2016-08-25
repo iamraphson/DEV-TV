@@ -20516,7 +20516,9 @@ html {
     background: #fff;
     border: 1px solid #d8e2e7;
     -webkit-border-radius: .25rem;
-    border-radius: .25rem
+    border-radius: .25rem;
+    min-height: 327px;
+    max-height: 327px;
 }
 .card-typical p {
     margin: 0
@@ -20550,7 +20552,7 @@ html {
 .card-typical .card-typical-content .title {
     font-weight: 600;
     font-size: 1rem;
-    margin: 0 0 5px
+    margin: 0 0 5px;
 }
 .card-typical .card-typical-content .title a:hover {
     color: #00a8ff

@@ -26,15 +26,15 @@ class HomeController extends Controller{
         $featuredVideo = $this->getFeaturedVideos();
         $categories = $this->getCategories();
         $count = $this->getTotalVideos();
-        $video = $this->getRecentVideosWithLimit(6);
+        $video = $this->getRecentWithPagination();
         $tags = $this->getTags();
 
         return view('welcome')->with('featured', $featuredVideo)->withCategory($categories)->withCount($count)
-            ->withVideos($video)->with('videos_side', $this->videoSide)->with('tags', $tags);
+            ->withVideos($video);
     }
 
     public function getAllVideo($queryType){
-        $tags = $this->getTags();
+        /*$tags = $this->getTags();
         $recent = $this->getRecentWithPagination();
 
         if(strtolower($queryType) == 'all'){
@@ -42,7 +42,7 @@ class HomeController extends Controller{
                 ->with('videos', $recent)->with('videos_side', $this->videoSide);
         } else if(strtolower($queryType) == 'featured') {
             //to be done l8r
-        }
+        }*/
     }
 
     private function getTotalVideos(){

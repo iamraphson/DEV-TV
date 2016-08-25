@@ -19,9 +19,6 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HomeController@index',
     ]);
 
-    Route::get('/videos/{queryType}', [
-        'uses' => 'HomeController@getAllVideo',
-    ]);
 
     Route::get('/video/{id}', [
         'uses' => 'VideoController@showVideo',

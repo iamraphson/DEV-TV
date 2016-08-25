@@ -61,4 +61,11 @@ function getVideoPlayer($videoInfo){
                 width=\"1170\" height=\"501\" controls=\"controls\" preload=\"none\"></video>";
     }
 }
+function kilomega( $val ) {
+    if( $val < 1000 ) return $val;
+    $val = (int)($val/1000);
+    if( $val < 1000 ) return "${val}k";
+    $val = (int)($val/1000);
+    return "${val}m";
+}
 ?>

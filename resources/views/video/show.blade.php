@@ -31,7 +31,6 @@
         <div class="row">
             <div class="large-12 columns">
                 <div class="flex-video widescreen">
-                    {{--<iframe width="420" height="315" src="https://www.youtube.com/embed/aiBt44rrslw" allowfullscreen></iframe>--}}
                     {!! getVideoPlayer($video) !!}
                 </div>
             </div>
@@ -55,10 +54,10 @@
                                         <span><i class="fa fa-clock-o"></i>{{ date('j F y',
                                         strtotime($video->created_at)) }}</span>
                                         <span><i class="fa fa-eye"></i>
-                                            {{ $video->video_views }} views
+                                            {!! kilomega($video->video_views) !!} views
                                         </span>
                                         <span><i class="fa fa-heart"></i>
-                                            <span id="favoritescount">{{ $video->video_favorites }}</span>
+                                            <span id="favoritescount">{!! kilomega($video->video_favorites) !!}</span>
                                         </span>
                                     </p>
                                 </div>

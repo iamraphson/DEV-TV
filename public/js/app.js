@@ -219,7 +219,7 @@ jQuery(document).ready(function(jQuery){
         if(jQuery(this).data('authenticated')){
             jQuery.get('/video/' + jQuery(this).data('videoid') + '/favorite', function(data){
                 console.log(data);
-                jQuery('#favoritescount').html(data.favorite);
+                jQuery('#favoritescount').html(kiloMega(data.favorite));
             });
             jQuery(this).toggleClass('active');
         } else {
@@ -228,3 +228,11 @@ jQuery(document).ready(function(jQuery){
     });
 
 });
+
+function kiloMega(val){
+    if(val < 1000) return val;
+    val = parseInt(val / 1000);
+    if(val < 1000) return val + "k";
+    val = parseInt(val / 1000);
+    return val + "m";
+}

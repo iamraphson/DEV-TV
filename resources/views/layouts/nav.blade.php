@@ -59,9 +59,7 @@
         <!-- Top -->
         <section id="top" class="topBar show-for-large">
             <div class="row">
-                <div class="medium-6 columns">
-                </div>
-                <div class="medium-6 columns">
+                <div class="medium-12 columns">
                     <div class="top-button">
                         <ul class="menu float-right">
                             @if(Auth::check())
