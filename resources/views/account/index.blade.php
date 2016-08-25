@@ -58,36 +58,45 @@
                                 <i class="fa fa-video-camera"></i>
                                 <h4>My Favorites</h4>
                             </div>
-                            <div class="profile-video">
-                                <div class="media-object stack-for-small">
-                                    <div class="media-object-section media-img-content">
-                                        <div class="video-img">
-                                            <img src="images/video-thumbnail/4.jpg" alt="video thumbnail">
-                                        </div>
-                                    </div>
-                                    <div class="media-object-section media-video-content">
-                                        <div class="video-content">
-                                            <h5><a href="#">There are many variations of passage.</a></h5>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore .</p>
-                                        </div>
-                                        <div class="video-detail clearfix">
-                                            <div class="video-stats">
-                                                <span><i class="fa fa-check-square-o"></i>published</span>
-                                                <span><i class="fa fa-clock-o"></i>5 January 16</span>
-                                                <span><i class="fa fa-eye"></i>1,862K</span>
-                                            </div>
-                                            <div class="video-btns">
-                                                <form method="post">
-                                                    <button type="submit" name="unfav"><i class="fa fa-heart-o"></i>Unfavorite</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                            @if($favorites->isEmpty())
+                                <div data-abide-error="" class="alert callout" style="display: block;">
+                                    <p><i class="fa fa-exclamation-triangle"></i> No Videos Yet</p>
                                 </div>
-                            </div>
-                            <div class="show-more-inner text-center">
-                                <a href="#" class="show-more-btn">show more</a>
-                            </div>
+                            @else
+                                @foreach($favorites as $favorite)
+                                    <div class="profile-video">
+                                        <div class="media-object stack-for-small">
+                                            <div class="media-object-section media-img-content"
+                                                 style="display: table-cell;">
+                                                <div class="video-img">
+                                                    <img src="{{ URL::asset($favorite->video_cover_location) }}"
+                                                         alt="{{ $favorite->video_title }}" />
+                                                </div>
+                                            </div>
+                                            <div class="media-object-section media-video-content"
+                                                 style="display: table-cell;">
+                                                <div class="video-content">
+                                                    <h5>
+                                                        <a href="{{ url('/video/' . $favorite->video_id) }}">
+                                                            {{ str_limit($favorite->video_title, 100) }}</a>
+                                                    </h5>
+                                                    <p>{{ str_limit($favorite->video_desc, 200) }}</p>
+                                                </div>
+                                                <div class="video-detail clearfix">
+                                                    <div class="video-stats">
+                                                        <span><i class="fa fa-clock-o"></i>{{ date('j F y', strtotime($favorite->created_at)) }}</span>
+                                                        <span><i class="fa fa-eye"></i>{!! kilomega($favorite->video_views) !!}</span>
+                                                    </div>
+                                                    <div class="video-btns">
+                                                        <a class="favorite active" href="javascript:void(0)">
+                                                            <i class="fa fa-heart"></i> Favorite</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                 </section><!-- End single post description -->

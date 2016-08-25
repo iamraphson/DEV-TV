@@ -19,7 +19,7 @@
                     <div class="widgetContent">
                         <ul class="profile-overview">
                             <li class="clearfix">
-                                <a href="{{ route('account.user') }}"><i class="fa fa-user"></i>My Account</a>
+                                <a href="{{ route('account.user') }}"><i class="fa fa-user"></i>My Favorites</a>
                             </li>
                             <li class="clearfix">
                                 <a href="{{ route('account.edit') }}"><i class="fa fa-gears"></i>Profile Setting</a>
@@ -29,10 +29,6 @@
                                     <a href="{{ route('subscribe.user') }}"><i class="fa fa-money"></i>Subscribe</a>
                                 </li>
                             @endif
-                            <li class="clearfix">
-                                <a href=""><i class="fa fa-video-camera"></i>Videos
-                                    <span class="float-right">36</span></a>
-                            </li>
                             <li class="clearfix">
                                 <a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i>Logout</a>
                             </li>

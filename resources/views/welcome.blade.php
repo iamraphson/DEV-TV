@@ -90,7 +90,8 @@
                                                         <div class="post-thumb">
                                                             <img src="{{ URL::asset($video->video_cover_location) }}"
                                                                 alt="{{ $video->video_title }}" />
-                                                            <a href="{{ url('/video/' . $video->video_id) }}" class="hover-posts">
+                                                            <a href="{{ url('/video/' . $video->video_id) }}"
+                                                               class="hover-posts">
                                                                 <span><i class="fa fa-play"></i>Watch Video</span>
                                                             </a>
                                                             <div class="video-stats clearfix">

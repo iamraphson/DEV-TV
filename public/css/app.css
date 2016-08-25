@@ -4192,3 +4192,29 @@ table.hover tr:nth-of-type(even):hover {
 .description {
   margin-bottom: 25px;
 }
+
+#subscribers_only {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  min-height: 420px;
+  padding-top: 100px;
+}
+#subscribers_only h2 {
+  color: #eee;
+  border-bottom: 0px;
+  text-align: center;
+  padding-bottom: 30px;
+  border-bottom: 0px solid #5A626D;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+#subscribers_only button {
+  padding: 25px 40px;
+  font-size: 20px;
+  border-radius: 50px;
+  border: 0px;
+  background: #444;
+  color: #fff;
+  outline: none;
+}

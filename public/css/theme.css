@@ -2322,7 +2322,7 @@ margin: 0; }
   .SinglePostStats .media-object .author-des .subscribe {
     float: right;
     display: inline; }
-    .SinglePostStats .media-object .author-des .subscribe a {
+    .SinglePostStats .media-object .author-des .subscribe a, .video-btns a {
       padding: 12px 15px;
       background: #f6f6f6;
       font-size: 13px;
@@ -2331,12 +2331,12 @@ margin: 0; }
       border: 1px solid #ececec;
       border-radius: 4px;
     }
-      .SinglePostStats .media-object .author-des .subscribe a:hover {
+      .SinglePostStats .media-object .author-des .subscribe a:hover, .video-btns a:hover {
         background: #e96969;
         border-color: #e96969;
         color: #fff;
       }
-  .SinglePostStats .media-object .author-des .subscribe a.active {
+  .SinglePostStats .media-object .author-des .subscribe a.active, .video-btns a.active {
     background: #e96969;
     border-color: #e96969;
     color: #fff;

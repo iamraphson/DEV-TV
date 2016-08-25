@@ -31,7 +31,22 @@
         <div class="row">
             <div class="large-12 columns">
                 <div class="flex-video widescreen">
-                    {!! getVideoPlayer($video) !!}
+                    @if($video->video_access == "guest")
+                        {!! getVideoPlayer($video) !!}
+                    @elseif($video->video_access == "registered" and Auth::check())
+                        {!! getVideoPlayer($video) !!}
+                    @elseif($video->video_access == "subscriber" and Auth::check())
+                        {!! getVideoPlayer($video) !!}
+                    @else
+                        <div id="subscribers_only">
+                            <h2>Sorry, this video is only available to Subscribers</h2>
+                            <div class="clear"></div>
+                            <form method="get" action="/register">
+                                <button id="button">Signup Now to Become a Subscriber</button>
+                            </form>
+                        </div>
+                    @endif
+                    {{--{!! getVideoPlayer($video) !!}--}}
                 </div>
             </div>
         </div>
@@ -407,8 +422,4 @@
         </aside>
     </div><!-- end sidebar -->
 </div>
-
-
-
-
 @endsection

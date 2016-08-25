@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Config;
 use App\Http\Requests;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
@@ -18,7 +19,8 @@ class AccountController extends Controller{
     }
 
     public function index(){
-        return view('account.index')->with('profile', $this->authUser);
+        return view('account.index')->with('profile', $this->authUser)
+            ->withFavorites($this->getUserFavourites());
     }
 
     public function edit(){
@@ -208,5 +210,10 @@ class AccountController extends Controller{
         $filename = $featuredImage->getClientOriginalName();
         $featuredImage->move($destinationPath, $filename);
         return $uploadPath . $filename;
+    }
+
+    private function getUserFavourites(){
+        $FAVORITE_VIDEO = Config::get('constants.FAVORITE_VIDEO');
+        return $this->authUser->seenVideos()->where('operation_type','=', $FAVORITE_VIDEO)->get();
     }
 }
