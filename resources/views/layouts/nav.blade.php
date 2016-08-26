@@ -116,16 +116,6 @@
                                         <li>
                                             <a href="categories.html"><i class="fa fa-th"></i>category</a>
                                             {!! getFrontEndCategories() !!}
-                                            {{--<ul class="submenu menu vertical"
-                                                data-submenu data-animate="slide-in-down slide-out-up">
-                                                <li><a href="404.html"><i class="fa fa-magic"></i>404 Page</a></li>
-                                                <li>
-                                                    <a href="#"><i class="fa fa-magic"></i>profile</a>
-                                                    <ul class="submenu menu vertical" data-submenu data-animate="slide-in-down slide-out-up">
-                                                        <li><a href="profile-page-v1.html"><i class="fa fa-magic"></i>profile v1</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>--}}
                                         </li>
                                         <li>
                                             <a href="#"><i class="fa fa-magic"></i>Account</a>

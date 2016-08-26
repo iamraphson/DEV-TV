@@ -77,7 +77,9 @@ function buildFrontendTopMenu($menu, $parentid = 0){
     $result = null;
     foreach ($menu as $item)
         if ($item->parent_id == $parentid) {
-            $result .= "<li><a href=\"#\"><i class=\"fa fa-magic\"></i>" . $item->category_name . "</a>";
+            $result .= "<li><a href=\"" .
+                url('/video/category/' . $item->category_slug) .
+                "\"><i class=\"fa fa-magic\"></i>" . $item->category_name . "</a>";
             $result .= buildFrontendTopMenu($menu, $item->cat_id) . "</li>";
         }
 

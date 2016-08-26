@@ -28,6 +28,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'VideoController@favoriteVideo',
     ]);
 
+    Route::get('/video/{operation}/{value}', [
+        'uses' => 'VideoController@getOperationVideo',
+    ]);
+
     Route::get('/register', [
         'uses' => 'Auth\AuthController@getRegister',
         'as' => 'auth.register',

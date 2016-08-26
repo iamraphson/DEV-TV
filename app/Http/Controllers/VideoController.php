@@ -16,6 +16,12 @@ use DB;
 
 class VideoController extends Controller{
 
+    protected $paginationCount = null;
+
+    public function  __construct(){
+        $this->paginationCount = 6;
+    }
+
     public function create(){
         $items 	= Category::get(array('category_name', 'cat_id'));
         return view('admin.video.new')->withTitle('DevTv - Add New Video')->withCategories($items);
@@ -217,7 +223,7 @@ class VideoController extends Controller{
     }
 
     public function showVideo(Request $request, $id){
-        $video = Video::find($id);
+        $video = Video::find($id)->orderBy('created_at', 'desc');
         if (Auth::check()) {
             $loggedInUser = Auth::user()->id;
             $VIEW_VIDEO = Config::get('constants.VIEW_VIDEO');
@@ -254,6 +260,24 @@ class VideoController extends Controller{
             }
             $video->save();
             return response()->json(['message' => 'done', "favorite" => $video->video_favorites]);
+        }
+    }
+
+    public function getOperationVideo($operation, $value){
+        if($operation == "category"){
+            $videos = DB::table('videos_tbl')
+                ->join('Categories_tbl', 'videos_tbl.video_category', '=', 'Categories_tbl.cat_id')
+                ->where("category_slug", '=', $value)
+                ->paginate($this->paginationCount);
+
+            if($videos->isEmpty()) {
+                $category = Category::where("category_slug", "=", $value)->limit(1)->get();
+                $title = "Videos - " .$category[0]->category_name;
+            } else
+                $title = "Videos - " . $videos[0]->category_name;
+
+            return view('video.operations')->withVideos($videos)
+                ->with("operationTitle", $title);
         }
     }
 
