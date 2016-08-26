@@ -114,6 +114,20 @@
                                     <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
                                         <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>Home</a></li>
                                         <li>
+                                            <a href="categories.html"><i class="fa fa-th"></i>category</a>
+                                            {!! getFrontEndCategories() !!}
+                                            {{--<ul class="submenu menu vertical"
+                                                data-submenu data-animate="slide-in-down slide-out-up">
+                                                <li><a href="404.html"><i class="fa fa-magic"></i>404 Page</a></li>
+                                                <li>
+                                                    <a href="#"><i class="fa fa-magic"></i>profile</a>
+                                                    <ul class="submenu menu vertical" data-submenu data-animate="slide-in-down slide-out-up">
+                                                        <li><a href="profile-page-v1.html"><i class="fa fa-magic"></i>profile v1</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>--}}
+                                        </li>
+                                        <li>
                                             <a href="#"><i class="fa fa-magic"></i>Account</a>
                                             <ul class="submenu menu vertical" data-submenu data-animate="slide-in-down slide-out-up">
                                                 <li><a href="{{ route('account.user') }}">
@@ -122,7 +136,6 @@
                                                 <li><a href="{{ route('account.edit') }}"><i class="fa fa-magic"></i>My Account Setting</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="categories.html"><i class="fa fa-th"></i>category</a></li>
                                         <li>
                                             <a href="blog.html"><i class="fa fa-edit"></i>blog</a>
                                             <ul class="submenu menu vertical" data-submenu data-animate="slide-in-down slide-out-up">

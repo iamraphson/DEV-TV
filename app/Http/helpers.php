@@ -68,4 +68,20 @@ function kilomega( $val ) {
     $val = (int)($val/1000);
     return "${val}m";
 }
+
+function getFrontEndCategories(){
+    return buildFrontendTopMenu(\App\Category::orderBy('display_order')->get());
+}
+
+function buildFrontendTopMenu($menu, $parentid = 0){
+    $result = null;
+    foreach ($menu as $item)
+        if ($item->parent_id == $parentid) {
+            $result .= "<li><a href=\"#\"><i class=\"fa fa-magic\"></i>" . $item->category_name . "</a>";
+            $result .= buildFrontendTopMenu($menu, $item->cat_id) . "</li>";
+        }
+
+    return $result ?  "\n<ul class=\"submenu menu vertical\" data-submenu data-animate=\"slide-in-down slide-out-up\">\n$result</ul>\n" : null;
+}
+
 ?>
