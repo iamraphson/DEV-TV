@@ -238,7 +238,7 @@
                         </div>
                         <div class="tagcloud">
                             @foreach($systemTags as $systemTag)
-                                <a href="#">{{ $systemTag }}</a>
+                                <a href="{{ url('/video/tag/' . $systemTag) }}">{{ $systemTag }}</a>
                             @endforeach
                         </div>
                     </div>

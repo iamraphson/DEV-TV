@@ -19,6 +19,8 @@ addons:
     - mysql-client-5.6
 
 before_install:
+  - composer self-update
+  - composer install --dev --prefer-source --no-interaction
   - mysql -u root -e 'create database DevTv_DB;'
 
 before_script:
@@ -27,9 +29,10 @@ before_script:
 
 script:
   - mkdir -p build/logs
+  - composer install --dev --prefer-source --no-interaction
+  - php artisan migrate
+  - php artisan db:seed
   - vendor/bin/phpunit
-  - phpunit --coverage-text --coverage-clover=coverage.clover
-  - phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar

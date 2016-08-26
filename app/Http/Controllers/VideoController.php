@@ -223,7 +223,7 @@ class VideoController extends Controller{
     }
 
     public function showVideo(Request $request, $id){
-        $video = Video::find($id)->orderBy('created_at', 'desc');
+        $video = Video::find($id);
         if (Auth::check()) {
             $loggedInUser = Auth::user()->id;
             $VIEW_VIDEO = Config::get('constants.VIEW_VIDEO');
@@ -278,6 +278,11 @@ class VideoController extends Controller{
 
             return view('video.operations')->withVideos($videos)
                 ->with("operationTitle", $title);
+        } else if($operation == "tag"){
+            $videos = DB::table('videos_tbl')->where('video_tags','LIKE',"%{$value}%")
+                ->paginate($this->paginationCount);
+            return view('video.operations')->withVideos($videos)
+                ->with("operationTitle", "Videos tagged with \"{$value}\"");
         }
     }
 
