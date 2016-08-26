@@ -27,7 +27,6 @@ class HomeController extends Controller{
         $categories = $this->getCategories();
         $count = $this->getTotalVideos();
         $video = $this->getRecentWithPagination();
-        $tags = $this->getTags();
 
         return view('welcome')->with('featured', $featuredVideo)->withCategory($categories)->withCount($count)
             ->withVideos($video);
@@ -49,16 +48,6 @@ class HomeController extends Controller{
         return Video::count();
     }
 
-    private function getTags(){
-        $tags = [];
-        $items 	= Video::get(['video_tags']);
-        foreach($items as $item){
-            array_push($tags, $item->video_tags);
-        }
-        $tagsString = implode(',', $tags);
-        return array_unique(explode(',', $tagsString));
-    }
-
     private function getRecentWithPagination(){
         return $this->getRecent()->paginate($this->paginationCount);
     }
@@ -66,6 +55,7 @@ class HomeController extends Controller{
     private function getRecent(){
         return Video::orderBy('created_at', 'desc');
     }
+
     private function getRecentVideosWithLimit(int $limit){
         return $this->getRecent()->limit($limit)->get();
     }

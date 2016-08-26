@@ -232,7 +232,9 @@ class VideoController extends Controller{
             $video->isFavourite = $video->users()->where('user_id','=', $loggedInUser)
                 ->where('video_id','=', $id)->where('operation_type','=', $FAVORITE_VIDEO)->count() > 0;
         }
-        return view('video.show')->with('video', $video)->withTags(explode(',', $video->video_tags));
+        return view('video.show')->with('video', $video)->withTags(explode(',', $video->video_tags))
+            ->with("systemTags", self::getTags())->with("mostViewVideos", self::getMostViewVideo())
+            ->with("mostRecentVideos", self::getRecentVideos());
     }
 
     public function favoriteVideo($id){
@@ -253,5 +255,23 @@ class VideoController extends Controller{
             $video->save();
             return response()->json(['message' => 'done', "favorite" => $video->video_favorites]);
         }
+    }
+
+    private function getTags(){
+        $tags = [];
+        $items 	= Video::get(['video_tags']);
+        foreach($items as $item){
+            array_push($tags, $item->video_tags);
+        }
+        $tagsString = implode(',', $tags);
+        return array_unique(explode(',', $tagsString));
+    }
+
+    private function getMostViewVideo(int $limit = 2){
+        return Video::orderBy('video_views', 'desc')->limit($limit)->get();
+    }
+
+    private function getRecentVideos(int $limit = 3){
+        return Video::orderBy('created_at', 'desc')->limit($limit)->get();
     }
 }
