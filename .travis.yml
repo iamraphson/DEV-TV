@@ -30,7 +30,7 @@ before_script:
 script:
   - mkdir -p build/logs
   - composer install --dev --prefer-source --no-interaction
-  - php artisan migrate
+  - php artisan migrate --force
   - php artisan db:seed
   - vendor/bin/phpunit
 
