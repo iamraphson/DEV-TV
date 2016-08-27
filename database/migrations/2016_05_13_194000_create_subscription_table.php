@@ -14,7 +14,6 @@ class CreateSubscriptionTable extends Migration
         Schema::create("subscription_tbl", function (Blueprint $table) {
             $table->increments('subscription_id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users_tbl')->onDelete('cascade');
             $table->string('payment_desc')->nullable();
             $table->string('comment')->nullable();
             $table->string('payment_method')->default('stripe')->nullable();
@@ -27,6 +26,8 @@ class CreateSubscriptionTable extends Migration
             $table->timestamp('end_time')->nullable();
             $table->string('doneby')->default('system');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users_tbl')->onDelete('cascade');
         });
     }
 

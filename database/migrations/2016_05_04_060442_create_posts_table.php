@@ -22,10 +22,10 @@ class CreatePostsTable extends Migration
             $table->string('post_access', 20)->nullable();
             $table->string('active', 2)->nullable();
             $table->integer('created_by')->unsigned();
-            $table->foreign('created_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('edited_by')->unsigned();
-            $table->foreign('edited_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('edited_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

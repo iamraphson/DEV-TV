@@ -11,9 +11,9 @@ class EditSql extends Migration
      * @return void
      */
     public function up(){
-        Schema::table('videos_tbl', function ($table) {
+        /*Schema::table('videos_tbl', function ($table) {
             $table->foreign('video_category')->references('cat_id')->on('Categories_tbl')->onUpdate('cascade')->onDelete('cascade');
-        });
+        });*/
     }
 
     /**

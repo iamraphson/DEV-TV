@@ -18,10 +18,10 @@ class CreateCategoriesTable extends Migration
             $table->integer('parent_id')->unsigned();
             $table->integer('display_order')->unsigned();
             $table->integer('created_by')->unsigned();
-            $table->foreign('created_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('edited_by')->unsigned();
-            $table->foreign('edited_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('created_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('edited_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

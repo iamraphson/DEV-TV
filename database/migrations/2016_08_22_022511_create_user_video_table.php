@@ -13,10 +13,10 @@ class  CreateUserVideoTable extends Migration
     public function up(){
         Schema::create('user_video_tbl', function(Blueprint $table){
             $table->integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users_tbl')->onDelete('cascade');
             $table->integer('video_id')->unsigned()->index();
-            $table->foreign('video_id')->references('video_id')->on('videos_tbl')->onDelete('cascade');
             $table->string('operation_type', 10)->nullable();
+            $table->foreign('user_id')->references('id')->on('users_tbl')->onDelete('cascade');
+            $table->foreign('video_id')->references('video_id')->on('videos_tbl')->onDelete('cascade');
         });
     }
 

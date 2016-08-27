@@ -19,10 +19,10 @@ class CreatePostCategoryTable extends Migration
             $table->integer('pc_parent_id')->unsigned();
             $table->integer('pc_display_order')->unsigned();
             $table->integer('pc_created_by')->unsigned();
-            $table->foreign('pc_created_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('pc_edited_by')->unsigned();
-            $table->foreign('pc_edited_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('pc_created_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('pc_edited_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

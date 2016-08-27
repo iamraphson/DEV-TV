@@ -17,7 +17,6 @@ class CreateVideosTable extends Migration{
             $table->text('video_details')->nullable();
             $table->string('video_desc')->nullable();
             $table->integer('video_category')->unsigned();
-            $table->foreign('video_category')->references('cat_id')->on('Categories_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->string('video_tags')->nullable();
             $table->string('video_duration', 10)->nullable();
             $table->string('video_access', 20)->nullable();
@@ -27,6 +26,7 @@ class CreateVideosTable extends Migration{
             $table->string('active', 2)->nullable();
             $table->timestamps();
             $table->integer('created_by')->unsigned();
+            $table->foreign('video_category')->references('cat_id')->on('Categories_tbl')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('created_by')->references('id')->on('users_tbl')->onUpdate('cascade')->onDelete('cascade');
         });
     }
