@@ -56,7 +56,7 @@ class HomeController extends Controller{
         return Video::orderBy('created_at', 'desc');
     }
 
-    private function getRecentVideosWithLimit(int $limit){
+    private function getRecentVideosWithLimit(int $limit = 4){
         return $this->getRecent()->limit($limit)->get();
     }
 

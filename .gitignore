@@ -9,3 +9,4 @@ Homestead.yaml
 .DS_Store
 public/uploads/
 resources/assets/
+.idea/
