@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests;
 use App\Video;
+use App\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller{
@@ -71,5 +72,18 @@ class HomeController extends Controller{
             $categories[$item->cat_id] =  $item->category_name;
         }
         return $categories;
+    }
+
+    private function getRecentBlog(){
+        return Post::orderBy('created_at', 'desc');
+    }
+
+    private function getRecentBlogWithPagination(){
+        return $this->getRecentBlog()->paginate($this->paginationCount);
+    }
+
+    public function blogIndex(){
+        $posts = $this->getRecentBlogWithPagination();
+        return view('post.index')->withPosts($posts);
     }
 }

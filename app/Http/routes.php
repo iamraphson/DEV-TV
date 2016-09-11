@@ -19,6 +19,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HomeController@index',
     ]);
 
+    Route::get('/blog', [
+        'uses' => 'HomeController@blogIndex',
+        'as' => 'blog',
+    ]);
 
     Route::get('/video/{id}', [
         'uses' => 'VideoController@showVideo',

@@ -127,7 +127,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="blog.html"><i class="fa fa-edit"></i>blog</a>
+                                            <a href="{{ route('blog') }}"><i class="fa fa-edit"></i>blog</a>
                                             <ul class="submenu menu vertical" data-submenu data-animate="slide-in-down slide-out-up">
                                                 <li><a href="blog-single-post.html"><i class="fa fa-edit"></i>blog single post</a></li>
                                             </ul>
