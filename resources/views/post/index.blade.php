@@ -18,7 +18,7 @@
                             <div class="row secBg">
                                 <div class="large-12 columns">
                                     <div class="blog-post-heading">
-                                        <h3><a href="blog-single-post.html">{{ $post->post_title }}</a></h3>
+                                        <h3><a href="{{ url("/blog/" . $post->post_slug) }}">{{ $post->post_title }}</a></h3>
                                         <p>
                                             <span><i class="fa fa-clock-o"></i>{{ date('j F y', strtotime($post->created_at)) }}</span>
                                         </p>
@@ -29,7 +29,8 @@
                                                  alt="{{ $post->post_title }}">
                                         </div>
                                         <p>{!!  str_limit($post->post_content, 150) !!} [..] </p>
-                                        <a class="blog-post-btn" href="blog-single-post.html">read me</a>
+                                        <a class="blog-post-btn"
+                                           href="{{ url("/blog/" . $post->post_slug) }}">read me</a>
                                     </div>
                                 </div>
                             </div>

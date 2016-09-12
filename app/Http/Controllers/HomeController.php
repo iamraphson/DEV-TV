@@ -124,4 +124,12 @@ class HomeController extends Controller{
             ->with("mostRecentVideos", self::getRecentVideos())
             ->withCategory(self::getBlogCategories())->withTitle($posts[0]->pc_category_name);
     }
+
+    public function blogShow($blogSlug){
+        $post = Post::where('post_slug', '=', $blogSlug)->get();
+        return view('post.show')->with("systemTags", self::getTags())
+            ->with("mostViewVideos", self::getMostViewVideo())
+            ->with("mostRecentVideos", self::getRecentVideos())
+            ->withCategory(self::getBlogCategories())->withPost($post[0]);
+    }
 }

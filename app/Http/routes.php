@@ -28,6 +28,10 @@ Route::group(['middleware' => 'web'], function () {
         'uses' => 'HomeController@getBlogByCategories',
     ]);
 
+    Route::get('/blog/{blogSlug}', [
+        'uses' => 'HomeController@blogShow',
+    ]);
+
     Route::get('/video/{id}', [
         'uses' => 'VideoController@showVideo',
     ]);
