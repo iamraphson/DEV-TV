@@ -174,27 +174,7 @@
                             <h5>Most View Videos</h5>
                         </div>
                         <div class="widgetContent">
-                            @foreach($mostViewVideos as $mostViewVideo)
-                            <div class="video-box thumb-border">
-                                <div class="video-img-thumb">
-                                    <img src="{{ URL::asset($mostViewVideo->video_cover_location) }}"
-                                         alt="most viewed videos">
-                                    <a href="{{ url('/video/' . $mostViewVideo->video_id) }}" class="hover-posts">
-                                        <span><i class="fa fa-play"></i>Watch Video</span>
-                                    </a>
-                                </div>
-                                <div class="video-box-content">
-                                    <h6><a href="{{ url('/video/' . $mostViewVideo->video_id) }}">
-                                            {{ str_limit($mostViewVideo->video_title, 30) }}</a></h6>
-                                    <p>
-                                        <span><i class="fa fa-clock-o"></i>
-                                            {{ date('j F y', strtotime($mostViewVideo->created_at)) }}
-                                        </span>
-                                        <span><i class="fa fa-eye"></i>{!! kilomega($mostViewVideo->video_views) !!}</span>
-                                    </p>
-                                </div>
-                            </div>
-                            @endforeach
+                            @include('layouts.partials.mostviewvideo')
                         </div>
                     </div>
                 </div><!-- end most view Widget -->
@@ -205,28 +185,7 @@
                             <h5>Recent post videos</h5>
                         </div>
                         <div class="widgetContent">
-                            @foreach($mostRecentVideos as $mostRecentVideo)
-                            <div class="media-object stack-for-small">
-                                <div class="media-object-section" style="display: table-cell;">
-                                    <div class="recent-img">
-                                        <img src= "{{ URL::asset($mostRecentVideo->video_cover_location) }}" alt="recent">
-                                        <a href="{{ url('/video/' . $mostRecentVideo->video_id) }}"
-                                           class="hover-posts"><span><i class="fa fa-play"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="media-object-section" style="display: table-cell;">
-                                    <div class="media-content">
-                                        <h6><a href="{{ url('/video/' . $mostRecentVideo->video_id) }}">
-                                                {{ str_limit($mostRecentVideo->video_title, 30) }}
-                                            </a></h6>
-                                        <p><i class="fa fa-clock-o"></i><span>
-                                                {{ date('j F y', strtotime($mostRecentVideo->created_at)) }}
-                                            </span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
+                            @include('layouts.partials.recentvideos')
                         </div>
                     </div>
                 </div><!-- End Recent post videos -->
@@ -237,9 +196,7 @@
                             <h5>Tags</h5>
                         </div>
                         <div class="tagcloud">
-                            @foreach($systemTags as $systemTag)
-                                <a href="{{ url('/video/tag/' . $systemTag) }}">{{ $systemTag }}</a>
-                            @endforeach
+                            @include('layouts.partials.systemtags')
                         </div>
                     </div>
                 </div><!-- End tags -->

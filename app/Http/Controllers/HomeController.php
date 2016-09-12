@@ -6,7 +6,8 @@ use App\Category;
 use App\Http\Requests;
 use App\Video;
 use App\Post;
-use Illuminate\Http\Request;
+use App\PostCategory;
+use DB;
 
 class HomeController extends Controller{
 
@@ -82,8 +83,45 @@ class HomeController extends Controller{
         return $this->getRecentBlog()->paginate($this->paginationCount);
     }
 
+    private function getMostViewVideo(int $limit = 3){
+        return Video::orderBy('video_views', 'desc')->limit($limit)->get();
+    }
+
+    private function getRecentVideos(int $limit = 3){
+        return Video::orderBy('created_at', 'desc')->limit($limit)->get();
+    }
+
+    private function getTags(){
+        $tags = [];
+        $items 	= Video::get(['video_tags']);
+        foreach($items as $item){
+            array_push($tags, $item->video_tags);
+        }
+        $tagsString = implode(',', $tags);
+        return array_unique(explode(',', $tagsString));
+    }
+
+    private function getBlogCategories(){
+        return  PostCategory::orderBy('pc_display_order')->get();
+    }
+
     public function blogIndex(){
         $posts = $this->getRecentBlogWithPagination();
-        return view('post.index')->withPosts($posts);
+        return view('post.index')->withPosts($posts)->with("systemTags", self::getTags())
+            ->with("mostViewVideos", self::getMostViewVideo())
+            ->with("mostRecentVideos", self::getRecentVideos())
+            ->withCategory(self::getBlogCategories());
+    }
+
+    public function getBlogByCategories($value){
+        $posts = DB::table('posts_tbl')
+            ->join('post_category_tbl', 'posts_tbl.post_category', '=', 'post_category_tbl.pc_id')
+            ->where("pc_category_slug", '=', $value)
+            ->paginate($this->paginationCount);
+
+        return view('post.index')->withPosts($posts)->with("systemTags", self::getTags())
+            ->with("mostViewVideos", self::getMostViewVideo())
+            ->with("mostRecentVideos", self::getRecentVideos())
+            ->withCategory(self::getBlogCategories())->withTitle($posts[0]->pc_category_name);
     }
 }

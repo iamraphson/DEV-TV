@@ -3,6 +3,9 @@
 @section('content')
     <section class="category-content" style="margin: 20px auto">
         <div class="row">
+            @if(isset($title))
+                <h3 style="margin-bottom: 20px;">Posts - {{ $title }}</h3>
+            @endif
             <!-- left side content area -->
             <div class="large-8 columns" >
                 @if($posts->isEmpty())
@@ -32,16 +35,14 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
-
-                <div class="blog-post">
-                    <div class="row secBg">
-                        <div class="pag_closet">
-                            {!! $posts->render() !!}
+                    <div class="blog-post">
+                        <div class="row secBg">
+                            <div class="pag_closet">
+                                {!! $posts->render() !!}
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                @endif
             </div><!-- end left side content area -->
             <!-- sidebar -->
             <div class="large-4 columns">
@@ -71,70 +72,7 @@
                                     <h5>Most View Videos</h5>
                                 </div>
                                 <div class="widgetContent">
-                                    <div class="video-box thumb-border">
-                                        <div class="video-img-thumb">
-                                            <img src="images/video-thumbnail/7.jpg" alt="most viewed videos">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i>Watch Video</span>
-                                            </a>
-                                        </div>
-                                        <div class="video-box-content">
-                                            <h6><a href="#">There are many variations of passage. </a></h6>
-                                            <p>
-                                                <span><i class="fa fa-user"></i><a href="#">admin</a></span>
-                                                <span><i class="fa fa-clock-o"></i>5 January 16</span>
-                                                <span><i class="fa fa-eye"></i>1,862K</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="video-box thumb-border">
-                                        <div class="video-img-thumb">
-                                            <img src="images/widget-most1.png" alt="most viewed videos">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i>Watch Video</span>
-                                            </a>
-                                        </div>
-                                        <div class="video-box-content">
-                                            <h6><a href="#">There are many variations of passage. </a></h6>
-                                            <p>
-                                                <span><i class="fa fa-user"></i><a href="#">admin</a></span>
-                                                <span><i class="fa fa-clock-o"></i>5 January 16</span>
-                                                <span><i class="fa fa-eye"></i>1,862K</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="video-box thumb-border">
-                                        <div class="video-img-thumb">
-                                            <img src="images/widget-most2.png" alt="most viewed videos">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i>Watch Video</span>
-                                            </a>
-                                        </div>
-                                        <div class="video-box-content">
-                                            <h6><a href="#">There are many variations of passage. </a></h6>
-                                            <p>
-                                                <span><i class="fa fa-user"></i><a href="#">admin</a></span>
-                                                <span><i class="fa fa-clock-o"></i>5 January 16</span>
-                                                <span><i class="fa fa-eye"></i>1,862K</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="video-box thumb-border">
-                                        <div class="video-img-thumb">
-                                            <img src="images/widget-most3.png" alt="most viewed videos">
-                                            <a href="#" class="hover-posts">
-                                                <span><i class="fa fa-play"></i>Watch Video</span>
-                                            </a>
-                                        </div>
-                                        <div class="video-box-content">
-                                            <h6><a href="#">There are many variations of passage. </a></h6>
-                                            <p>
-                                                <span><i class="fa fa-user"></i><a href="#">admin</a></span>
-                                                <span><i class="fa fa-clock-o"></i>5 January 16</span>
-                                                <span><i class="fa fa-eye"></i>1,862K</span>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    @include('layouts.partials.mostviewvideo')
                                 </div>
                             </div>
                         </div><!-- end most view Widget -->
@@ -147,21 +85,11 @@
                                 </div>
                                 <div class="widgetContent clearfix">
                                     <ul>
-                                        <li class="cat-item"><a href="#">Entertainment &nbsp; (6)</a></li>
-                                        <li class="cat-item"><a href="#">Historical &amp; Archival &nbsp;(8)</a></li>
-                                        <li class="cat-item"><a href="#">Technology&nbsp;(4)</a></li>
-                                        <li class="cat-item"><a href="#">People&nbsp;(3)</a></li>
-                                        <li class="cat-item"><a href="#">Fashion &amp; Beauty&nbsp;(2)</a></li>
-                                        <li class="cat-item"><a href="#">Nature&nbsp;(1)</a></li>
-                                        <li class="cat-item"><a href="#">Automotive&nbsp;(5)</a></li>
-                                        <li class="cat-item"><a href="#">Foods &amp; Drinks&nbsp;(5)</a></li>
-                                        <li class="cat-item"><a href="#">Foods &amp; Drinks&nbsp;(10)</a></li>
-                                        <li class="cat-item"><a href="#">Animals&nbsp;(12)</a></li>
-                                        <li class="cat-item"><a href="#">Sports &amp; Recreation&nbsp;(14)</a></li>
-                                        <li class="cat-item"><a href="#">Places &amp; Landmarks&nbsp;(16)</a></li>
-                                        <li class="cat-item"><a href="#">Places &amp; Landmarks&nbsp;(1)</a></li>
-                                        <li class="cat-item"><a href="#">Travel&nbsp;(2)</a></li>
-                                        <li class="cat-item"><a href="#">Transportation&nbsp;(3)</a></li>
+                                        @foreach($category as $cat)
+                                        <li class="cat-item"><a href="{{ url('/blog/category/'
+                                        . $cat->pc_category_slug) }}">{{ $cat->pc_category_name }}</a></li>
+                                        @endforeach
+
                                     </ul>
                                 </div>
                             </div>
@@ -174,70 +102,7 @@
                                     <h5>Recent post videos</h5>
                                 </div>
                                 <div class="widgetContent">
-                                    <div class="media-object stack-for-small">
-                                        <div class="media-object-section">
-                                            <div class="recent-img">
-                                                <img src= "images/category/category4.png" alt="recent">
-                                                <a href="#" class="hover-posts">
-                                                    <span><i class="fa fa-play"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="media-object-section">
-                                            <div class="media-content">
-                                                <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                                <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media-object stack-for-small">
-                                        <div class="media-object-section">
-                                            <div class="recent-img">
-                                                <img src= "images/category/category2.png" alt="recent">
-                                                <a href="#" class="hover-posts">
-                                                    <span><i class="fa fa-play"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="media-object-section">
-                                            <div class="media-content">
-                                                <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                                <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media-object stack-for-small">
-                                        <div class="media-object-section">
-                                            <div class="recent-img">
-                                                <img src= "images/sidebar-recent1.png" alt="recent">
-                                                <a href="#" class="hover-posts">
-                                                    <span><i class="fa fa-play"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="media-object-section">
-                                            <div class="media-content">
-                                                <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                                <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="media-object stack-for-small">
-                                        <div class="media-object-section">
-                                            <div class="recent-img">
-                                                <img src= "images/sidebar-recent2.png" alt="recent">
-                                                <a href="#" class="hover-posts">
-                                                    <span><i class="fa fa-play"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="media-object-section">
-                                            <div class="media-content">
-                                                <h6><a href="#">The lorem Ipsumbeen the industry's standard.</a></h6>
-                                                <p><i class="fa fa-user"></i><span>admin</span><i class="fa fa-clock-o"></i><span>5 january 16</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @include('layouts.partials.recentvideos')
                                 </div>
                             </div>
                         </div><!-- End Recent post videos -->
@@ -249,17 +114,7 @@
                                     <h5>Tags</h5>
                                 </div>
                                 <div class="tagcloud">
-                                    <a href="#">3D Videos</a>
-                                    <a href="#">Videos</a>
-                                    <a href="#">HD</a>
-                                    <a href="#">Movies</a>
-                                    <a href="#">Sports</a>
-                                    <a href="#">3D</a>
-                                    <a href="#">Movies</a>
-                                    <a href="#">Animation</a>
-                                    <a href="#">HD</a>
-                                    <a href="#">Music</a>
-                                    <a href="#">Recreation</a>
+                                    @include('layouts.partials.systemtags')
                                 </div>
                             </div>
                         </div><!-- End tags -->

@@ -24,6 +24,10 @@ Route::group(['middleware' => 'web'], function () {
         'as' => 'blog',
     ]);
 
+    Route::get('/blog/category/{value}', [
+        'uses' => 'HomeController@getBlogByCategories',
+    ]);
+
     Route::get('/video/{id}', [
         'uses' => 'VideoController@showVideo',
     ]);
