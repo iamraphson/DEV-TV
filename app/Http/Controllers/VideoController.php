@@ -263,7 +263,7 @@ class VideoController extends Controller{
         }
     }
 
-    public function getOperationVideo($operation, $value){
+    public function getOperationVideo(Request $request, $operation, $value){
         if($operation == "category"){
             $videos = DB::table('videos_tbl')
                 ->join('Categories_tbl', 'videos_tbl.video_category', '=', 'Categories_tbl.cat_id')
@@ -283,6 +283,14 @@ class VideoController extends Controller{
                 ->paginate($this->paginationCount);
             return view('video.operations')->withVideos($videos)
                 ->with("operationTitle", "Videos tagged with \"{$value}\"");
+        } else if($operation == "search"){
+            $value = $request->input('search');
+            $videos = DB::table('videos_tbl')->where('video_details','LIKE',"%{$value}%")
+                ->orWhere('video_desc','LIKE',"%{$value}%")
+                ->orWhere('video_title','LIKE',"%{$value}%")
+                ->paginate($this->paginationCount);
+            return view('video.operations')->withVideos($videos)
+                ->with("operationTitle", "Search Video: \"{$value}\"");
         }
     }
 

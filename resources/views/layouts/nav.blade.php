@@ -135,12 +135,12 @@
                         </div>
                     </div>
                     <div id="search-bar" class="clearfix search-bar-light">
-                        <form method="post">
+                        <form method="get" action="{{ url("/video/search/all") }}">
                             <div class="search-input float-left">
                                 <input type="search" name="search" placeholder="Seach Here your video">
                             </div>
                             <div class="search-btn float-right text-right">
-                                <button class="button" name="search" type="submit">search now</button>
+                                <button class="button" type="submit">search now</button>
                             </div>
                         </form>
                     </div>

@@ -30,7 +30,7 @@
                                     <h5>About Betube</h5>
                                 </div>
                                 <div class="textwidget">
-                                    Betube video wordpress theme lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s book.
+                                    DevTv is your Video Subscription Platform. Add unlimited videos, posts to your subscription site. Earn re-curring revenue and require users to subscribe to access premium content on your website.
                                 </div>
                             </div>
                         </div>
@@ -40,20 +40,7 @@
                                     <h5>Subscribe Now</h5>
                                 </div>
                                 <div class="widgetContent">
-                                    <form data-abide novalidate method="post">
-                                        <p>Subscribe to get exclusive videos</p>
-                                        <div class="input">
-                                            <input type="text" placeholder="Enter your full Name" required>
-                                                <span class="form-error">
-                                                    Yo, you had better fill this out, it's required.
-                                                </span>
-                                        </div>
-                                        <div class="input">
-                                            <input type="email" id="email" placeholder="Enter your email addres" required >
-                                                <span class="form-error">
-                                                  I'm required!
-                                                </span>
-                                        </div>
+                                    <form data-abide novalidate action="{{ url('/register') }}" method="get">
                                         <button class="button" type="submit" value="Submit">Sign up Now</button>
                                     </form>
                                 </div>

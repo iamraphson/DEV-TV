@@ -41,8 +41,10 @@
                                 <div class="tabs-panel is-active" id="new-all">
                                     <div class="row list-group">
                                         @if($videos->isEmpty())
-                                            <div data-abide-error="" class="alert callout" style="display: block;">
-                                                <p><i class="fa fa-exclamation-triangle"></i> No Videos Yet</p>
+                                            <div style="width: 95%;margin: auto">
+                                                <div data-abide-error="" class="alert callout" style="display: block;">
+                                                    <p><i class="fa fa-exclamation-triangle"></i> No Videos Yet</p>
+                                                </div>
                                             </div>
                                         @else
                                             @foreach($videos as $video)
