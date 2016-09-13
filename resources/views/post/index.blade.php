@@ -55,9 +55,11 @@
                                 <div class="widgetTitle">
                                     <h5>Search Videos</h5>
                                 </div>
-                                <form id="searchform" method="get" role="search">
+                                <form id="searchform" method="get" action="{{ url("/video/search/all") }}"
+                                      role="search">
                                     <div class="input-group">
-                                        <input class="input-group-field" type="text" placeholder="Enter your keyword">
+                                        <input class="input-group-field" type="text" name="search"
+                                               placeholder="Enter your keyword">
                                         <div class="input-group-button">
                                             <input type="submit" class="button" value="Submit">
                                         </div>

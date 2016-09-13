@@ -61,7 +61,7 @@
                                                             <div class="video-stats clearfix">
                                                                 <div class="thumb-stats pull-left">
                                                                     <i class="fa fa-heart"></i>
-                                                                    <span>506</span>
+                                                                    <span>g</span>
                                                                 </div>
                                                                 <div class="thumb-stats pull-right">
                                                                     <span>{{ getVideoDuration($video->video_duration) }}</span>

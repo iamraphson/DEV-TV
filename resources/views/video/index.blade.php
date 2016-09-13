@@ -71,7 +71,7 @@
                                                         <div class="video-stats clearfix">
                                                             <div class="thumb-stats pull-left">
                                                                 <i class="fa fa-heart"></i>
-                                                                <span>506</span>
+                                                                <span>{{ $video->video_favorites }}</span>
                                                             </div>
                                                             <div class="thumb-stats pull-right">
                                                                 <span>lam {{ getVideoDuration($video->video_duration) }}</span>
@@ -79,7 +79,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="post-des">
-                                                        <h6><a href="single-video-v2.html">{{ $video->video_title }}</a></h6>
+                                                        <h6><a href="{{ url('/video/' . $video->video_id) }}">{{ $video->video_title }}</a></h6>
                                                         <div class="post-stats clearfix">
                                                             <p class="pull-left">
                                                                 <i class="fa fa-clock-o"></i>
@@ -94,7 +94,7 @@
                                                             <p>{{ str_limit($video->video_desc, 200) }}</p>
                                                         </div>
                                                         <div class="post-button">
-                                                            <a href="single-video-v2.html" class="secondary-button">
+                                                            <a href="{{ url('/video/' . $video->video_id) }}" class="secondary-button">
                                                                 <i class="fa fa-play-circle"></i>watch video</a>
                                                         </div>
                                                     </div>

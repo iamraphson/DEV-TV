@@ -6,7 +6,7 @@
             <div class="large-12 columns">
                 <nav aria-label="You are here:" role="navigation">
                     <ul class="breadcrumbs">
-                        <li><i class="fa fa-home"></i><a href="#">Home</a></li>
+                        <li><i class="fa fa-home"></i><a href="{{ url('/') }}">Home</a></li>
                         <li>
                             <span class="show-for-sr">Current: </span> Register
                         </li>

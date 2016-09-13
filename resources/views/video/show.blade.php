@@ -10,19 +10,7 @@
 
 @section('content')
     <!--breadcrumbs-->
-    <section id="breadcrumb" class="breadMargin">
-        <div class="row">
-            <div class="large-12 columns">
-                <nav aria-label="You are here:" role="navigation">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-home"></i><a href="{{ url('/') }}">Home</a></li>
-                        <li>
-                            <span class="show-for-sr">Current: </span> Profile Setting
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+    <section id="breadcrumb" class="breadMargin" style="background-color: #f0f0f0">
     </section>
     <!--end breadcrumbs-->
     <!-- full width Video -->
@@ -175,9 +163,10 @@
                         <div class="widgetTitle">
                             <h5>Search Videos</h5>
                         </div>
-                        <form id="searchform" method="get" role="search">
+                        <form id="searchform" action="{{ url("/video/search/all") }}" method="get" role="search">
                             <div class="input-group">
-                                <input class="input-group-field" type="text" placeholder="Enter your keyword">
+                                <input class="input-group-field" name="search"
+                                       type="text" placeholder="Enter your keyword">
                                 <div class="input-group-button">
                                     <input type="submit" class="button" value="Submit">
                                 </div>
