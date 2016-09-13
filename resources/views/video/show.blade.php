@@ -145,6 +145,25 @@
             </div>
         </section><!-- End single post description -->
 
+        <section class="content comments">
+            <div class="row secBg">
+                <div class="large-12 columns">
+                    <div class="main-heading borderBottom">
+                        <div class="row padding-14">
+                            <div class="medium-12 small-12 columns">
+                                <div class="head-title">
+                                    <i class="fa fa-comments"></i>
+                                    <h4>Comments</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-comment">
+                        <div id="disqus_thread"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div><!-- end left side content area -->
     <!-- sidebar -->
     <div class="large-4 columns">

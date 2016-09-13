@@ -157,7 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Ktquez\Tinymce\TinymceServiceProvider::class,
-
+        Yajra\Disqus\DisqusServiceProvider::class
     ],
 
     /*

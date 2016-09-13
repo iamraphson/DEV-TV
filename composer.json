@@ -13,7 +13,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "inacho/php-credit-card-validator": "^1.0",
         "stripe/stripe-php": "^3.13",
-        "nesbot/carbon": "^1.21"
+        "nesbot/carbon": "^1.21",
+        "yajra/laravel-disqus": "^0.1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
