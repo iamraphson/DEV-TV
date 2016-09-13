@@ -19,7 +19,6 @@ class CreatePostsTable extends Migration
             $table->string('post_slug')->nullable();
             $table->text('post_content')->nullable();
             $table->integer('post_category')->unsigned();
-            $table->string('post_access', 20)->nullable();
             $table->string('active', 2)->nullable();
             $table->integer('created_by')->unsigned();
             $table->integer('edited_by')->unsigned();

@@ -75,30 +75,6 @@
                             </fieldset>
                         </div>
                     </div>
-                    <div class="col-xs-4 m-b-md">
-                        <div>
-                            <fieldset class="form-group">
-                                <label class="form-label" for="post_access">Who is allowed to view this video?</label>
-                                <select class="bootstrap-select bootstrap-select-arrow" id="post_access" name="post_access">
-                                    <option value="guest"
-                                    @if(old('video_access') == "guest")
-                                        {{ 'selected="selected"' }}
-                                            @endif
-                                    >Guest (everyone)</option>
-                                    <option value="registered"
-                                    @if(old('video_access') == "registered")
-                                        {{ 'selected="selected"' }}
-                                            @endif
-                                    >Registered Users (free registration must be enabled)</option>
-                                    <option value="subscriber"
-                                    @if(old('video_access') == "subscriber")
-                                        {{ 'selected="selected"' }}
-                                            @endif
-                                    >Subscriber (only paid subscription users)</option>
-                                </select>
-                            </fieldset>
-                        </div>
-                    </div>
                     <div class="col-lg-4 p-t-2">
                         <fieldset class="form-group">
                             <div class="checkbox-toggle">

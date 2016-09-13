@@ -50,7 +50,6 @@ class PostController extends Controller{
             str_slug($request->input('post_title'));
         $post->post_content = $request->input('post_content');
         $post->post_category = $request->input('post_category');
-        $post->post_access = $request->input('post_access');
         $post->active = $request->input('post_active');
         $post->created_by = Auth::user()->id;
         $post->edited_by = Auth::user()->id;
@@ -102,7 +101,6 @@ class PostController extends Controller{
             str_slug($request->input('post_title'));
         $post->post_content = $request->input('post_content');
         $post->post_category = $request->input('post_category');
-        $post->post_access = $request->input('post_access');
         $post->active = $request->input('post_active');
         $post->edited_by = Auth::user()->id;
         $post->save();
