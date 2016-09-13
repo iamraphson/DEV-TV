@@ -72,7 +72,7 @@ class AccountController extends Controller{
 
     public function getAdminIndex(){
         $userList = DB::select('select active, id, name, username, email, role, started_time, end_time from
-            users_tbl as u left join subscription_tbl as s on s.`user_id` = u.`id` group by s.user_id order by s.purchase_time desc');
+            users_tbl as u left join subscription_tbl as s on s.user_id = u.id group by s.user_id order by s.purchase_time desc');
 
         return view('admin.user.index')->withTitle('DevTv - List Users')->with('users', $userList);
     }
