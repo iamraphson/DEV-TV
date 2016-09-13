@@ -134,7 +134,7 @@ picks. From my experience, **Heroku** is the easiest to get started with,  deplo
 
 - Create an account at https://www.openshift.com/
 - Create a Laravel application with mysql-5.5 or postgresql-9.2
-    - $ rhc app create laravelapp php-5.4 mysql-5.5 --from-code=https://github.com/iamraphson/hackathon-starter
+    - $ rhc app create laravelapp php-5.4 mysql-5.5 --from-code=https://github.com/iamraphson/DEV-TV
 - And you are done!
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Windows_Azure_logo.png" width="200">
@@ -149,7 +149,7 @@ picks. From my experience, **Heroku** is the easiest to get started with,  deplo
 - Select **Local Git repository** from the list, and then click the arrow
 - To enable Git publishing, Azure will ask you to create a user name and password
 - Once the Git repository is ready, you will be presented with a **GIT URL**
-- Inside your *Hackathon Starter* directory, run `git remote add azure [Azure Git URL]`
+- Inside your *DEV-TV* directory, run `git remote add azure [Azure Git URL]`
 - To push your changes simply run `git push azure master`
  - **Note:** *You will be prompted for the password you created earlier*
 - On **Deployments** tab of your Windows Azure Web App, you will see the deployment history
