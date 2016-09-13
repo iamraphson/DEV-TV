@@ -24,6 +24,8 @@ class CreateVideosTable extends Migration{
             $table->text('video_source')->nullable();
             $table->string('featured', 2)->nullable();
             $table->string('active', 2)->nullable();
+            $table->integer('video_favorites')->unsigned()->default(0);
+            $table->integer('video_views')->unsigned()->default(0);
             $table->timestamps();
             $table->integer('created_by')->unsigned();
             $table->foreign('video_category')->references('cat_id')->on('Categories_tbl')->onUpdate('cascade')->onDelete('cascade');
