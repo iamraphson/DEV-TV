@@ -62,6 +62,7 @@ Obtaining API Keys
 To use any of the included APIs or OAuth authentication methods, you will need
 to obtain appropriate credentials: Client ID, Client Secret, or  API Key
 
+
 <img src="http://www.doit.ba/img/facebook.jpg" width="200">
 
 - Visit [Facebook Developers](https://developers.facebook.com/)
