@@ -116,7 +116,7 @@
                                     <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
                                         <li><a href="{{ url('/') }}"><i class="fa fa-home"></i>Home</a></li>
                                         <li>
-                                            <a href="categories.html"><i class="fa fa-th"></i>category</a>
+                                            <a href="#"><i class="fa fa-th"></i>category</a>
                                             {!! getFrontEndCategories() !!}
                                         </li>
                                         <li>
