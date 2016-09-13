@@ -99,7 +99,9 @@
                                 <div class="top-bar-left">
                                     <ul class="menu">
                                         <li class="menu-text">
-                                            DevTV
+                                            <a href="/" class="logo">
+                                                <span class="l">D</span>ev<span class="l">T</span>v
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>

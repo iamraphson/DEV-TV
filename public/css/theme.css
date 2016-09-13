@@ -3447,6 +3447,22 @@ border-radius: 4px; }*/
 .pag_closet{
   text-align: center;margin: 20px 0 44px 0
 }
+.logo{
+  margin: 0 32px 0 0;
+  letter-spacing: -.3px;
+  float: left;
+  font-size: 31px;
+  font-weight: 700;
+  color: #333333;
+  border-right: 1px solid #5a6779;
+  padding-right: 30px;
+}
+.logo:hover {
+  color: #666666 !important;
+}
+.logo .l {
+  padding-right: 5px;
+}
 .pagination {
   display: inline-block;
   padding-left: 0;

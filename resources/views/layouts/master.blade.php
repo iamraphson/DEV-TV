@@ -27,7 +27,7 @@
                         <div class="large-3 medium-6 columns">
                             <div class="widgetBox">
                                 <div class="widgetTitle">
-                                    <h5>About Betube</h5>
+                                    <h5>About DevTv</h5>
                                 </div>
                                 <div class="textwidget">
                                     DevTv is your Video Subscription Platform. Add unlimited videos, posts to your subscription site. Earn re-curring revenue and require users to subscribe to access premium content on your website.
@@ -64,7 +64,7 @@
                     </div>
                     <a href="#" id="back-to-top" title="Back to top"><i class="fa fa-angle-double-up"></i></a>
                 </footer><!-- footer -->
-                <div id="footer-bottom">
+                <div id="footer-bottom" style="display: none;">
                 </div>
             </div><!--end off canvas content-->
         </div><!--end off canvas wrapper inner-->
