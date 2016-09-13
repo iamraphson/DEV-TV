@@ -91,7 +91,7 @@ class HomeController extends Controller{
         return Video::orderBy('created_at', 'desc')->limit($limit)->get();
     }
 
-    private function getTags(){
+    public function getTags(){
         $tags = [];
         $items 	= Video::get(['video_tags']);
         foreach($items as $item){

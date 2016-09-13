@@ -34,6 +34,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="large-6 medium-6 columns">
+                            <div class="widgetBox">
+                                <div class="widgetTitle">
+                                    <h5>Tags</h5>
+                                </div>
+                                <div class="tagcloud">
+                                    <?php $count = 0;?>
+                                    @foreach(getAllTags() as $systemTag)
+                                        @if($count == 20)  @break; @endif
+                                        <a href="{{ url('/video/tag/' . $systemTag) }}">{{ $systemTag }}</a>
+                                        <?php $count++; ?>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                         <div class="large-3 medium-6 columns">
                             <div class="widgetBox">
                                 <div class="widgetTitle">

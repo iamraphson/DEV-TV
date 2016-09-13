@@ -69,6 +69,11 @@ function kilomega( $val ) {
     return "${val}m";
 }
 
+function getAllTags(){
+    $home = new \App\Http\Controllers\HomeController;
+    return $home->getTags();
+}
+
 function getFrontEndCategories(){
     return buildFrontendTopMenu(\App\Category::orderBy('display_order')->get());
 }
@@ -85,5 +90,6 @@ function buildFrontendTopMenu($menu, $parentid = 0){
 
     return $result ?  "\n<ul class=\"submenu menu vertical\" data-submenu data-animate=\"slide-in-down slide-out-up\">\n$result</ul>\n" : null;
 }
+
 
 ?>
