@@ -16,14 +16,16 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="{{ asset('wpanel/js/app.js') }}"></script>
     @yield('head')
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ asset('wpanel/css/main.css') }}">
 </head>
 <body class="with-side-menu dark-theme dark-theme-green">
 
 <header class="site-header">
     <div class="container-fluid">
-        <a href="#" class="site-logo-text">LOGO</a>
+        <a href="{{ url('/admin') }}" class="site-logo-text logo">
+                <span class="l">D</span>ev<span class="l">T</span>v
+        </a>
         <button class="hamburger hamburger--htla">
             <span>toggle menu</span>
         </button>

@@ -92,7 +92,11 @@
                         <div class="large-12 columns">
                             <div class="title-bar" data-responsive-toggle="beNav" data-hide-for="large">
                                 <button class="menu-icon" type="button" data-toggle="offCanvas-responsive"></button>
-                                <div class="title-bar-title">DevTv</div>
+                                <div class="title-bar-title">
+                                    <a href="/" class="logo">
+                                        <span class="l">D</span>ev<span class="l">T</span>v
+                                    </a>
+                                </div>
                             </div>
 
                             <div class="top-bar show-for-large" id="beNav" style="width: 100%;">

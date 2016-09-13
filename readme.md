@@ -1,27 +1,12 @@
-# Laravel PHP Framework
+# DevTV
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+**[Live Demo](http://dev-tv.herokuapp.com/)**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+DevTv is a laravel web application. DevTv is your Video Subscription Platform. Add unlimited videos, posts to your subscription site. Earn re-curring revenue and require users to subscribe to access premium content on your website. With DevTv you can create your own video website. You can add unlimited videos and posts to your site. You can choose to make videos available for free or only to your subscribers.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+DevTv is a web application developed with Laravel 5.2.
 
-## Official Documentation
+**[Laravel](https://github.com/laravel/laravel)** is a free, open-source PHP web framework, created by [Taylor Otwell](https://github.com/taylorotwell) and intended for the development of web applications following the model–view–controller (MVC) architectural pattern
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Some of the features of Laravel are a modular packaging system with a dedicated dependency manager, different ways for accessing relational databases, utilities that aid in application deployment and maintenance, and its orientation toward syntactic sugar
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

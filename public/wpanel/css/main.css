@@ -27130,3 +27130,9 @@ a.fc-more:hover {
     text-transform: uppercase;
     display: block;
 }
+.logo:hover {
+    color: #666666 !important;
+}
+.logo .l {
+    padding-right: 5px;
+}
