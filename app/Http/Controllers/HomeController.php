@@ -83,11 +83,11 @@ class HomeController extends Controller{
         return $this->getRecentBlog()->paginate($this->paginationCount);
     }
 
-    private function getMostViewVideo(int $limit = 3){
+    private function getMostViewVideo($limit = 3){
         return Video::orderBy('video_views', 'desc')->limit($limit)->get();
     }
 
-    private function getRecentVideos(int $limit = 3){
+    private function getRecentVideos($limit = 3){
         return Video::orderBy('created_at', 'desc')->limit($limit)->get();
     }
 
