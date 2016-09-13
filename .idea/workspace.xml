@@ -94,10 +94,10 @@
       <file leaf-file-name="AccountController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24">
-              <caret line="74" column="21" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.32">
+              <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
               <folding>
-                <marker date="1473769655000" expanded="true" signature="2115:2346" placeholder="select activ... users_tbl" />
+                <marker date="1473769777000" expanded="true" signature="2115:2373" placeholder="select activ... users_tbl" />
               </folding>
             </state>
           </provider>
@@ -995,10 +995,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AccountController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24">
-          <caret line="74" column="21" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.32">
+          <caret line="75" column="12" selection-start-line="75" selection-start-column="12" selection-end-line="75" selection-end-column="12" />
           <folding>
-            <marker date="1473769655000" expanded="true" signature="2115:2346" placeholder="select activ... users_tbl" />
+            <marker date="1473769777000" expanded="true" signature="2115:2373" placeholder="select activ... users_tbl" />
           </folding>
         </state>
       </provider>
