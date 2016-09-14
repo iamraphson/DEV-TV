@@ -5,7 +5,6 @@
 
     RewriteEngine On
     RewriteCond %{HTTP} !^on
-    RewriteRule ^ http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
