@@ -444,9 +444,9 @@ padding: 0; }
   padding: 0; }
 #navBar .top-bar .menu > li:not(.menu-text) > a {
   padding: 32px 0;
-  font-size: 13px;
+  font-size: 15px;
   border-bottom: 2px solid transparent;
-  text-transform: uppercase;
+  text-transform: capitalize;
   color: #6c6c6c; }
   #navBar .top-bar .menu > li:not(.menu-text) > a:hover {
     border-bottom: 2px solid #e96969; }
