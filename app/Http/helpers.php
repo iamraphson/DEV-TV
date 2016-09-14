@@ -84,7 +84,7 @@ function buildFrontendTopMenu($menu, $parentid = 0){
         if ($item->parent_id == $parentid) {
             $result .= "<li><a href=\"" .
                 url('/video/category/' . $item->category_slug) .
-                "\"><i class=\"fa fa-magic\"></i>" . $item->category_name . "</a>";
+                "\"><i class=\"fa fa-th\"></i>" . $item->category_name . "</a>";
             $result .= buildFrontendTopMenu($menu, $item->cat_id) . "</li>";
         }
 

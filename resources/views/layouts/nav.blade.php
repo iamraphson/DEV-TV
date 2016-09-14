@@ -123,6 +123,7 @@
                                             <a href="#"><i class="fa fa-th"></i>category</a>
                                             {!! getFrontEndCategories() !!}
                                         </li>
+                                        @if(Auth::check())
                                         <li>
                                             <a href="#"><i class="fa fa-magic"></i>Account</a>
                                             <ul class="submenu menu vertical" data-submenu data-animate="slide-in-down slide-out-up">
@@ -132,6 +133,7 @@
                                                 <li><a href="{{ route('account.edit') }}"><i class="fa fa-magic"></i>My Account Setting</a></li>
                                             </ul>
                                         </li>
+                                        @endif
                                         <li>
                                             <a href="{{ route('blog') }}"><i class="fa fa-edit"></i>blog</a>
                                         </li>
