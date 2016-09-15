@@ -29,61 +29,72 @@ class SubscribeController extends Controller{
     }
 
     public function paySubscription(Request $request){
-        $niceNames = array(
-            'firstname' => 'First Name',
-            'lastname' => 'Last Name'
-        );
+        $dt = Carbon::now();
+        $hasSubscribe = DB::table("users_tbl")
+            ->join('subscription_tbl', 'users_tbl.id', '=', 'subscription_tbl.user_id')
+            ->where('subscription_tbl.started_time','<=',$dt)
+            ->where('subscription_tbl.end_time','>=',$dt)
+            ->count();
+        if($hasSubscribe == 0){
+            $niceNames = array(
+                'firstname' => 'First Name',
+                'lastname' => 'Last Name'
+            );
 
-        $this->validate($request, [
-            'lastname' => 'required',
-            'firstname' => 'required',
-        ], [], $niceNames);
+            $this->validate($request, [
+                'lastname' => 'required',
+                'firstname' => 'required',
+            ], [], $niceNames);
 
-        $firstname = $request->input('firstname');
-        $lastname = $request->input('lastname');
-        $token = $request->input('card_token');
-        $email = $this->authUser->email;
-        Stripe::setApiKey(env('STRIPE_SK'));
+            $firstname = $request->input('firstname');
+            $lastname = $request->input('lastname');
+            $token = $request->input('card_token');
+            $email = $this->authUser->email;
+            Stripe::setApiKey(env('STRIPE_SK'));
 
-        if($this->authUser->stripe_customer_id == ""){
+            if($this->authUser->stripe_customer_id == ""){
+                try {
+                    $customer = \Stripe\Customer::create([
+                        'source' => $token,
+                        'email' => $email,
+                        'metadata' => [
+                            "First Name" => $firstname,
+                            "Last Name" => $lastname
+                        ]
+                    ]);
+                } catch (\Stripe\Error\Card $e) {
+                    return redirect()->back()->withInput()->withErrors($e->getMessage());
+                }
+                $this->customerID = $customer->id;
+                $this->updateUserStripeID();
+            } else {
+                $this->customerID = $this->authUser->stripe_customer_id;
+            }
+
+            //print_r($this->authUser);
+
             try {
-                $customer = \Stripe\Customer::create([
-                    'source' => $token,
-                    'email' => $email,
+                $charge = \Stripe\Charge::create([
+                    'amount' => $this->amount,
+                    'currency' => 'usd',
+                    'customer' => $this->customerID,
                     'metadata' => [
-                        "First Name" => $firstname,
-                        "Last Name" => $lastname
+                        'product_name' => $this->invoiceDesc
                     ]
                 ]);
             } catch (\Stripe\Error\Card $e) {
                 return redirect()->back()->withInput()->withErrors($e->getMessage());
             }
-            $this->customerID = $customer->id;
-            $this->updateUserStripeID();
+
+            // Create subscription record in the database
+            $this->addStripePurchase($this->amount, 0, $charge->id, Carbon::now(), Carbon::now()->toDateString(),
+                Carbon::now()->addDays(30)->toDateString());
+
+            return redirect()->route('subscribe.user')->with('info', 'Your Subscription was successfully');
+
         } else {
-            $this->customerID = $this->authUser->stripe_customer_id;
+            return redirect()->back()->withErrors("Your subscription is still active!");
         }
-
-        //print_r($this->authUser);
-
-        try {
-            $charge = \Stripe\Charge::create([
-                'amount' => $this->amount,
-                'currency' => 'usd',
-                'customer' => $this->customerID,
-                'metadata' => [
-                    'product_name' => $this->invoiceDesc
-                ]
-            ]);
-        } catch (\Stripe\Error\Card $e) {
-            return redirect()->back()->withInput()->withErrors($e->getMessage());
-        }
-
-        // Create subscription record in the database
-        $this->addStripePurchase($this->amount, 0, $charge->id, Carbon::now(), Carbon::now()->toDateString(),
-            Carbon::now()->addDays(30)->toDateString());
-
-        return redirect()->route('subscribe.user')->with('info', 'Your Subscription was successfully');
 
     }
 
