@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Auth;
 use Config;
 use DB;
+use Carbon\Carbon;
 
 class VideoController extends Controller{
 
@@ -224,7 +225,8 @@ class VideoController extends Controller{
 
     public function showVideo(Request $request, $id){
         $video = Video::find($id);
-        $has
+        $dt = Carbon::now();
+        $hasSubscribe = false;
         if (Auth::check()) {
             $loggedInUser = Auth::user()->id;
             $VIEW_VIDEO = Config::get('constants.VIEW_VIDEO');
@@ -238,10 +240,19 @@ class VideoController extends Controller{
             }
             $video->isFavourite = $video->users()->where('user_id','=', $loggedInUser)
                 ->where('video_id','=', $id)->where('operation_type','=', $FAVORITE_VIDEO)->count() > 0;
+
+            //check if user has subscribed
+            $hasSubscribe = (DB::table("users_tbl")
+                ->join('subscription_tbl', 'users_tbl.id', '=', 'subscription_tbl.user_id')
+                ->where('subscription_tbl.user_id', '=', Auth::user()->id)
+                ->where('subscription_tbl.started_time','<=',$dt)
+                ->where('subscription_tbl.end_time','>=',$dt)
+                ->count() != 0) ? true : false;
         }
         return view('video.show')->with('video', $video)->withTags(explode(',', $video->video_tags))
             ->with("systemTags", self::getTags())->with("mostViewVideos", self::getMostViewVideo())
-            ->with("mostRecentVideos", self::getRecentVideos());
+            ->with("mostRecentVideos", self::getRecentVideos())
+            ->with("subscription_status", $hasSubscribe);
     }
 
     public function favoriteVideo($id){

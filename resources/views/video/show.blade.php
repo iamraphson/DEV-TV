@@ -23,8 +23,17 @@
                         {!! getVideoPlayer($video) !!}
                     @elseif($video->video_access == "registered" and Auth::check())
                         {!! getVideoPlayer($video) !!}
-                    @elseif($video->video_access == "subscriber" and Auth::check())
+                    @elseif(($video->video_access == "subscriber" and $subscription_status)
+                        or (Auth::check() and Auth::user()->role == "admin"))
                         {!! getVideoPlayer($video) !!}
+                    @elseif($video->video_access == "subscriber" and Auth::check())
+                        <div id="subscribers_only">
+                            <h2>Sorry, this video is only available to Subscribers</h2>
+                            <div class="clear"></div>
+                            <form method="get" action="/user/subscribe">
+                                <button id="button">Subscribe now! </button>
+                            </form>
+                        </div>
                     @else
                         <div id="subscribers_only">
                             <h2>Sorry, this video is only available to Subscribers</h2>
