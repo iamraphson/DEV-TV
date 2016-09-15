@@ -32,6 +32,7 @@ class SubscribeController extends Controller{
         $dt = Carbon::now();
         $hasSubscribe = DB::table("users_tbl")
             ->join('subscription_tbl', 'users_tbl.id', '=', 'subscription_tbl.user_id')
+            ->where('subscription_tbl.user_id', '=', $this->authUser->id)
             ->where('subscription_tbl.started_time','<=',$dt)
             ->where('subscription_tbl.end_time','>=',$dt)
             ->count();

@@ -224,6 +224,7 @@ class VideoController extends Controller{
 
     public function showVideo(Request $request, $id){
         $video = Video::find($id);
+        $has
         if (Auth::check()) {
             $loggedInUser = Auth::user()->id;
             $VIEW_VIDEO = Config::get('constants.VIEW_VIDEO');
