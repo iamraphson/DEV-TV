@@ -52,7 +52,8 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            @if(($user->started_time < \Carbon\Carbon::now() AND $user->end_time > \Carbon\Carbon::now())
+                            @if(($user->started_time < \Carbon\Carbon::now() AND
+                            $user->end_time > \Carbon\Carbon::now())
                                 or $user->role === "admin")
                                 <div class="label label-success"><i class="fa fa-ticket"></i> Subscribed</div>
                             @else

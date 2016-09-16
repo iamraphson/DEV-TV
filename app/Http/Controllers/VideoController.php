@@ -96,8 +96,8 @@ class VideoController extends Controller{
     public function edit($id){
         $video = Video::find($id);
         $items 	= Category::get(array('category_name', 'cat_id'));
-        return view('admin.video.edit')->withTitle('DevTv - Edit ' . $video->video_title)->with('video', $video)
-            ->withCategories($items);
+        return view('admin.video.edit')->withTitle('DevTv - Edit ' . $video->video_title)
+            ->with('video', $video)->withCategories($items);
     }
 
     public function update(Request $request, $id){

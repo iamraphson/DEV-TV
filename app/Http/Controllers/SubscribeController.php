@@ -88,8 +88,8 @@ class SubscribeController extends Controller{
             }
 
             // Create subscription record in the database
-            $this->addStripePurchase($this->amount, 0, $charge->id, Carbon::now(), Carbon::now()->toDateString(),
-                Carbon::now()->addDays(30)->toDateString());
+            $this->addStripePurchase($this->amount, 0, $charge->id, Carbon::now(),
+                Carbon::now()->toDateString(), Carbon::now()->addDays(30)->toDateString());
 
             return redirect()->route('subscribe.user')->with('info', 'Your Subscription was successfully');
 
