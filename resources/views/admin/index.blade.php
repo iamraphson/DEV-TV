@@ -28,18 +28,6 @@
                         </div>
                     </article>
                 </div><!--.col-->
-                {{--<div class="col-sm-6">
-                    <article class="statistic-box green">
-                        <div>
-                            <div class="number">29</div>
-                            <div class="caption"><div>Here is an example of a long name</div></div>
-                            <div class="percent">
-                                <div class="arrow up"></div>
-                                <p>84%</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>--}}<!--.col-->
             </div><!--.row-->
         </div><!--.col-->
     </div>
