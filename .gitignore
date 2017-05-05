@@ -5,7 +5,7 @@ Homestead.yaml
  Homestead.json 
 .env
  .puli 
-.idea /
+/.idea 
 .DS_Store
 resources/assets/
 .idea/
